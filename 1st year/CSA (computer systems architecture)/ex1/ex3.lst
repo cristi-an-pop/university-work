@@ -1,0 +1,33 @@
+     1                                  ; (b+c+d)-(a+a)
+     2                                  ; ex: a = 10, b = 25, c = 30, d = 15
+     3                                  ; (25+30+15)-(10+10) = 50
+     4                                  bits 32 ; assembling for the 32 bits architecture
+     5                                  
+     6                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     7                                  global start        
+     8                                  
+     9                                  ; declare external functions needed by our program
+    10                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+    11                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    12                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    13                                  
+    14                                  ; our data is declared here (the variables needed by our program)
+    15                                  segment data use32 class=data
+    16                                      ; ...
+    17 00000000 0A                          a db 10
+    18 00000001 19                          b db 25
+    19 00000002 1E                          c db 30
+    20 00000003 0F                          d db 15
+    21                                  ; our code starts here
+    22                                  segment code use32 class=code
+    23                                      start:
+    24                                          ; ...
+    25 00000000 A0[01000000]                    mov AL, [b] ; AL <- b
+    26 00000005 0205[02000000]                  add AL, [c] ; AL <- b+c
+    27 0000000B 0205[03000000]                  add AL, [d] ; AL <- b+c+d
+    28 00000011 8A25[00000000]                  mov AH, [a] ; AH <- a
+    29 00000017 0225[00000000]                  add AH, [a] ; AH <- a+a
+    30 0000001D 28E0                            sub AL, AH ; AL <- AL-AH = (b+c+d)-(a+a)
+    31                                          ; exit(0)
+    32 0000001F 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    33 00000021 FF15[00000000]                  call    [exit]       ; call exit to terminate the program
