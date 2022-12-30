@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55909ef3-b123-4d5b-aa4f-5a47b8bae168" name="Changes" comment="" />
+    <list default="true" id="9da72720-d7a5-47ad-8ec5-f440e5cae019" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/program.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,7 +23,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
-  <component name="ProjectId" id="2JVeSFyMxdd2GC908YhUozXa38q" />
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2JdpobxLhYamE01yV9gU9fb4NNK" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -36,11 +42,11 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="55909ef3-b123-4d5b-aa4f-5a47b8bae168" name="Changes" comment="" />
-      <created>1672167676098</created>
+      <changelist id="9da72720-d7a5-47ad-8ec5-f440e5cae019" name="Changes" comment="" />
+      <created>1672418000582</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1672167676098</updated>
+      <updated>1672418000582</updated>
     </task>
     <servers />
   </component>
