@@ -28,11 +28,12 @@ def generate_associative_operations(n):
     for i in range(n):
         elements.append(i)
     # Generate all possible arrays with elements from the set
-    arrays = list(product(elements, repeat=len(elements)))
+    #arrays = tuple(product(elements, repeat=len(elements)))
 
     # Generate all possible operation tables
-    operation_tables = list(product(arrays, repeat=n))
-    for table in operation_tables:
+    #operation_tables = tuple(product(arrays, repeat=n))
+    # this but more efficient
+    for table in product(product(elements, repeat=n), repeat=n):
         if is_associative(table): # Check if the operation table is associative
             num_operations += 1
             if n <= 4:
