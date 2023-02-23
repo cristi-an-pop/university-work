@@ -1,6 +1,6 @@
 import unittest
 
-from services.game_service import GameService
+from services.game_services import GameService
 
 
 class GameServiceTest(unittest.TestCase):
