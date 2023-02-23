@@ -1,0 +1,3 @@
+Enter a non-zero natural number: 1
+Number of bases: 1
+([1])

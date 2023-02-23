@@ -1,0 +1,2 @@
+Enter a non-zero natural number: 5
+Number of bases: 9999360
