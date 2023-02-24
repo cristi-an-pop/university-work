@@ -11,7 +11,6 @@ class GUI:
         self.screen.fill((0, 0, 0))
 
     def start(self):
-        "Menu for choosing game mode"
         pygame.init()
         pygame.display.set_caption("Connect 4")
         self.screen.fill((0, 0, 0))
@@ -71,6 +70,8 @@ class GUI:
         board = self.game_service.get_board()
 
         while True:
+            if self.game_service.current_player.name == "Computer":
+                self.game_service.place_piece()
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
@@ -79,14 +80,15 @@ class GUI:
                     mouse_pos = pygame.mouse.get_pos()
                     if mouse_pos[0] < 700:
                         board.make_move(self.game_service.get_current_player(), mouse_pos[0] // 100)
-                        self.game_service.current_player = self.game_service.players[1] if self.game_service.current_player == self.game_service.players[0] else self.game_service.players[0]
-                        self.draw_board()
-                        if self.game_service.game_won():
-                            self.draw_winner()
-                            break
-                        if self.game_service.game_tied():
-                            self.draw_tie()
-                            break
+                    self.draw_board()
+                    if self.game_service.game_won():
+                        self.draw_winner()
+                        break
+                    if self.game_service.game_tied():
+                        self.draw_tie()
+                        break
+                    self.game_service.current_player = self.game_service.players[1] if self.game_service.current_player == self.game_service.players[0] else self.game_service.players[0]
+
 
     def draw_winner(self):
         font = pygame.font.SysFont('Arial', 30)
