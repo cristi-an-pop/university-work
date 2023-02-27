@@ -80,6 +80,9 @@ class GUI:
                     mouse_pos = pygame.mouse.get_pos()
                     if mouse_pos[0] < 700:
                         board.make_move(self.game_service.get_current_player(), mouse_pos[0] // 100)
+                        self.game_service.current_player = self.game_service.players[
+                            1] if self.game_service.current_player == self.game_service.players[0] else \
+                        self.game_service.players[0]
                     self.draw_board()
                     if self.game_service.game_won():
                         self.draw_winner()
@@ -87,7 +90,6 @@ class GUI:
                     if self.game_service.game_tied():
                         self.draw_tie()
                         break
-                    self.game_service.current_player = self.game_service.players[1] if self.game_service.current_player == self.game_service.players[0] else self.game_service.players[0]
 
 
     def draw_winner(self):
