@@ -1,0 +1,162 @@
+Execution Stack:
+[(string varf;(varf="D:\ubb\MAP\ToyLanguageInterpreter\src\Model\Statements\test.in";(openRFile(varf);(int varc;(readFile(varf, varc);(print(varc);(readFile(varf, varc);(print(varc);closeRFile()))))))))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+
+Execution Stack:
+[(varf="D:\ubb\MAP\ToyLanguageInterpreter\src\Model\Statements\test.in";(openRFile(varf);(int varc;(readFile(varf, varc);(print(varc);(readFile(varf, varc);(print(varc);closeRFile()))))))), string varf]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+
+Execution Stack:
+[(varf="D:\ubb\MAP\ToyLanguageInterpreter\src\Model\Statements\test.in";(openRFile(varf);(int varc;(readFile(varf, varc);(print(varc);(readFile(varf, varc);(print(varc);closeRFile())))))))]
+Symbol Table:
+{varf=""}
+Output:
+[]
+File Table:
+{}
+
+Execution Stack:
+[(openRFile(varf);(int varc;(readFile(varf, varc);(print(varc);(readFile(varf, varc);(print(varc);closeRFile())))))), varf="D:\ubb\MAP\ToyLanguageInterpreter\src\Model\Statements\test.in"]
+Symbol Table:
+{varf=""}
+Output:
+[]
+File Table:
+{}
+
+Execution Stack:
+[(openRFile(varf);(int varc;(readFile(varf, varc);(print(varc);(readFile(varf, varc);(print(varc);closeRFile()))))))]
+Symbol Table:
+{varf="D:\ubb\MAP\ToyLanguageInterpreter\src\Model\Statements\test.in"}
+Output:
+[]
+File Table:
+{}
+
+Execution Stack:
+[(int varc;(readFile(varf, varc);(print(varc);(readFile(varf, varc);(print(varc);closeRFile()))))), openRFile(varf)]
+Symbol Table:
+{varf="D:\ubb\MAP\ToyLanguageInterpreter\src\Model\Statements\test.in"}
+Output:
+[]
+File Table:
+{}
+
+Execution Stack:
+[(int varc;(readFile(varf, varc);(print(varc);(readFile(varf, varc);(print(varc);closeRFile())))))]
+Symbol Table:
+{varf="D:\ubb\MAP\ToyLanguageInterpreter\src\Model\Statements\test.in"}
+Output:
+[]
+File Table:
+{D:\ubb\MAP\ToyLanguageInterpreter\src\Model\Statements\test.in=java.io.BufferedReader@30946e09}
+
+Execution Stack:
+[(readFile(varf, varc);(print(varc);(readFile(varf, varc);(print(varc);closeRFile())))), int varc]
+Symbol Table:
+{varf="D:\ubb\MAP\ToyLanguageInterpreter\src\Model\Statements\test.in"}
+Output:
+[]
+File Table:
+{D:\ubb\MAP\ToyLanguageInterpreter\src\Model\Statements\test.in=java.io.BufferedReader@30946e09}
+
+Execution Stack:
+[(readFile(varf, varc);(print(varc);(readFile(varf, varc);(print(varc);closeRFile()))))]
+Symbol Table:
+{varf="D:\ubb\MAP\ToyLanguageInterpreter\src\Model\Statements\test.in", varc=0}
+Output:
+[]
+File Table:
+{D:\ubb\MAP\ToyLanguageInterpreter\src\Model\Statements\test.in=java.io.BufferedReader@30946e09}
+
+Execution Stack:
+[(print(varc);(readFile(varf, varc);(print(varc);closeRFile()))), readFile(varf, varc)]
+Symbol Table:
+{varf="D:\ubb\MAP\ToyLanguageInterpreter\src\Model\Statements\test.in", varc=0}
+Output:
+[]
+File Table:
+{D:\ubb\MAP\ToyLanguageInterpreter\src\Model\Statements\test.in=java.io.BufferedReader@30946e09}
+
+Execution Stack:
+[(print(varc);(readFile(varf, varc);(print(varc);closeRFile())))]
+Symbol Table:
+{varf="D:\ubb\MAP\ToyLanguageInterpreter\src\Model\Statements\test.in", varc=15}
+Output:
+[]
+File Table:
+{D:\ubb\MAP\ToyLanguageInterpreter\src\Model\Statements\test.in=java.io.BufferedReader@30946e09}
+
+Execution Stack:
+[(readFile(varf, varc);(print(varc);closeRFile())), print(varc)]
+Symbol Table:
+{varf="D:\ubb\MAP\ToyLanguageInterpreter\src\Model\Statements\test.in", varc=15}
+Output:
+[]
+File Table:
+{D:\ubb\MAP\ToyLanguageInterpreter\src\Model\Statements\test.in=java.io.BufferedReader@30946e09}
+
+Execution Stack:
+[(readFile(varf, varc);(print(varc);closeRFile()))]
+Symbol Table:
+{varf="D:\ubb\MAP\ToyLanguageInterpreter\src\Model\Statements\test.in", varc=15}
+Output:
+[15]
+File Table:
+{D:\ubb\MAP\ToyLanguageInterpreter\src\Model\Statements\test.in=java.io.BufferedReader@30946e09}
+
+Execution Stack:
+[(print(varc);closeRFile()), readFile(varf, varc)]
+Symbol Table:
+{varf="D:\ubb\MAP\ToyLanguageInterpreter\src\Model\Statements\test.in", varc=15}
+Output:
+[15]
+File Table:
+{D:\ubb\MAP\ToyLanguageInterpreter\src\Model\Statements\test.in=java.io.BufferedReader@30946e09}
+
+Execution Stack:
+[(print(varc);closeRFile())]
+Symbol Table:
+{varf="D:\ubb\MAP\ToyLanguageInterpreter\src\Model\Statements\test.in", varc=50}
+Output:
+[15]
+File Table:
+{D:\ubb\MAP\ToyLanguageInterpreter\src\Model\Statements\test.in=java.io.BufferedReader@30946e09}
+
+Execution Stack:
+[closeRFile(), print(varc)]
+Symbol Table:
+{varf="D:\ubb\MAP\ToyLanguageInterpreter\src\Model\Statements\test.in", varc=50}
+Output:
+[15]
+File Table:
+{D:\ubb\MAP\ToyLanguageInterpreter\src\Model\Statements\test.in=java.io.BufferedReader@30946e09}
+
+Execution Stack:
+[closeRFile()]
+Symbol Table:
+{varf="D:\ubb\MAP\ToyLanguageInterpreter\src\Model\Statements\test.in", varc=50}
+Output:
+[15, 50]
+File Table:
+{D:\ubb\MAP\ToyLanguageInterpreter\src\Model\Statements\test.in=java.io.BufferedReader@30946e09}
+
+Execution Stack:
+[]
+Symbol Table:
+{varf="D:\ubb\MAP\ToyLanguageInterpreter\src\Model\Statements\test.in", varc=50}
+Output:
+[15, 50]
+File Table:
+{}
+
