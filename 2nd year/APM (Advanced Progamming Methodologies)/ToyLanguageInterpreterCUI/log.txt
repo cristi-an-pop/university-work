@@ -1,0 +1,2658 @@
+Program ID: -1779930089
+Execution Stack:
+[IF(10 < 2) THEN (nop) ELSE (nop)]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1779930089
+Execution Stack:
+[nop]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1779930089
+Execution Stack:
+[nop]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1779930089
+Execution Stack:
+[]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 806792954
+Execution Stack:
+[((((((int v;Ref(int) a);v=10);new(a, 22));Model.Statements.ForkStatement@573fd745);print(v));print(rH(a)))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 806792954
+Execution Stack:
+[print(rH(a)), (((((int v;Ref(int) a);v=10);new(a, 22));Model.Statements.ForkStatement@573fd745);print(v))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 806792954
+Execution Stack:
+[print(rH(a)), (((((int v;Ref(int) a);v=10);new(a, 22));Model.Statements.ForkStatement@573fd745);print(v))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 806792954
+Execution Stack:
+[print(rH(a)), print(v), ((((int v;Ref(int) a);v=10);new(a, 22));Model.Statements.ForkStatement@573fd745)]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 806792954
+Execution Stack:
+[print(rH(a)), print(v), ((((int v;Ref(int) a);v=10);new(a, 22));Model.Statements.ForkStatement@573fd745)]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 806792954
+Execution Stack:
+[print(rH(a)), print(v), Model.Statements.ForkStatement@573fd745, (((int v;Ref(int) a);v=10);new(a, 22))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 806792954
+Execution Stack:
+[print(rH(a)), print(v), Model.Statements.ForkStatement@573fd745, (((int v;Ref(int) a);v=10);new(a, 22))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 806792954
+Execution Stack:
+[print(rH(a)), print(v), Model.Statements.ForkStatement@573fd745, new(a, 22), ((int v;Ref(int) a);v=10)]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 806792954
+Execution Stack:
+[print(rH(a)), print(v), Model.Statements.ForkStatement@573fd745, new(a, 22), ((int v;Ref(int) a);v=10)]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 806792954
+Execution Stack:
+[print(rH(a)), print(v), Model.Statements.ForkStatement@573fd745, new(a, 22), v=10, (int v;Ref(int) a)]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 806792954
+Execution Stack:
+[print(rH(a)), print(v), Model.Statements.ForkStatement@573fd745, new(a, 22), v=10, (int v;Ref(int) a)]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 806792954
+Execution Stack:
+[print(rH(a)), print(v), Model.Statements.ForkStatement@573fd745, new(a, 22), v=10, Ref(int) a, int v]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 806792954
+Execution Stack:
+[print(rH(a)), print(v), Model.Statements.ForkStatement@573fd745, new(a, 22), v=10, Ref(int) a, int v]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 806792954
+Execution Stack:
+[print(rH(a)), print(v), Model.Statements.ForkStatement@573fd745, new(a, 22), v=10, Ref(int) a]
+Symbol Table:
+{v=0}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 806792954
+Execution Stack:
+[print(rH(a)), print(v), Model.Statements.ForkStatement@573fd745, new(a, 22), v=10, Ref(int) a]
+Symbol Table:
+{v=0}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 806792954
+Execution Stack:
+[print(rH(a)), print(v), Model.Statements.ForkStatement@573fd745, new(a, 22), v=10]
+Symbol Table:
+{a=(0, int), v=0}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 806792954
+Execution Stack:
+[print(rH(a)), print(v), Model.Statements.ForkStatement@573fd745, new(a, 22), v=10]
+Symbol Table:
+{a=(0, int), v=0}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 806792954
+Execution Stack:
+[print(rH(a)), print(v), Model.Statements.ForkStatement@573fd745, new(a, 22)]
+Symbol Table:
+{a=(0, int), v=10}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 806792954
+Execution Stack:
+[print(rH(a)), print(v), Model.Statements.ForkStatement@573fd745, new(a, 22)]
+Symbol Table:
+{a=(0, int), v=10}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 806792954
+Execution Stack:
+[print(rH(a)), print(v), Model.Statements.ForkStatement@573fd745]
+Symbol Table:
+{a=(1, int), v=10}
+Output:
+[]
+File Table:
+{}
+Heap:
+1 -> 22
+
+
+Program ID: 806792954
+Execution Stack:
+[print(rH(a)), print(v), Model.Statements.ForkStatement@573fd745]
+Symbol Table:
+{a=(1, int), v=10}
+Output:
+[]
+File Table:
+{}
+Heap:
+1 -> 22
+
+
+Program ID: 806792954
+Execution Stack:
+[print(rH(a)), print(v)]
+Symbol Table:
+{a=(1, int), v=10}
+Output:
+[]
+File Table:
+{}
+Heap:
+1 -> 22
+
+
+Program ID: 1271807690
+Execution Stack:
+[(wH(a, 30);(v=32;(print(v);print(rH(a)))))]
+Symbol Table:
+{a=(1, int), v=10}
+Output:
+[]
+File Table:
+{}
+Heap:
+1 -> 22
+
+
+Program ID: 806792954
+Execution Stack:
+[print(rH(a)), print(v)]
+Symbol Table:
+{a=(1, int), v=10}
+Output:
+[]
+File Table:
+{}
+Heap:
+1 -> 22
+
+
+Program ID: 1271807690
+Execution Stack:
+[(wH(a, 30);(v=32;(print(v);print(rH(a)))))]
+Symbol Table:
+{a=(1, int), v=10}
+Output:
+[]
+File Table:
+{}
+Heap:
+1 -> 22
+
+
+Program ID: 806792954
+Execution Stack:
+[print(rH(a))]
+Symbol Table:
+{a=(1, int), v=10}
+Output:
+[10]
+File Table:
+{}
+Heap:
+1 -> 22
+
+
+Program ID: 1271807690
+Execution Stack:
+[(v=32;(print(v);print(rH(a)))), wH(a, 30)]
+Symbol Table:
+{a=(1, int), v=10}
+Output:
+[10]
+File Table:
+{}
+Heap:
+1 -> 22
+
+
+Program ID: 806792954
+Execution Stack:
+[print(rH(a))]
+Symbol Table:
+{a=(1, int), v=10}
+Output:
+[10]
+File Table:
+{}
+Heap:
+1 -> 22
+
+
+Program ID: 1271807690
+Execution Stack:
+[(v=32;(print(v);print(rH(a)))), wH(a, 30)]
+Symbol Table:
+{a=(1, int), v=10}
+Output:
+[10]
+File Table:
+{}
+Heap:
+1 -> 22
+
+
+Program ID: 806792954
+Execution Stack:
+[]
+Symbol Table:
+{a=(1, int), v=10}
+Output:
+[10, 22]
+File Table:
+{}
+Heap:
+1 -> 30
+
+
+Program ID: 1271807690
+Execution Stack:
+[(v=32;(print(v);print(rH(a))))]
+Symbol Table:
+{a=(1, int), v=10}
+Output:
+[10, 22]
+File Table:
+{}
+Heap:
+1 -> 30
+
+
+Program ID: 1271807690
+Execution Stack:
+[(v=32;(print(v);print(rH(a))))]
+Symbol Table:
+{a=(1, int), v=10}
+Output:
+[10, 22]
+File Table:
+{}
+Heap:
+1 -> 30
+
+
+Program ID: 1271807690
+Execution Stack:
+[(print(v);print(rH(a))), v=32]
+Symbol Table:
+{a=(1, int), v=10}
+Output:
+[10, 22]
+File Table:
+{}
+Heap:
+1 -> 30
+
+
+Program ID: 1271807690
+Execution Stack:
+[(print(v);print(rH(a))), v=32]
+Symbol Table:
+{a=(1, int), v=10}
+Output:
+[10, 22]
+File Table:
+{}
+Heap:
+1 -> 30
+
+
+Program ID: 1271807690
+Execution Stack:
+[(print(v);print(rH(a)))]
+Symbol Table:
+{a=(1, int), v=32}
+Output:
+[10, 22]
+File Table:
+{}
+Heap:
+1 -> 30
+
+
+Program ID: 1271807690
+Execution Stack:
+[(print(v);print(rH(a)))]
+Symbol Table:
+{a=(1, int), v=32}
+Output:
+[10, 22]
+File Table:
+{}
+Heap:
+1 -> 30
+
+
+Program ID: 1271807690
+Execution Stack:
+[print(rH(a)), print(v)]
+Symbol Table:
+{a=(1, int), v=32}
+Output:
+[10, 22]
+File Table:
+{}
+Heap:
+1 -> 30
+
+
+Program ID: 1271807690
+Execution Stack:
+[print(rH(a)), print(v)]
+Symbol Table:
+{a=(1, int), v=32}
+Output:
+[10, 22]
+File Table:
+{}
+Heap:
+1 -> 30
+
+
+Program ID: 1271807690
+Execution Stack:
+[print(rH(a))]
+Symbol Table:
+{a=(1, int), v=32}
+Output:
+[10, 22, 32]
+File Table:
+{}
+Heap:
+1 -> 30
+
+
+Program ID: 1271807690
+Execution Stack:
+[print(rH(a))]
+Symbol Table:
+{a=(1, int), v=32}
+Output:
+[10, 22, 32]
+File Table:
+{}
+Heap:
+1 -> 30
+
+
+Program ID: 1271807690
+Execution Stack:
+[]
+Symbol Table:
+{a=(1, int), v=32}
+Output:
+[10, 22, 32, 30]
+File Table:
+{}
+Heap:
+1 -> 30
+
+
+Program ID: 1308754758
+Execution Stack:
+[IF(10 < 2) THEN (nop) ELSE (nop)]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1308754758
+Execution Stack:
+[nop]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1308754758
+Execution Stack:
+[nop]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1308754758
+Execution Stack:
+[]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1711126867
+Execution Stack:
+[(((((((((Ref(int) v;new(v, 20));Ref(Ref(int)) a);new(a, v));new(v, 30));print(rH(rH(a))));Ref(int) g);new(g, 5));new(g, 10));print(rH(g)))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1711126867
+Execution Stack:
+[print(rH(g)), ((((((((Ref(int) v;new(v, 20));Ref(Ref(int)) a);new(a, v));new(v, 30));print(rH(rH(a))));Ref(int) g);new(g, 5));new(g, 10))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1711126867
+Execution Stack:
+[print(rH(g)), ((((((((Ref(int) v;new(v, 20));Ref(Ref(int)) a);new(a, v));new(v, 30));print(rH(rH(a))));Ref(int) g);new(g, 5));new(g, 10))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1711126867
+Execution Stack:
+[print(rH(g)), new(g, 10), (((((((Ref(int) v;new(v, 20));Ref(Ref(int)) a);new(a, v));new(v, 30));print(rH(rH(a))));Ref(int) g);new(g, 5))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1711126867
+Execution Stack:
+[print(rH(g)), new(g, 10), (((((((Ref(int) v;new(v, 20));Ref(Ref(int)) a);new(a, v));new(v, 30));print(rH(rH(a))));Ref(int) g);new(g, 5))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1711126867
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), ((((((Ref(int) v;new(v, 20));Ref(Ref(int)) a);new(a, v));new(v, 30));print(rH(rH(a))));Ref(int) g)]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1711126867
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), ((((((Ref(int) v;new(v, 20));Ref(Ref(int)) a);new(a, v));new(v, 30));print(rH(rH(a))));Ref(int) g)]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1711126867
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, (((((Ref(int) v;new(v, 20));Ref(Ref(int)) a);new(a, v));new(v, 30));print(rH(rH(a))))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1711126867
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, (((((Ref(int) v;new(v, 20));Ref(Ref(int)) a);new(a, v));new(v, 30));print(rH(rH(a))))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1711126867
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a))), ((((Ref(int) v;new(v, 20));Ref(Ref(int)) a);new(a, v));new(v, 30))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1711126867
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a))), ((((Ref(int) v;new(v, 20));Ref(Ref(int)) a);new(a, v));new(v, 30))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1711126867
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a))), new(v, 30), (((Ref(int) v;new(v, 20));Ref(Ref(int)) a);new(a, v))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1711126867
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a))), new(v, 30), (((Ref(int) v;new(v, 20));Ref(Ref(int)) a);new(a, v))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1711126867
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a))), new(v, 30), new(a, v), ((Ref(int) v;new(v, 20));Ref(Ref(int)) a)]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1711126867
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a))), new(v, 30), new(a, v), ((Ref(int) v;new(v, 20));Ref(Ref(int)) a)]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1711126867
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a))), new(v, 30), new(a, v), Ref(Ref(int)) a, (Ref(int) v;new(v, 20))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1711126867
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a))), new(v, 30), new(a, v), Ref(Ref(int)) a, (Ref(int) v;new(v, 20))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1711126867
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a))), new(v, 30), new(a, v), Ref(Ref(int)) a, new(v, 20), Ref(int) v]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1711126867
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a))), new(v, 30), new(a, v), Ref(Ref(int)) a, new(v, 20), Ref(int) v]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1711126867
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a))), new(v, 30), new(a, v), Ref(Ref(int)) a, new(v, 20)]
+Symbol Table:
+{v=(0, int)}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1711126867
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a))), new(v, 30), new(a, v), Ref(Ref(int)) a, new(v, 20)]
+Symbol Table:
+{v=(0, int)}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1711126867
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a))), new(v, 30), new(a, v), Ref(Ref(int)) a]
+Symbol Table:
+{v=(1, int)}
+Output:
+[]
+File Table:
+{}
+Heap:
+1 -> 20
+
+
+Program ID: -1711126867
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a))), new(v, 30), new(a, v), Ref(Ref(int)) a]
+Symbol Table:
+{v=(1, int)}
+Output:
+[]
+File Table:
+{}
+Heap:
+1 -> 20
+
+
+Program ID: -1711126867
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a))), new(v, 30), new(a, v)]
+Symbol Table:
+{a=(0, Ref(int)), v=(1, int)}
+Output:
+[]
+File Table:
+{}
+Heap:
+1 -> 20
+
+
+Program ID: -1711126867
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a))), new(v, 30), new(a, v)]
+Symbol Table:
+{a=(0, Ref(int)), v=(1, int)}
+Output:
+[]
+File Table:
+{}
+Heap:
+1 -> 20
+
+
+Program ID: -1711126867
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a))), new(v, 30)]
+Symbol Table:
+{a=(2, Ref(int)), v=(1, int)}
+Output:
+[]
+File Table:
+{}
+Heap:
+1 -> 20
+2 -> (1, int)
+
+
+Program ID: -1711126867
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a))), new(v, 30)]
+Symbol Table:
+{a=(2, Ref(int)), v=(1, int)}
+Output:
+[]
+File Table:
+{}
+Heap:
+1 -> 20
+2 -> (1, int)
+
+
+Program ID: -1711126867
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a)))]
+Symbol Table:
+{a=(2, Ref(int)), v=(3, int)}
+Output:
+[]
+File Table:
+{}
+Heap:
+1 -> 20
+2 -> (1, int)
+3 -> 30
+
+
+Program ID: -1711126867
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a)))]
+Symbol Table:
+{a=(2, Ref(int)), v=(3, int)}
+Output:
+[]
+File Table:
+{}
+Heap:
+1 -> 20
+2 -> (1, int)
+3 -> 30
+
+
+Program ID: -1711126867
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g]
+Symbol Table:
+{a=(2, Ref(int)), v=(3, int)}
+Output:
+[20]
+File Table:
+{}
+Heap:
+1 -> 20
+2 -> (1, int)
+3 -> 30
+
+
+Program ID: -1711126867
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g]
+Symbol Table:
+{a=(2, Ref(int)), v=(3, int)}
+Output:
+[20]
+File Table:
+{}
+Heap:
+1 -> 20
+2 -> (1, int)
+3 -> 30
+
+
+Program ID: -1711126867
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5)]
+Symbol Table:
+{a=(2, Ref(int)), v=(3, int), g=(0, int)}
+Output:
+[20]
+File Table:
+{}
+Heap:
+1 -> 20
+2 -> (1, int)
+3 -> 30
+
+
+Program ID: -1711126867
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5)]
+Symbol Table:
+{a=(2, Ref(int)), v=(3, int), g=(0, int)}
+Output:
+[20]
+File Table:
+{}
+Heap:
+1 -> 20
+2 -> (1, int)
+3 -> 30
+
+
+Program ID: -1711126867
+Execution Stack:
+[print(rH(g)), new(g, 10)]
+Symbol Table:
+{a=(2, Ref(int)), v=(3, int), g=(4, int)}
+Output:
+[20]
+File Table:
+{}
+Heap:
+1 -> 20
+2 -> (1, int)
+3 -> 30
+4 -> 5
+
+
+Program ID: -1711126867
+Execution Stack:
+[print(rH(g)), new(g, 10)]
+Symbol Table:
+{a=(2, Ref(int)), v=(3, int), g=(4, int)}
+Output:
+[20]
+File Table:
+{}
+Heap:
+1 -> 20
+2 -> (1, int)
+3 -> 30
+4 -> 5
+
+
+Program ID: -1711126867
+Execution Stack:
+[print(rH(g))]
+Symbol Table:
+{a=(2, Ref(int)), v=(3, int), g=(5, int)}
+Output:
+[20]
+File Table:
+{}
+Heap:
+1 -> 20
+2 -> (1, int)
+3 -> 30
+4 -> 5
+5 -> 10
+
+
+Program ID: -1711126867
+Execution Stack:
+[print(rH(g))]
+Symbol Table:
+{a=(2, Ref(int)), v=(3, int), g=(5, int)}
+Output:
+[20]
+File Table:
+{}
+Heap:
+1 -> 20
+2 -> (1, int)
+3 -> 30
+5 -> 10
+
+
+Program ID: -1711126867
+Execution Stack:
+[]
+Symbol Table:
+{a=(2, Ref(int)), v=(3, int), g=(5, int)}
+Output:
+[20, 10]
+File Table:
+{}
+Heap:
+1 -> 20
+2 -> (1, int)
+3 -> 30
+5 -> 10
+
+
+Program ID: -1537886941
+Execution Stack:
+[((((bool a;int v);a=true);IF(a) THEN (v=2) ELSE (v=3));print(v))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1537886941
+Execution Stack:
+[print(v), (((bool a;int v);a=true);IF(a) THEN (v=2) ELSE (v=3))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1537886941
+Execution Stack:
+[print(v), (((bool a;int v);a=true);IF(a) THEN (v=2) ELSE (v=3))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1537886941
+Execution Stack:
+[print(v), IF(a) THEN (v=2) ELSE (v=3), ((bool a;int v);a=true)]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1537886941
+Execution Stack:
+[print(v), IF(a) THEN (v=2) ELSE (v=3), ((bool a;int v);a=true)]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1537886941
+Execution Stack:
+[print(v), IF(a) THEN (v=2) ELSE (v=3), a=true, (bool a;int v)]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1537886941
+Execution Stack:
+[print(v), IF(a) THEN (v=2) ELSE (v=3), a=true, (bool a;int v)]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1537886941
+Execution Stack:
+[print(v), IF(a) THEN (v=2) ELSE (v=3), a=true, int v, bool a]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1537886941
+Execution Stack:
+[print(v), IF(a) THEN (v=2) ELSE (v=3), a=true, int v, bool a]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1537886941
+Execution Stack:
+[print(v), IF(a) THEN (v=2) ELSE (v=3), a=true, int v]
+Symbol Table:
+{a=false}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1537886941
+Execution Stack:
+[print(v), IF(a) THEN (v=2) ELSE (v=3), a=true, int v]
+Symbol Table:
+{a=false}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1537886941
+Execution Stack:
+[print(v), IF(a) THEN (v=2) ELSE (v=3), a=true]
+Symbol Table:
+{a=false, v=0}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1537886941
+Execution Stack:
+[print(v), IF(a) THEN (v=2) ELSE (v=3), a=true]
+Symbol Table:
+{a=false, v=0}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1537886941
+Execution Stack:
+[print(v), IF(a) THEN (v=2) ELSE (v=3)]
+Symbol Table:
+{a=true, v=0}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1537886941
+Execution Stack:
+[print(v), IF(a) THEN (v=2) ELSE (v=3)]
+Symbol Table:
+{a=true, v=0}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1537886941
+Execution Stack:
+[print(v), v=2]
+Symbol Table:
+{a=true, v=0}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1537886941
+Execution Stack:
+[print(v), v=2]
+Symbol Table:
+{a=true, v=0}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1537886941
+Execution Stack:
+[print(v)]
+Symbol Table:
+{a=true, v=2}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1537886941
+Execution Stack:
+[print(v)]
+Symbol Table:
+{a=true, v=2}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -1537886941
+Execution Stack:
+[]
+Symbol Table:
+{a=true, v=2}
+Output:
+[2]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1386347886
+Execution Stack:
+[((((((int v;Ref(int) a);v=10);new(a, 22));Model.Statements.ForkStatement@573fd745);print(v));print(rH(a)))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1386347886
+Execution Stack:
+[print(rH(a)), (((((int v;Ref(int) a);v=10);new(a, 22));Model.Statements.ForkStatement@573fd745);print(v))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1386347886
+Execution Stack:
+[print(rH(a)), (((((int v;Ref(int) a);v=10);new(a, 22));Model.Statements.ForkStatement@573fd745);print(v))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1386347886
+Execution Stack:
+[print(rH(a)), print(v), ((((int v;Ref(int) a);v=10);new(a, 22));Model.Statements.ForkStatement@573fd745)]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1386347886
+Execution Stack:
+[print(rH(a)), print(v), ((((int v;Ref(int) a);v=10);new(a, 22));Model.Statements.ForkStatement@573fd745)]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1386347886
+Execution Stack:
+[print(rH(a)), print(v), Model.Statements.ForkStatement@573fd745, (((int v;Ref(int) a);v=10);new(a, 22))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1386347886
+Execution Stack:
+[print(rH(a)), print(v), Model.Statements.ForkStatement@573fd745, (((int v;Ref(int) a);v=10);new(a, 22))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1386347886
+Execution Stack:
+[print(rH(a)), print(v), Model.Statements.ForkStatement@573fd745, new(a, 22), ((int v;Ref(int) a);v=10)]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1386347886
+Execution Stack:
+[print(rH(a)), print(v), Model.Statements.ForkStatement@573fd745, new(a, 22), ((int v;Ref(int) a);v=10)]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1386347886
+Execution Stack:
+[print(rH(a)), print(v), Model.Statements.ForkStatement@573fd745, new(a, 22), v=10, (int v;Ref(int) a)]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1386347886
+Execution Stack:
+[print(rH(a)), print(v), Model.Statements.ForkStatement@573fd745, new(a, 22), v=10, (int v;Ref(int) a)]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1386347886
+Execution Stack:
+[print(rH(a)), print(v), Model.Statements.ForkStatement@573fd745, new(a, 22), v=10, Ref(int) a, int v]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1386347886
+Execution Stack:
+[print(rH(a)), print(v), Model.Statements.ForkStatement@573fd745, new(a, 22), v=10, Ref(int) a, int v]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1386347886
+Execution Stack:
+[print(rH(a)), print(v), Model.Statements.ForkStatement@573fd745, new(a, 22), v=10, Ref(int) a]
+Symbol Table:
+{v=0}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1386347886
+Execution Stack:
+[print(rH(a)), print(v), Model.Statements.ForkStatement@573fd745, new(a, 22), v=10, Ref(int) a]
+Symbol Table:
+{v=0}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1386347886
+Execution Stack:
+[print(rH(a)), print(v), Model.Statements.ForkStatement@573fd745, new(a, 22), v=10]
+Symbol Table:
+{a=(0, int), v=0}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1386347886
+Execution Stack:
+[print(rH(a)), print(v), Model.Statements.ForkStatement@573fd745, new(a, 22), v=10]
+Symbol Table:
+{a=(0, int), v=0}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1386347886
+Execution Stack:
+[print(rH(a)), print(v), Model.Statements.ForkStatement@573fd745, new(a, 22)]
+Symbol Table:
+{a=(0, int), v=10}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1386347886
+Execution Stack:
+[print(rH(a)), print(v), Model.Statements.ForkStatement@573fd745, new(a, 22)]
+Symbol Table:
+{a=(0, int), v=10}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1386347886
+Execution Stack:
+[print(rH(a)), print(v), Model.Statements.ForkStatement@573fd745]
+Symbol Table:
+{a=(1, int), v=10}
+Output:
+[]
+File Table:
+{}
+Heap:
+1 -> 22
+
+
+Program ID: 1386347886
+Execution Stack:
+[print(rH(a)), print(v), Model.Statements.ForkStatement@573fd745]
+Symbol Table:
+{a=(1, int), v=10}
+Output:
+[]
+File Table:
+{}
+Heap:
+1 -> 22
+
+
+Program ID: 1386347886
+Execution Stack:
+[print(rH(a)), print(v)]
+Symbol Table:
+{a=(1, int), v=10}
+Output:
+[]
+File Table:
+{}
+Heap:
+1 -> 22
+
+
+Program ID: 1149843551
+Execution Stack:
+[(wH(a, 30);(v=32;(print(v);print(rH(a)))))]
+Symbol Table:
+{a=(1, int), v=10}
+Output:
+[]
+File Table:
+{}
+Heap:
+1 -> 22
+
+
+Program ID: 1386347886
+Execution Stack:
+[print(rH(a)), print(v)]
+Symbol Table:
+{a=(1, int), v=10}
+Output:
+[]
+File Table:
+{}
+Heap:
+1 -> 22
+
+
+Program ID: 1149843551
+Execution Stack:
+[(wH(a, 30);(v=32;(print(v);print(rH(a)))))]
+Symbol Table:
+{a=(1, int), v=10}
+Output:
+[]
+File Table:
+{}
+Heap:
+1 -> 22
+
+
+Program ID: 1386347886
+Execution Stack:
+[print(rH(a))]
+Symbol Table:
+{a=(1, int), v=10}
+Output:
+[10]
+File Table:
+{}
+Heap:
+1 -> 22
+
+
+Program ID: 1149843551
+Execution Stack:
+[(v=32;(print(v);print(rH(a)))), wH(a, 30)]
+Symbol Table:
+{a=(1, int), v=10}
+Output:
+[10]
+File Table:
+{}
+Heap:
+1 -> 22
+
+
+Program ID: 1386347886
+Execution Stack:
+[print(rH(a))]
+Symbol Table:
+{a=(1, int), v=10}
+Output:
+[10]
+File Table:
+{}
+Heap:
+1 -> 22
+
+
+Program ID: 1149843551
+Execution Stack:
+[(v=32;(print(v);print(rH(a)))), wH(a, 30)]
+Symbol Table:
+{a=(1, int), v=10}
+Output:
+[10]
+File Table:
+{}
+Heap:
+1 -> 22
+
+
+Program ID: 1386347886
+Execution Stack:
+[]
+Symbol Table:
+{a=(1, int), v=10}
+Output:
+[10, 22]
+File Table:
+{}
+Heap:
+1 -> 30
+
+
+Program ID: 1149843551
+Execution Stack:
+[(v=32;(print(v);print(rH(a))))]
+Symbol Table:
+{a=(1, int), v=10}
+Output:
+[10, 22]
+File Table:
+{}
+Heap:
+1 -> 30
+
+
+Program ID: 1149843551
+Execution Stack:
+[(v=32;(print(v);print(rH(a))))]
+Symbol Table:
+{a=(1, int), v=10}
+Output:
+[10, 22]
+File Table:
+{}
+Heap:
+1 -> 30
+
+
+Program ID: 1149843551
+Execution Stack:
+[(print(v);print(rH(a))), v=32]
+Symbol Table:
+{a=(1, int), v=10}
+Output:
+[10, 22]
+File Table:
+{}
+Heap:
+1 -> 30
+
+
+Program ID: 1149843551
+Execution Stack:
+[(print(v);print(rH(a))), v=32]
+Symbol Table:
+{a=(1, int), v=10}
+Output:
+[10, 22]
+File Table:
+{}
+Heap:
+1 -> 30
+
+
+Program ID: 1149843551
+Execution Stack:
+[(print(v);print(rH(a)))]
+Symbol Table:
+{a=(1, int), v=32}
+Output:
+[10, 22]
+File Table:
+{}
+Heap:
+1 -> 30
+
+
+Program ID: 1149843551
+Execution Stack:
+[(print(v);print(rH(a)))]
+Symbol Table:
+{a=(1, int), v=32}
+Output:
+[10, 22]
+File Table:
+{}
+Heap:
+1 -> 30
+
+
+Program ID: 1149843551
+Execution Stack:
+[print(rH(a)), print(v)]
+Symbol Table:
+{a=(1, int), v=32}
+Output:
+[10, 22]
+File Table:
+{}
+Heap:
+1 -> 30
+
+
+Program ID: 1149843551
+Execution Stack:
+[print(rH(a)), print(v)]
+Symbol Table:
+{a=(1, int), v=32}
+Output:
+[10, 22]
+File Table:
+{}
+Heap:
+1 -> 30
+
+
+Program ID: 1149843551
+Execution Stack:
+[print(rH(a))]
+Symbol Table:
+{a=(1, int), v=32}
+Output:
+[10, 22, 32]
+File Table:
+{}
+Heap:
+1 -> 30
+
+
+Program ID: 1149843551
+Execution Stack:
+[print(rH(a))]
+Symbol Table:
+{a=(1, int), v=32}
+Output:
+[10, 22, 32]
+File Table:
+{}
+Heap:
+1 -> 30
+
+
+Program ID: 1149843551
+Execution Stack:
+[]
+Symbol Table:
+{a=(1, int), v=32}
+Output:
+[10, 22, 32, 30]
+File Table:
+{}
+Heap:
+1 -> 30
+
+
+Program ID: 896649502
+Execution Stack:
+[IF(10 < 2) THEN (nop) ELSE (nop)]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 896649502
+Execution Stack:
+[nop]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 896649502
+Execution Stack:
+[nop]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 896649502
+Execution Stack:
+[]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1264064524
+Execution Stack:
+[(((((((((Ref(int) v;new(v, 20));Ref(Ref(int)) a);new(a, v));new(v, 30));print(rH(rH(a))));Ref(int) g);new(g, 5));new(g, 10));print(rH(g)))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1264064524
+Execution Stack:
+[print(rH(g)), ((((((((Ref(int) v;new(v, 20));Ref(Ref(int)) a);new(a, v));new(v, 30));print(rH(rH(a))));Ref(int) g);new(g, 5));new(g, 10))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1264064524
+Execution Stack:
+[print(rH(g)), ((((((((Ref(int) v;new(v, 20));Ref(Ref(int)) a);new(a, v));new(v, 30));print(rH(rH(a))));Ref(int) g);new(g, 5));new(g, 10))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1264064524
+Execution Stack:
+[print(rH(g)), new(g, 10), (((((((Ref(int) v;new(v, 20));Ref(Ref(int)) a);new(a, v));new(v, 30));print(rH(rH(a))));Ref(int) g);new(g, 5))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1264064524
+Execution Stack:
+[print(rH(g)), new(g, 10), (((((((Ref(int) v;new(v, 20));Ref(Ref(int)) a);new(a, v));new(v, 30));print(rH(rH(a))));Ref(int) g);new(g, 5))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1264064524
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), ((((((Ref(int) v;new(v, 20));Ref(Ref(int)) a);new(a, v));new(v, 30));print(rH(rH(a))));Ref(int) g)]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1264064524
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), ((((((Ref(int) v;new(v, 20));Ref(Ref(int)) a);new(a, v));new(v, 30));print(rH(rH(a))));Ref(int) g)]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1264064524
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, (((((Ref(int) v;new(v, 20));Ref(Ref(int)) a);new(a, v));new(v, 30));print(rH(rH(a))))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1264064524
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, (((((Ref(int) v;new(v, 20));Ref(Ref(int)) a);new(a, v));new(v, 30));print(rH(rH(a))))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1264064524
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a))), ((((Ref(int) v;new(v, 20));Ref(Ref(int)) a);new(a, v));new(v, 30))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1264064524
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a))), ((((Ref(int) v;new(v, 20));Ref(Ref(int)) a);new(a, v));new(v, 30))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1264064524
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a))), new(v, 30), (((Ref(int) v;new(v, 20));Ref(Ref(int)) a);new(a, v))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1264064524
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a))), new(v, 30), (((Ref(int) v;new(v, 20));Ref(Ref(int)) a);new(a, v))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1264064524
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a))), new(v, 30), new(a, v), ((Ref(int) v;new(v, 20));Ref(Ref(int)) a)]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1264064524
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a))), new(v, 30), new(a, v), ((Ref(int) v;new(v, 20));Ref(Ref(int)) a)]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1264064524
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a))), new(v, 30), new(a, v), Ref(Ref(int)) a, (Ref(int) v;new(v, 20))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1264064524
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a))), new(v, 30), new(a, v), Ref(Ref(int)) a, (Ref(int) v;new(v, 20))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1264064524
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a))), new(v, 30), new(a, v), Ref(Ref(int)) a, new(v, 20), Ref(int) v]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1264064524
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a))), new(v, 30), new(a, v), Ref(Ref(int)) a, new(v, 20), Ref(int) v]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1264064524
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a))), new(v, 30), new(a, v), Ref(Ref(int)) a, new(v, 20)]
+Symbol Table:
+{v=(0, int)}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1264064524
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a))), new(v, 30), new(a, v), Ref(Ref(int)) a, new(v, 20)]
+Symbol Table:
+{v=(0, int)}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: 1264064524
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a))), new(v, 30), new(a, v), Ref(Ref(int)) a]
+Symbol Table:
+{v=(1, int)}
+Output:
+[]
+File Table:
+{}
+Heap:
+1 -> 20
+
+
+Program ID: 1264064524
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a))), new(v, 30), new(a, v), Ref(Ref(int)) a]
+Symbol Table:
+{v=(1, int)}
+Output:
+[]
+File Table:
+{}
+Heap:
+1 -> 20
+
+
+Program ID: 1264064524
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a))), new(v, 30), new(a, v)]
+Symbol Table:
+{a=(0, Ref(int)), v=(1, int)}
+Output:
+[]
+File Table:
+{}
+Heap:
+1 -> 20
+
+
+Program ID: 1264064524
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a))), new(v, 30), new(a, v)]
+Symbol Table:
+{a=(0, Ref(int)), v=(1, int)}
+Output:
+[]
+File Table:
+{}
+Heap:
+1 -> 20
+
+
+Program ID: 1264064524
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a))), new(v, 30)]
+Symbol Table:
+{a=(2, Ref(int)), v=(1, int)}
+Output:
+[]
+File Table:
+{}
+Heap:
+1 -> 20
+2 -> (1, int)
+
+
+Program ID: 1264064524
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a))), new(v, 30)]
+Symbol Table:
+{a=(2, Ref(int)), v=(1, int)}
+Output:
+[]
+File Table:
+{}
+Heap:
+1 -> 20
+2 -> (1, int)
+
+
+Program ID: 1264064524
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a)))]
+Symbol Table:
+{a=(2, Ref(int)), v=(3, int)}
+Output:
+[]
+File Table:
+{}
+Heap:
+1 -> 20
+2 -> (1, int)
+3 -> 30
+
+
+Program ID: 1264064524
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g, print(rH(rH(a)))]
+Symbol Table:
+{a=(2, Ref(int)), v=(3, int)}
+Output:
+[]
+File Table:
+{}
+Heap:
+1 -> 20
+2 -> (1, int)
+3 -> 30
+
+
+Program ID: 1264064524
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g]
+Symbol Table:
+{a=(2, Ref(int)), v=(3, int)}
+Output:
+[20]
+File Table:
+{}
+Heap:
+1 -> 20
+2 -> (1, int)
+3 -> 30
+
+
+Program ID: 1264064524
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5), Ref(int) g]
+Symbol Table:
+{a=(2, Ref(int)), v=(3, int)}
+Output:
+[20]
+File Table:
+{}
+Heap:
+1 -> 20
+2 -> (1, int)
+3 -> 30
+
+
+Program ID: 1264064524
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5)]
+Symbol Table:
+{a=(2, Ref(int)), v=(3, int), g=(0, int)}
+Output:
+[20]
+File Table:
+{}
+Heap:
+1 -> 20
+2 -> (1, int)
+3 -> 30
+
+
+Program ID: 1264064524
+Execution Stack:
+[print(rH(g)), new(g, 10), new(g, 5)]
+Symbol Table:
+{a=(2, Ref(int)), v=(3, int), g=(0, int)}
+Output:
+[20]
+File Table:
+{}
+Heap:
+1 -> 20
+2 -> (1, int)
+3 -> 30
+
+
+Program ID: 1264064524
+Execution Stack:
+[print(rH(g)), new(g, 10)]
+Symbol Table:
+{a=(2, Ref(int)), v=(3, int), g=(4, int)}
+Output:
+[20]
+File Table:
+{}
+Heap:
+1 -> 20
+2 -> (1, int)
+3 -> 30
+4 -> 5
+
+
+Program ID: 1264064524
+Execution Stack:
+[print(rH(g)), new(g, 10)]
+Symbol Table:
+{a=(2, Ref(int)), v=(3, int), g=(4, int)}
+Output:
+[20]
+File Table:
+{}
+Heap:
+1 -> 20
+2 -> (1, int)
+3 -> 30
+4 -> 5
+
+
+Program ID: 1264064524
+Execution Stack:
+[print(rH(g))]
+Symbol Table:
+{a=(2, Ref(int)), v=(3, int), g=(5, int)}
+Output:
+[20]
+File Table:
+{}
+Heap:
+1 -> 20
+2 -> (1, int)
+3 -> 30
+4 -> 5
+5 -> 10
+
+
+Program ID: 1264064524
+Execution Stack:
+[print(rH(g))]
+Symbol Table:
+{a=(2, Ref(int)), v=(3, int), g=(5, int)}
+Output:
+[20]
+File Table:
+{}
+Heap:
+1 -> 20
+2 -> (1, int)
+3 -> 30
+5 -> 10
+
+
+Program ID: 1264064524
+Execution Stack:
+[]
+Symbol Table:
+{a=(2, Ref(int)), v=(3, int), g=(5, int)}
+Output:
+[20, 10]
+File Table:
+{}
+Heap:
+1 -> 20
+2 -> (1, int)
+3 -> 30
+5 -> 10
+
+
+Program ID: -256146172
+Execution Stack:
+[((((bool a;int v);a=true);IF(a) THEN (v=2) ELSE (v=3));print(v))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -256146172
+Execution Stack:
+[print(v), (((bool a;int v);a=true);IF(a) THEN (v=2) ELSE (v=3))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -256146172
+Execution Stack:
+[print(v), (((bool a;int v);a=true);IF(a) THEN (v=2) ELSE (v=3))]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -256146172
+Execution Stack:
+[print(v), IF(a) THEN (v=2) ELSE (v=3), ((bool a;int v);a=true)]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -256146172
+Execution Stack:
+[print(v), IF(a) THEN (v=2) ELSE (v=3), ((bool a;int v);a=true)]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -256146172
+Execution Stack:
+[print(v), IF(a) THEN (v=2) ELSE (v=3), a=true, (bool a;int v)]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -256146172
+Execution Stack:
+[print(v), IF(a) THEN (v=2) ELSE (v=3), a=true, (bool a;int v)]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -256146172
+Execution Stack:
+[print(v), IF(a) THEN (v=2) ELSE (v=3), a=true, int v, bool a]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -256146172
+Execution Stack:
+[print(v), IF(a) THEN (v=2) ELSE (v=3), a=true, int v, bool a]
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -256146172
+Execution Stack:
+[print(v), IF(a) THEN (v=2) ELSE (v=3), a=true, int v]
+Symbol Table:
+{a=false}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -256146172
+Execution Stack:
+[print(v), IF(a) THEN (v=2) ELSE (v=3), a=true, int v]
+Symbol Table:
+{a=false}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -256146172
+Execution Stack:
+[print(v), IF(a) THEN (v=2) ELSE (v=3), a=true]
+Symbol Table:
+{a=false, v=0}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -256146172
+Execution Stack:
+[print(v), IF(a) THEN (v=2) ELSE (v=3), a=true]
+Symbol Table:
+{a=false, v=0}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -256146172
+Execution Stack:
+[print(v), IF(a) THEN (v=2) ELSE (v=3)]
+Symbol Table:
+{a=true, v=0}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -256146172
+Execution Stack:
+[print(v), IF(a) THEN (v=2) ELSE (v=3)]
+Symbol Table:
+{a=true, v=0}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -256146172
+Execution Stack:
+[print(v), v=2]
+Symbol Table:
+{a=true, v=0}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -256146172
+Execution Stack:
+[print(v), v=2]
+Symbol Table:
+{a=true, v=0}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -256146172
+Execution Stack:
+[print(v)]
+Symbol Table:
+{a=true, v=2}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -256146172
+Execution Stack:
+[print(v)]
+Symbol Table:
+{a=true, v=2}
+Output:
+[]
+File Table:
+{}
+Heap:
+
+
+Program ID: -256146172
+Execution Stack:
+[]
+Symbol Table:
+{a=true, v=2}
+Output:
+[2]
+File Table:
+{}
+Heap:
+
+
