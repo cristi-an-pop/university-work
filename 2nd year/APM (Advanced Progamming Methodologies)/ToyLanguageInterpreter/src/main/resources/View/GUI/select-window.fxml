@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.GUI.SelectWindowController">
+    <children>
+        <ListView fx:id="selectProgramsList" layoutX="15.0" layoutY="50.0" prefHeight="300.0" prefWidth="570.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="50.0" />
+        <Label fx:id="selectProgramsLabel" alignment="CENTER" layoutX="219.0" layoutY="14.0" prefHeight="29.0" prefWidth="163.0" text="Select Program" textAlignment="CENTER" AnchorPane.leftAnchor="219.0" AnchorPane.rightAnchor="218.0" AnchorPane.topAnchor="10.0">
+            <font>
+                <Font name="Google Sans Bold" size="18.0" />
+            </font>
+        </Label>
+        <Button fx:id="selectProgramsButton" layoutX="261.0" layoutY="357.0" mnemonicParsing="false" onAction="#switchToMainWindow" text="Select" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="261.0" AnchorPane.rightAnchor="260.0">
+            <font>
+                <Font name="Google Sans Bold" size="18.0" />
+            </font>
+        </Button>
+    </children>
+</AnchorPane>
