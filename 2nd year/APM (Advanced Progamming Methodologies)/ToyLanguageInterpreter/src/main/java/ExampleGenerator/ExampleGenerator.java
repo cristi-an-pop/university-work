@@ -25,7 +25,8 @@ public class ExampleGenerator {
                 ExampleGenerator.getExample6(),
                 ExampleGenerator.getExample7(),
                 ExampleGenerator.getExample8(),
-                ExampleGenerator.getExample9()
+                ExampleGenerator.getExample9(),
+                ExampleGenerator.getExample10()
         ));
 
         for (int i = 0; i < examples.size(); i++) {
@@ -179,6 +180,28 @@ public class ExampleGenerator {
                 new PrintStatement(new VarExpression("v")));
 
         return ExampleGenerator.buildExample(declaringV, assigningV, forStatement);
+    }
+
+    private static Statement getExample10() {
+        //bool b;
+        //int c;
+        //b=true;
+        //c=b?100:200;
+        //print(c);
+        //c= (false)?100:200;
+        //print(c);
+
+        Statement declaringB = new VarDeclStatement("b", new BoolType());
+        Statement declaringC = new VarDeclStatement("c", new IntType());
+        Statement assigningB = new AssignmentStatement("b", new ValueExpression(new BoolValue(true)));
+        Statement assigningC = new ConditionalAssignmentStatement("c", new VarExpression("b"),
+                new ValueExpression(new IntValue(100)), new ValueExpression(new IntValue(200)));
+        Statement printingC = new PrintStatement(new VarExpression("c"));
+        Statement assigningC2 = new ConditionalAssignmentStatement("c", new ValueExpression(new BoolValue(false)),
+                new ValueExpression(new IntValue(100)), new ValueExpression(new IntValue(200)));
+        Statement printingC2 = new PrintStatement(new VarExpression("c"));
+
+        return ExampleGenerator.buildExample(declaringB, declaringC, assigningB, assigningC, printingC, assigningC2, printingC2);
     }
 
 }
