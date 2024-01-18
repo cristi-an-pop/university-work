@@ -1,7 +1,6 @@
 package View.GUI;
 
 import Exceptions.DictionaryException;
-import Exceptions.MyException;
 import Model.ProgramState.ProgramState;
 import Model.Statements.Statement;
 import Model.Values.Value;
@@ -60,7 +59,7 @@ public class MainWindowController implements Initializable {
         this.program = controller;
         try {
             this.updateWindow();
-        } catch (MyException e) {
+        } catch (DictionaryException e) {
             throw new RuntimeException(e);
         }
         threadsList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -103,13 +102,6 @@ public class MainWindowController implements Initializable {
 
         this.threadsList.getSelectionModel().select(selectedIndex);
         this.selectedThread = this.threadsList.getItems().get(selectedIndex);
-
-        this.populateExecutionStackList();
-        this.populateSymbolTable();
-        this.populateOutputList();
-        this.populateFileTable();
-        this.populateHeapTable();
-        this.populateThreadCountText();
     }
 
     private void populateThreadsList() {

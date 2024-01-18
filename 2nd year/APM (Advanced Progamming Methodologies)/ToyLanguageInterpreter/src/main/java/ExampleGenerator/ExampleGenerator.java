@@ -22,7 +22,9 @@ public class ExampleGenerator {
                 ExampleGenerator.getExample3(),
                 ExampleGenerator.getExample4(),
                 ExampleGenerator.getExample5(),
-                ExampleGenerator.getExample6()
+                ExampleGenerator.getExample6(),
+                ExampleGenerator.getExample7(),
+                ExampleGenerator.getExample8()
         ));
 
         for (int i = 0; i < examples.size(); i++) {
@@ -124,6 +126,46 @@ public class ExampleGenerator {
 
         return ExampleGenerator.buildExample(declaringV, assigningV, openingFile, declaringC, readingC,
                 printingC, readingC, printingC, closingFile);
+    }
+
+    private static Statement getExample7() {
+//    While statement example
+        Statement declaringV = new VarDeclStatement("v", new IntType());
+        Statement assigningV = new AssignmentStatement("v", new ValueExpression(new IntValue(4)));
+        Statement printingV = new PrintStatement(new VarExpression("v"));
+        Statement decrementingV = new AssignmentStatement("v", new ArithmeticExpression(
+                new VarExpression("v"), new ValueExpression(new IntValue(1)), 2));
+        Statement whileStatement = new WhileStatement(new RelationalExpression(
+                new VarExpression("v"), new ValueExpression(new IntValue(0)), 3),
+                new CompoundStatement(printingV, decrementingV));
+
+        return ExampleGenerator.buildExample(declaringV, assigningV, whileStatement);
+    }
+
+    private static Statement getExample8() {
+        //v=0;
+        //(repeat (fork(print(v);v=v-1);v=v+1) until v==3);
+        //x=1;y=2;z=3;w=4;
+        //print(v*10)
+        Statement declaringV = new VarDeclStatement("v", new IntType());
+        Statement assigningV = new AssignmentStatement("v", new ValueExpression(new IntValue(0)));
+        Statement declaringX = new VarDeclStatement("x", new IntType());
+        Statement declaringY = new VarDeclStatement("y", new IntType());
+        Statement declaringZ = new VarDeclStatement("z", new IntType());
+        Statement declaringW = new VarDeclStatement("w", new IntType());
+        Statement assigningX = new AssignmentStatement("x", new ValueExpression(new IntValue(1)));
+        Statement assigningY = new AssignmentStatement("y", new ValueExpression(new IntValue(2)));
+        Statement assigningZ = new AssignmentStatement("z", new ValueExpression(new IntValue(3)));
+        Statement assigningW = new AssignmentStatement("w", new ValueExpression(new IntValue(4)));
+        Statement repeatUntil = new RepeatUntilStatement(new CompoundStatement(new ForkStatement(new CompoundStatement(
+                new PrintStatement(new VarExpression("v")), new AssignmentStatement("v", new ArithmeticExpression(
+                        new VarExpression("v"), new ValueExpression(new IntValue(1)), 2)))), new AssignmentStatement(
+                "v", new ArithmeticExpression(new VarExpression("v"), new ValueExpression(new IntValue(1)), 1))),
+                new RelationalExpression(new VarExpression("v"), new ValueExpression(new IntValue(3)), 5));
+        Statement printV = new PrintStatement(new ArithmeticExpression(new VarExpression("v"), new ValueExpression(new IntValue(10)), 3));
+
+        return ExampleGenerator.buildExample(declaringV, assigningV, declaringX, declaringY, declaringZ, declaringW,
+                assigningX, assigningY, assigningZ, assigningW, repeatUntil, printV);
     }
 
 }
