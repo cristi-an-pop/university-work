@@ -24,7 +24,8 @@ public class ExampleGenerator {
                 ExampleGenerator.getExample5(),
                 ExampleGenerator.getExample6(),
                 ExampleGenerator.getExample7(),
-                ExampleGenerator.getExample8()
+                ExampleGenerator.getExample8(),
+                ExampleGenerator.getExample9()
         ));
 
         for (int i = 0; i < examples.size(); i++) {
@@ -166,6 +167,18 @@ public class ExampleGenerator {
 
         return ExampleGenerator.buildExample(declaringV, assigningV, declaringX, declaringY, declaringZ, declaringW,
                 assigningX, assigningY, assigningZ, assigningW, repeatUntil, printV);
+    }
+
+    private static Statement getExample9() {
+        //for v=0;v<3;v=v+1 print(v)
+        Statement declaringV = new VarDeclStatement("v", new IntType());
+        Statement assigningV = new AssignmentStatement("v", new ValueExpression(new IntValue(0)));
+        Statement forStatement = new ForStatement(new AssignmentStatement("v", new ValueExpression(new IntValue(0))),
+                new RelationalExpression(new VarExpression("v"), new ValueExpression(new IntValue(3)), 2),
+                new AssignmentStatement("v", new ArithmeticExpression(new VarExpression("v"), new ValueExpression(new IntValue(1)), 1)),
+                new PrintStatement(new VarExpression("v")));
+
+        return ExampleGenerator.buildExample(declaringV, assigningV, forStatement);
     }
 
 }
