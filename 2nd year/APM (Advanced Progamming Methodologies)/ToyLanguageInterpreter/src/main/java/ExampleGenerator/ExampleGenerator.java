@@ -26,7 +26,8 @@ public class ExampleGenerator {
                 ExampleGenerator.getExample7(),
                 ExampleGenerator.getExample8(),
                 ExampleGenerator.getExample9(),
-                ExampleGenerator.getExample10()
+                ExampleGenerator.getExample10(),
+                ExampleGenerator.getExample11()
         ));
 
         for (int i = 0; i < examples.size(); i++) {
@@ -202,6 +203,37 @@ public class ExampleGenerator {
         Statement printingC2 = new PrintStatement(new VarExpression("c"));
 
         return ExampleGenerator.buildExample(declaringB, declaringC, assigningB, assigningC, printingC, assigningC2, printingC2);
+    }
+
+    private static Statement getExample11() {
+        //a=1;b=2;c=5;
+        //(switch(a*10)
+        //(case (b*c) : print(a);print(b))
+        //(case (10) : print(100);print(200))
+        //(default : print(300)));
+        //print(300)
+
+        Statement declaringA = new VarDeclStatement("a", new IntType());
+        Statement declaringB = new VarDeclStatement("b", new IntType());
+        Statement declaringC = new VarDeclStatement("c", new IntType());
+        Statement assigningA = new AssignmentStatement("a", new ValueExpression(new IntValue(1)));
+        Statement assigningB = new AssignmentStatement("b", new ValueExpression(new IntValue(2)));
+        Statement assigningC = new AssignmentStatement("c", new ValueExpression(new IntValue(5)));
+        Statement SwitchStatement = new SwitchStatement(
+                new ArithmeticExpression(new VarExpression("a"), new ValueExpression(new IntValue(10)), 3),
+                new ArrayList<>(Arrays.asList(
+                        new ArithmeticExpression(new VarExpression("b"), new VarExpression("c"), 3),
+                        new ValueExpression(new IntValue(10))
+                )),
+                new ArrayList<>(Arrays.asList(
+                        new CompoundStatement(new PrintStatement(new VarExpression("a")), new PrintStatement(new VarExpression("b"))),
+                        new CompoundStatement(new PrintStatement(new ValueExpression(new IntValue(100))), new PrintStatement(new ValueExpression(new IntValue(200)))),
+                        new PrintStatement(new ValueExpression(new IntValue(300)))
+                ))
+        );
+        Statement printing300 = new PrintStatement(new ValueExpression(new IntValue(300)));
+
+        return ExampleGenerator.buildExample(declaringA, declaringB, declaringC, assigningA, assigningB, assigningC, SwitchStatement, printing300);
     }
 
 }
