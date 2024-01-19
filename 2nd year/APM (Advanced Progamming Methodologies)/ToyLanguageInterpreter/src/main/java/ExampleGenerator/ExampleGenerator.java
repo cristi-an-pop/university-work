@@ -27,7 +27,8 @@ public class ExampleGenerator {
                 ExampleGenerator.getExample8(),
                 ExampleGenerator.getExample9(),
                 ExampleGenerator.getExample10(),
-                ExampleGenerator.getExample11()
+                ExampleGenerator.getExample11(),
+                ExampleGenerator.getExample12()
         ));
 
         for (int i = 0; i < examples.size(); i++) {
@@ -234,6 +235,26 @@ public class ExampleGenerator {
         Statement printing300 = new PrintStatement(new ValueExpression(new IntValue(300)));
 
         return ExampleGenerator.buildExample(declaringA, declaringB, declaringC, assigningA, assigningB, assigningC, SwitchStatement, printing300);
+    }
+
+    private static Statement getExample12() {
+        //v=10;
+        //(fork(v=v-1;v=v-1;print(v)); sleep(10);print(v*10)
+        Statement declaringV = new VarDeclStatement("v", new IntType());
+        Statement assigningV = new AssignmentStatement("v", new ValueExpression(new IntValue(10)));
+        Statement fork = new ForkStatement(
+                new CompoundStatement(
+                        new AssignmentStatement("v", new ArithmeticExpression(new VarExpression("v"), new ValueExpression(new IntValue(1)), 2)),
+                        new CompoundStatement(
+                                new AssignmentStatement("v", new ArithmeticExpression(new VarExpression("v"), new ValueExpression(new IntValue(1)), 2)),
+                                new PrintStatement(new VarExpression("v"))
+                        )
+                )
+        );
+        Statement sleep = new SleepStatement(10);
+        Statement printV = new PrintStatement(new ArithmeticExpression(new VarExpression("v"), new ValueExpression(new IntValue(10)), 3));
+
+        return ExampleGenerator.buildExample(declaringV, assigningV, fork, sleep, printV);
     }
 
 }
