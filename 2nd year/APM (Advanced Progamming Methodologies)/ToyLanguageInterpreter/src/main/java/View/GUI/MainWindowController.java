@@ -4,6 +4,7 @@ import Exceptions.DictionaryException;
 import Model.ProgramState.ProgramState;
 import Model.Statements.Statement;
 import Model.Values.Value;
+import View.GUI.TableEntries.LockTableEntry;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -53,6 +54,12 @@ public class MainWindowController implements Initializable {
     @FXML
     private TableColumn<HeapTableEntry, String> valueHeapTableColumn;
     @FXML
+    private TableView<LockTableEntry> lockTable;
+    @FXML
+    private TableColumn<LockTableEntry, String> addressLockTableColumn;
+    @FXML
+    private TableColumn<LockTableEntry, String> valueLockTableColumn;
+    @FXML
     private TextField threadCountText;
 
     public void loadProgram(Controller controller) {
@@ -91,6 +98,7 @@ public class MainWindowController implements Initializable {
         this.populateOutputList();
         this.populateFileTable();
         this.populateHeapTable();
+        this.populateLockTable();
         this.populateThreadCountText();
     }
 
@@ -168,6 +176,19 @@ public class MainWindowController implements Initializable {
                 for (Integer address : programState.getHeap().keys()) {
                     HeapTableEntry entry = new HeapTableEntry(address, programState.getHeap().get(address));
                     this.heapTable.getItems().add(entry);
+                }
+                break;
+            }
+        }
+    }
+
+    private void populateLockTable() {
+        this.lockTable.getItems().clear();
+        for (ProgramState programState : this.program.getRepository().getProgramStateList()) {
+            if (String.valueOf(programState.getId()).equals(this.selectedThread)) {
+                for (Integer address : programState.getLockTable().keySet()) {
+                    LockTableEntry entry = new LockTableEntry(address, programState.getLockTable().get(address));
+                    this.lockTable.getItems().add(entry);
                 }
                 break;
             }

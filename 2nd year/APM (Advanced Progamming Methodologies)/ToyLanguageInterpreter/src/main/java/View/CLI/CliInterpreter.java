@@ -32,10 +32,11 @@ public class CliInterpreter {
             MyIList<Value> out = new MyList<>();
             MyIDictionary<String, BufferedReader> fileTable = new MyDictionary<>();
             MyIHeap heap = new MyHeap();
+            MyILockTable lockTable = new MyLockTable();
             ProgramState programState;
 
             try {
-                programState = new ProgramState(exeStack, symTable, heap, fileTable, out, example);
+                programState = new ProgramState(exeStack, symTable, heap, fileTable, out, lockTable, example);
             } catch (MyException e) {
                 throw new RuntimeException(e);
             }

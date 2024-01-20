@@ -1,9 +1,6 @@
 package View.GUI;
 
-import Datastructures.MyDictionary;
-import Datastructures.MyHeap;
-import Datastructures.MyList;
-import Datastructures.MyStack;
+import Datastructures.*;
 import ExampleGenerator.ExampleGenerator;
 import Model.ProgramState.ProgramState;
 import Repository.IRepository;
@@ -40,7 +37,7 @@ public class SelectWindowController implements Initializable {
     private void createExamples() {
         ExampleGenerator.getExamples().forEach(example -> {
             try {
-                this.programs.add(new ProgramState(new MyStack<>(), new MyDictionary<>(), new MyHeap(), new MyDictionary<>(), new MyList<>(), example));
+                this.programs.add(new ProgramState(new MyStack<>(), new MyDictionary<>(), new MyHeap(), new MyDictionary<>(), new MyList<>(), new MyLockTable(), example));
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
