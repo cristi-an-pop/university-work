@@ -97,8 +97,8 @@
             <Label layoutX="14.0" layoutY="6.0" text="Lock Table:" AnchorPane.leftAnchor="2.5" AnchorPane.rightAnchor="102.0" AnchorPane.topAnchor="10.0" />
             <TableView fx:id="lockTable" layoutX="12.0" layoutY="23.0" prefHeight="200.0" prefWidth="218.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="2.5" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="32.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="Location" />
-                <TableColumn prefWidth="75.0" text="Value" />
+                <TableColumn fx:id="addressLockTableColumn" prefWidth="75.0" text="Location" />
+                <TableColumn fx:id="valueLockTableColumn" prefWidth="75.0" text="Value" />
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

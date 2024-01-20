@@ -89,6 +89,8 @@ public class MainWindowController implements Initializable {
         this.symbolTableValueColumn.setCellValueFactory(cellData -> cellData.getValue().valueProperty());
         this.addressHeapTableColumn.setCellValueFactory(cellData -> cellData.getValue().addressProperty());
         this.valueHeapTableColumn.setCellValueFactory(cellData -> cellData.getValue().valueProperty());
+        this.addressLockTableColumn.setCellValueFactory(cellData -> cellData.getValue().addressProperty());
+        this.valueLockTableColumn.setCellValueFactory(cellData -> cellData.getValue().threadIdProperty());
     }
 
     public void updateWindow() throws DictionaryException {
@@ -185,13 +187,11 @@ public class MainWindowController implements Initializable {
     private void populateLockTable() {
         this.lockTable.getItems().clear();
         for (ProgramState programState : this.program.getRepository().getProgramStateList()) {
-            if (String.valueOf(programState.getId()).equals(this.selectedThread)) {
-                for (Integer address : programState.getLockTable().keySet()) {
-                    LockTableEntry entry = new LockTableEntry(address, programState.getLockTable().get(address));
-                    this.lockTable.getItems().add(entry);
-                }
-                break;
+            for (Integer address : programState.getLockTable().keySet()) {
+                LockTableEntry entry = new LockTableEntry(address, programState.getLockTable().get(address));
+                this.lockTable.getItems().add(entry);
             }
+            break;
         }
     }
 
