@@ -1,0 +1,30 @@
+%9.
+%a. Insert an element on the position n in a list.
+insertOnPosN([], _, _, _, []).
+insertOnPosN([H | T], E, POS, INDEX, [H, E | R]) :-
+    POS =:= INDEX,
+    NewPos = POS + 1,
+    insertOnPosN(T, E, NewPos, INDEX, R).
+insertOnPosN([H | T], E, POS, INDEX, [H | R]) :-
+    \+ POS =:= INDEX,
+    NewPos = POS + 1,
+    insertOnPosN(T, E, NewPos, INDEX, R).
+
+
+%b. Define a predicate to determine the greatest common divisor of all numbers from a list.
+gcd(0, B, B) :- !.
+gcd(A, 0, A) :- !.
+gcd(A, B, R) :-
+    A >= B,
+    A1 is A mod B,
+    gcd(A1, B, R).
+gcd(A, B, R) :-
+    B >= A,
+    B1 is B mod A,
+    gcd(A, B1, R).
+
+gcdList([E], E).
+gcdList([H | T], R) :-
+    gcdList(T, R1),
+    gcd(H, R1, R).
+

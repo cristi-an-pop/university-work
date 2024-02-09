@@ -1,0 +1,32 @@
+%4.
+%a. Write a predicate to determine the difference of two sets.
+removeElem([], _, []).
+removeElem([H | T], E, R) :-
+    H =:= E,
+    removeElem(T, E, R).
+removeElem([H | T], E, [H | R]) :-
+    removeElem(T, E, R).
+
+countElem([], _, 0).
+countElem([H | T], E, R) :-
+    H =:= E,
+    countElem(T, E, R1),
+    R is R1 + 1.
+countElem([_ | T], E, R) :-
+    countElem(T, E, R).
+
+setDiff(S, [], S).
+setDiff([H | T], S2, [H | R]) :-
+    countElem(S2, H, C),
+    C =:= 0,
+    setDiff(T, S2, R).
+setDiff([H | T], S2, R) :-
+    countElem(S2, H, C),
+    C > 0,
+    removeElem(S2, H, NewS2),
+    setDiff(T, NewS2, R).
+
+%b. Write a predicate to determine the difference of two sets.
+addOne([], []).
+addOne([H | T], [H, 1 | R]) :-
+    addOne(T, R).

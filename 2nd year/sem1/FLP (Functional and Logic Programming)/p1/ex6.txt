@@ -1,0 +1,24 @@
+%6.
+%a. Write a predicate to test if a list is a set
+isSet([]).
+isSet([H | T]) :-
+    \+ member(H, T),
+    is_set(T).
+
+%b. Write a predicate to remove the first three occurrences of an element in a list. If the element occurs less 
+than three times, all occurrences will be removed.
+removeThree([], _, _, []).
+removeThree([H | T], E, C, R) :-
+    C < 3,
+    H =:= E,
+    C1 is C + 1,
+    removeThree(T, E, C1, R).
+removeThree([H | T], E, C, [H | R]) :-
+    \+ H =:= E,
+    removeThree(T, E, C, R).
+removeThree([H | T], E, C, [H | R]) :-
+    H =:= E,
+    C >= 3,
+    removeThree(T, E, C, R).
+removeThreeMain(L, E, R) :-
+    removeThree(L, E, 0, R).

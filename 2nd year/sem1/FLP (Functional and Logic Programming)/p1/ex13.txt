@@ -1,0 +1,48 @@
+%13.
+%a. Transform a list in a set, in the order of the last occurrences of elements. Eg.: [1,2,3,1,2] is transformed in [3,1,2].
+
+myCount([], _, 0).
+myCount([H | T], E, R) :-
+    H =:= E,
+    myCount(T, E, R1),
+    R is R1 + 1.
+myCount([H | T], E, R) :-
+    \+ H =:= E,
+    myCount(T, E, R).
+
+removeElem([],_,_,[]).
+removeElem([H|T],E,C,R):-
+    H=:=E,
+    C > 1,
+    C1 is C -1,
+    removeElem(T,E,C1,R),!.
+removeElem([H|T],E,C,[H|R]):-
+    removeElem(T,E,C,R).
+
+set([],[]).
+set([H|T],R):-
+    myCount([H|T],H,RC),
+    RC > 1,
+    removeElem([H|T],H,RC,RE),
+    set(RE,R), !.
+set([H|T],[H|R]):-
+    set(T,R).
+
+
+
+%b. Define a predicate to determine the greatest common divisor of all numbers from a list.
+gcd(0, B, B) :- !.
+gcd(A, 0, A) :- !.
+gcd(A, B, R) :-
+    A >= B,
+    A1 is A mod B,
+    gcd(A1, B, R).
+gcd(A, B, R) :-
+    B >= A,
+    B1 is B mod A,
+    gcd(A, B1, R).
+
+gcdList([E], E).
+gcdList([H | T], R) :-
+    gcdList(T, R1),
+    gcd(H, R1, R).

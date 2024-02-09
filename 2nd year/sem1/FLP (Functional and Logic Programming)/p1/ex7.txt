@@ -1,0 +1,18 @@
+%7.
+%a.Write a predicate to compute the intersection of two sets.
+setIntersection([], _, []).
+setIntersection([H | T], S2, [H | R]) :-
+    member(H, S2),
+    setIntersection(T, S2, R).
+setIntersection([_ | T], S2, R) :-
+    setIntersection(T, S2, R).
+
+%b. Write a predicate to create a list (m, ..., n) of all integer numbers from the interval [m, n].
+peInterval(E, E, [E]).
+peInterval(E1, E2, [E1 | Rest]) :-
+    E1 < E2,
+    NextE1 is E1 + 1,
+    peInterval(NextE1, E2, Rest).
+
+peInterval(E1, E2, []) :-
+    E1 > E2.

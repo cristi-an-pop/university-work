@@ -1,0 +1,27 @@
+%5.
+%a. Write a predicate to compute the union of two sets.
+removeElem([], _, []).
+removeElem([H | T], E, R) :-
+    H =:= E,
+    removeElem(T, E, R).
+removeElem([H | T], E, [H | R]) :-
+    removeElem(T, E, R).
+
+setUnion([], [], []).
+setUnion([], S2, S2).
+setUnion(S1, [], S1).
+setUnion([H | T], S2, [H | R]) :-
+    removeElem(S2, H, NewS2),
+    setUnion(T, NewS2, R).
+
+
+
+%b. Write a predicate to determine the set of all the pairs of elements in a list.
+makePair(_, [], []).
+makePair(E, [H | T], [[E, H] | R]) :-
+    makePair(E, T, R).
+
+makePairs([], []).
+makePairs([H | T], [P | R]) :-
+    makePair(H, T, P),
+    makePairs(T, R).

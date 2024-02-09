@@ -1,0 +1,32 @@
+%3.
+%a. Define a predicate to remove from a list all repetitive elements. 
+removeElem([], _, []).
+removeElem([H | T], E, R) :-
+    H =:= E,
+    removeElem(T, E, R).
+removeElem([H | T], E, [H | R]) :-
+    removeElem(T, E, R).
+
+removeRep([], []).
+removeRep([H | T], R) :-
+    countElem(T, H, C),
+    C > 0,
+    removeElem(T, H, N),
+    removeRep(N, R).
+removeRep([H | T], [H | R]) :-
+    removeRep(T, R).
+
+%b. Remove all occurrence of a maximum value from a list on integer numbers.
+findMax([], 0).
+findMax([H | T], R) :-
+    findMax(T, TM),
+    H > TM,
+    R is H.
+findMax([H | T], R) :-
+    findMax(T, TM),
+    TM >= H,
+    R is TM.
+
+removeMax(L, R) :-
+    findMax(L, Max),
+    removeElem(L, Max, R).

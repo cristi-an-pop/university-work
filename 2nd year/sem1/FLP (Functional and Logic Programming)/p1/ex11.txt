@@ -1,0 +1,25 @@
+%11.
+%a. Write a predicate to substitute an element from a list with another element in the list.
+substitute([], _, _, []).
+substitute([H | T], E1, E2, [E2 | R]) :-
+    H =:= E1,
+    substitute(T, E1, E2, R).
+substitute([H | T], E1, E2, [H | R]) :-
+    substitute(T, E1, E2, R).
+
+%b. Write a predicate to substitute in a list a value with all the elements of another list.
+
+sublist(_,_,N,P,[]):-
+    P>N,!.
+sublist([H|T],M,N,P,[H|R]):-
+    P >= M,
+    P =< N,
+    P1 is P + 1,
+    sublist(T,M,N,P1,R),!.
+sublist([_|T],M,N,P,R):-
+    P1 is P + 1,
+    sublist(T,M,N,P1,R).
+
+
+mainSublist(L,M,N,R):-
+    sublist(L,M,N,0,R).

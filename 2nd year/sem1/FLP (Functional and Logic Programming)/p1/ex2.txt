@@ -1,0 +1,23 @@
+%2.
+%a. Write a predicate to remove all occurrences of a certain atom from a list.
+removeElem([], _, []).
+removeElem([H | T], E, R) :-
+    H =:= E,
+    removeElem(T, E, R).
+removeElem([H | T], E, [H | R]) :-
+    removeElem(T, E, R).
+
+%b. Define a predicate to produce a list of pairs (atom n) from an initial list of atoms.
+countElem([], _, 0).
+countElem([H | T], E, R) :-
+    H =:= E,
+    countElem(T, E, R1),
+    R is R1 + 1.
+countElem([_ | T], E, R) :-
+    countElem(T, E, R).
+
+numberAtom([], []).
+numberAtom([H | T], [[H, C] | R]) :-
+    countElem(T, H, C),
+    removeElem(T, H, N),
+    numberAtom(N, R).

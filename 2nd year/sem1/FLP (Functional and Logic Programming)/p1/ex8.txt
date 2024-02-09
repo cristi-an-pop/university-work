@@ -1,0 +1,34 @@
+%8.
+%a. Write a predicate to determine if a list has even numbers of elements without counting the elements from 
+the list
+evenNumberOfElements([]).
+evenNumberOfElements([_, _ | Tail]) :-
+    evenNumberOfElements(Tail).
+
+%b. Write a predicate to delete first occurrence of the minimum number from a list.
+findMin([], 9999999).
+findMin([H | T], R) :-
+    findMin(T, TM),
+    H < TM,
+    R is H.
+findMin([H | T], R) :-
+    findMin(T, TM),
+    TM =< H,
+    R is TM.
+
+deleteFirstOcc([], _, _, []).
+deleteFirstOcc([H | T], E, C, [H | R]) :-
+    C < 1,
+    \+ H =:= E,
+    deleteFirstOcc(T, E, C, R).
+deleteFirstOcc([H | T], E, C, R) :-
+    H =:= E,
+    C < 1,
+    C1 is C + 1,
+    deleteFirstOcc(T, E, C1, R).
+deleteFirstOcc([H | T], E, C, [H | R]) :-
+    C >= 1,
+    deleteFirstOcc(T, E, C, R).
+
+deleteFirstOccMain(L, R) :-
+    findMin(L, E),

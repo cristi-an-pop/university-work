@@ -1,0 +1,25 @@
+%12. Write a predicate to substitute in a list a value with all the elements of another list.
+%a.
+insert([],L,L).
+insert([H|T],L,[H|R]):-
+    insert(T,L,R).
+
+substituteElem([],_,_,[]).
+substituteElem([H|T],E,P,R):-
+    H=:=E,
+    insert(P,T,RI),
+    substituteElem(RI,E,P,R).
+substituteElem([H|T],E,P,[H|R]):-
+    H=\=E,
+    substituteElem(T,E,P,R).
+
+%b. Remove the n-th element of a list.
+removeElemOnPos([], _, _, []).
+removeElemOnPos([_ | T], CPos, Pos, R) :-
+    CPos =:= Pos,
+    NewCPos is CPos + 1,
+    removeElemOnPos(T, NewCPos, Pos, R).
+removeElemOnPos([H | T], CPos, Pos, [H | R]) :-
+    CPos \= Pos,
+    NewCPos is CPos + 1,
+    removeElemOnPos(T, NewCPos, Pos, R).
