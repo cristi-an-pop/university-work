@@ -93,4 +93,29 @@
   <tr>
     <td colspan=3 align=center><i>3rd Semester</i></td>
   </tr>
+       <tr>
+    <td> 1. </td>
+    <td> <a href=""><b>Advanced Progamming Methodologies</b></a> </td>
+    <td> Java, JavaFX </td>
+  </tr>
+  <tr>
+    <td> 2. </td>
+    <td> <a href=""><b>Databases</b></a> </td>
+    <td> Relational Data Model, SQL Queries, Normal Forms, Relational Algebra, Indexes </td>
+  </tr>
+  <tr>
+    <td> 3. </td>
+    <td> <a href=""><b>Functional and logic programming</b></a>  </td>
+    <td> Backtracking, Prolog, Lisp </td>
+  </tr>
+  <tr>
+    <td> 4. </td>
+    <td> <b>Computer Networks</b> </td>
+    <td> Socket Programming (TCP, UDP), OSI layers, IP Layer, TCP, UDP, Network routing  </td>
+  </tr>
+  <tr>
+    <td> 5. </td>
+    <td> <b>Probabilities and Statistics</b> </td>
+    <td> Classical probabilistic models, Random variable and vectors, Numerical characteristics of random variables, Estimation theory, Type errors </td>
+  </tr>
 </table>
