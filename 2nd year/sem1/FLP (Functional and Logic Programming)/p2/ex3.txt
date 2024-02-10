@@ -1,0 +1,35 @@
+%3.
+%a. Merge two sorted lists with removing the double values.
+
+merge([], [], []).
+merge(L, [], L).
+merge([], L, L).
+merge([H | T], [H2 | T2], [H | R]) :-
+    H =< H2,
+    merge(T, [H2 | T2], R).
+merge([H | T], [H2 | T2], [H2 | R]) :-
+    H > H2,
+    merge(T, T2, R).
+
+remove_duplicates([], []).
+remove_duplicates([X | Xs], Ys) :-
+    member(X, Xs),
+    !,
+    remove_duplicates(Xs, Ys).
+remove_duplicates([X | Xs], [X | Ys]) :-
+    remove_duplicates(Xs, Ys).
+
+merge_and_remove_duplicates(List1, List2, Merged) :-
+    merge(List1, List2, MergedUnfiltered),
+    remove_duplicates(MergedUnfiltered, Merged).
+
+%b. For a heterogeneous list, formed from integer numbers and list of numbers, merge all sublists with removing 
+the double values.
+
+heteroList([], []).
+heteroList([H | T], R) :-
+    is_list(H),
+    heteroList(T, R1),
+    merge(H, R1, R).
+heteroList([H | T], [H | R]) :-
+    heteroList(T, R).

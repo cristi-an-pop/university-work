@@ -1,0 +1,32 @@
+%1.
+%a. Sort a list with removing the double values. E.g.: [4 2 6 2 3 4] --> [2 3 4 6]
+myinsert([], L2, L2).
+myinsert([H | T], L2, [H | R]) :-
+    insert(T, L2, R).
+
+insertOK([],E,[E]).
+insertOK([H|T],E,[H|T]):-
+    H=:=E.
+insertOK([H|T],E,RI):-
+    E<H,
+    myinsert([E],[H|T],RI).
+insertOK([H|T],E,RI):-
+    myinsert([H],R,RI),
+    insertOK(T,E,R).
+
+sortare([],[]).
+sortare([H|T],R1):-
+    sortare(T,R),
+    insertOK(R,H,R1).
+
+%b. For a heterogeneous list, formed from integer numbers and list of numbers, write a predicate to sort every 
+sublist with removing the doubles.
+
+sortHetList([], []).
+sortHetList([H | T], [RS | R]) :-
+    is_list(H),
+    !,
+    sortare(H, RS),
+    sortHetList(T, R).
+sortHetList([H | T], [H | R]) :-
+    sortHetList(T, R).

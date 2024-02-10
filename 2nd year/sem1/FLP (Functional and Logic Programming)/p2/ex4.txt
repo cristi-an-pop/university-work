@@ -1,0 +1,57 @@
+%4.
+%a. Write a predicate to determine the sum of two numbers written in list representation
+
+list_to_num([], Result, Result).
+
+list_to_num([Head|Tail], Digit, Result):-
+    Digit_nth is Digit * 10 + Head,
+    list_to_num(Tail, Digit_nth, Result).
+
+convert_list_to_number(List,Number):-
+    list_to_num(List,0,Number).
+
+sumTwo([], [], 0).
+sumTwo(N1, N2, R) :-
+    convert_list_to_number(N1, Num1),
+    convert_list_to_number(N2, Num2),
+    R is Num1 + Num2.
+
+%b. For a heterogeneous list, formed from integer numbers and list of digits, write a predicate to compute the 
+sum of all numbers represented as sublists.
+
+numOfSubLists([], []).
+numOfSubLists([H | T], [Num | R]) :-
+    is_list(H),
+    convert_list_to_number(H, Num),
+    numOfSubLists(T, R).
+numOfSubLists([H | T], R) :-
+    \+ is_list(H),
+    numOfSubLists(T, R).
+
+allSum([], 0).
+allSum([H], H).
+allSum([H1, H2 | T], R) :-
+    Sum is H1 + H2,
+    allSum([Sum | T], R).
+
+numToList(0, [0]).
+numToList(L, List) :-
+    L > 0,
+    numToListHelper(L, ListReversed),
+    reverse_list(ListReversed, List).
+
+numToListHelper(0, []).
+numToListHelper(L, [N | R]) :-
+    N is L mod 10,
+    NewL is L // 10,
+    numToListHelper(NewL, R).
+
+reverse_list([], []).
+reverse_list([H|T], R) :-
+    reverse_list(T, RevT),
+    append(RevT, [H], R).
+
+sumOfSubListsMain(L, R) :-
+    numOfSubLists(L, Nums),
+    allSum(Nums, Result),
+    numToList(Result, R).

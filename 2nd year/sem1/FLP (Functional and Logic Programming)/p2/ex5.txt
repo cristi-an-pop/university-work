@@ -1,0 +1,23 @@
+%5.
+%a.
+myAppend([],P,P).
+myAppend([H|T],P,[H|R]):-
+    myAppend(T,P,R).
+
+mySubstitute([],_,_,[]).
+mySubstitute([H|T],E,P,R1):-
+    H=:=E,
+    myAppend(P,R,R1),
+    mySubstitute(T,E,P,R).
+mySubstitute([H|T],E,P,[H|R]):-
+    H=\=E,
+    mySubstitute(T,E,P,R).
+
+
+%b.
+heterList([],_,[]).
+heterList([[H|HT]|T],P,[RS|R]):-
+    mySubstitute([H|HT],H,P,RS),
+    heterList(T,P,R), !.
+heterList([H|T],P,[H|R]):-
+    heterList(T,P,R).

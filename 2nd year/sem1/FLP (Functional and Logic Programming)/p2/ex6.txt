@@ -1,0 +1,68 @@
+%6.
+%a. Determine the product of a number represented as digits in a list to a given digit.
+
+list_to_num([], Result, Result).
+
+list_to_num([Head|Tail], Digit, Result):-
+    Digit_nth is Digit * 10 + Head,
+    list_to_num(Tail, Digit_nth, Result).
+
+convert_list_to_number(List,Number):-
+    list_to_num(List,0,Number).
+
+numToList(0, [0]).
+numToList(L, List) :-
+    L > 0,
+    numToListHelper(L, ListReversed),
+    reverse_list(ListReversed, List).
+
+numToListHelper(0, []).
+numToListHelper(L, [N | R]) :-
+    N is L mod 10,
+    NewL is L // 10,
+    numToListHelper(NewL, R).
+
+reverse_list([], []).
+reverse_list([H|T], R) :-
+    reverse_list(T, RevT),
+    append(RevT, [H], R).
+
+productOfList([], _, []).
+productOfList(L, E, R) :-
+    convert_list_to_number(L, Num),
+    Result is Num * E,
+    numToList(Result, R).
+
+%b. For a heterogeneous list, formed from integer numbers and list of numbers, write a predicate to replace 
+every sublist with the position of the maximum element from that sublist.
+
+maxNumber(A, B, A) :- A >= B.
+maxNumber(A, B, B) :- A < B.
+
+findMax([H],H).
+findMax([H|T],R):-
+    findMax(T,RM),
+    maxNumber(H,RM,R).
+
+findPosMax([],_,_,[]).
+findPosMax([H|T],E,P,[P|R]):-
+    H =:= E,
+    P1 is P + 1,
+    findPosMax(T,E,P1,R).
+findPosMax([H|T],E,P,R):-
+    H =\= E,
+    P1 is P + 1,
+    findPosMax(T,E,P1,R).
+
+mainMax(L,R):-
+    findMax(L,R1),
+    findPosMax(L,R1,1,R).
+
+hetersList([],[]).
+hetersList([H|T],[RM| R]):-
+    is_list(H),
+    !,
+    mainMax(H,RM),
+    hetersList(T,R).
+hetersList([H|T], [H|R]):-
+    hetersList(T,R).
