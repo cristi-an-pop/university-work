@@ -1,0 +1,26 @@
+%8.
+paranthesis('(').
+paranthesis(')').
+
+allcombs(N, N, PR, PR) :- !.
+allcombs(N, C, PR, R) :-
+    paranthesis(X),
+    C1 is C + 1,
+    allcombs(N, C1, [X | PR], R).
+
+check([], 0).
+check([H | T], C) :-
+    H == '(',
+    C1 is C + 1,
+    check(T, C1).
+check([H | T], C) :-
+    H == ')',
+    C1 is C - 1,
+    check(T, C1).
+
+unoSol(N, R) :-
+    allcombs(N, 0, [], R),
+    check(R, 0).
+
+allSolutions5(N, R) :-
+    findall(RPartial, unoSol(N, RPartial), R).

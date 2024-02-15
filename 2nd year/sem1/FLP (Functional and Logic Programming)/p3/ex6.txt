@@ -1,0 +1,15 @@
+insert(L,E,[E|L]).
+insert([H|T],E,[H|R]):-
+    insert(T,E,R).
+
+arr([H|_],1,[H]).
+arr([_|T],K,R):-
+    arr(T,K,R).
+arr([H|T],K,R1):-
+    K > 1,
+    K1 is K - 1,
+    arr(T,K1,R),
+    insert(R,H,R1).
+
+allSols(L,K,R):-
+    findall(RPartial,arr(L,K,RPartial),R).

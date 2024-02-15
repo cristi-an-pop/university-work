@@ -1,0 +1,18 @@
+%15.
+oSol(0, _, []) :- !.
+oSol(S, N, [N | R]) :-
+    N =< S,
+    S1 is S - N,
+    N1 is N + 1,
+    oSol(S1, N1, R).
+
+decomp(S, N, R) :-
+    N < S,
+    oSol(S, N, R).
+decomp(S, N, R) :-
+    N < S,
+    N1 is N + 1,
+    decomp(S, N1, R).
+
+allSolutions15(N, R) :-
+    findall(RPartial, decomp(N, 1, RPartial), R).

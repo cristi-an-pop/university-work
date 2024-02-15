@@ -1,0 +1,48 @@
+%8.
+%a. Determine the successor of a number represented as digits in a list. 
+% Eg.: [1 9 3 5 9 9] --> [1 9 3 6 0 0]
+
+
+list_to_num([], Result, Result).
+
+list_to_num([Head|Tail], Digit, Result):-
+    Digit_nth is Digit * 10 + Head,
+    list_to_num(Tail, Digit_nth, Result).
+
+convert_list_to_number(List,Number):-
+    list_to_num(List,0,Number).
+
+numToList(0, [0]).
+numToList(L, List) :-
+    L > 0,
+    numToListHelper(L, ListReversed),
+    reverse_list(ListReversed, List).
+
+numToListHelper(0, []).
+numToListHelper(L, [N | R]) :-
+    N is L mod 10,
+    NewL is L // 10,
+    numToListHelper(NewL, R).
+
+reverse_list([], []).
+reverse_list([H|T], R) :-
+    reverse_list(T, RevT),
+    append(RevT, [H], R).
+
+mainSucc(L, R) :-
+    convert_list_to_number(L, RR),
+    NewRR is RR + 1,
+    numToList(NewRR, R).
+
+%b. For a heterogeneous list, formed from integer numbers and list of numbers, determine the successor of a 
+%sublist considered as a number.
+%[1, [2, 3], 4, 5, [6, 7, 9], 10, 11, [1, 2, 0], 6] => [1, [2, 4], 4, 5, [6, 8, 0], 10, 11, [1, 2, 1], 6]
+
+mfList([], []).
+mfList([H | T], [Res | R]) :-
+    is_list(H),
+    mainSucc(H, Res),
+    mfList(T, R).
+mfList([H | T], [H | R]) :-
+    \+ is_list(H),
+    mfList(T, R).

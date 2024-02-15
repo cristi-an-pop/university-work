@@ -1,0 +1,32 @@
+absDiff(A, B, R) :-
+    A >= B,
+    R is A - B.
+absDiff(A, B, R) :-
+    B > A,
+    R is B - A.
+
+makeSub(L, I, []) :-
+    I >= L.
+makeSub(L, I, [I | R]) :-
+    I < L,
+    I1 is I + 1,
+    makeSub(L, I1, R).
+makeSub(L, I, R) :-
+    I < L,
+    I1 is I + 1,
+    makeSub(L, I1, R).
+
+respectsM([H1, H2], M) :-
+    absDiff(H1, H2, R),
+    R >= M.
+respectsM([H1, H2 | T], M) :-
+    absDiff(H1, H2, R),
+    R >= M,
+    respectsM([H2 | T], M).
+
+oneSol(L, M, R) :-
+    makeSub(L, 1, R),
+    respectsM(R, M).
+
+allSolutions4(L, M, R) :-
+    findall(RPartial, oneSol(L, M, RPartial), R).

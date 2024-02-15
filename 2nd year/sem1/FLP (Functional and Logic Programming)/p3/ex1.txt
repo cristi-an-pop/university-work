@@ -1,0 +1,11 @@
+comb(_, 0, []).
+comb([H | T], K, [H | R]) :-
+    K > 0,
+    K1 is K - 1,
+    comb(T, K1, R).
+comb([_ | T], K, R) :-
+    K > 0,
+    comb(T, K, R).
+
+allsolutions(L, K, R) :-
+    findall(RPartial, comb(L, K, RPartial), R).

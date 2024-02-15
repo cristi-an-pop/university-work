@@ -1,0 +1,39 @@
+%7.
+%a. Determine the position of the maximal element of a linear list. 
+%Eg.: maxpos([10,14,12,13,14], L) produces L = [2,5].
+
+maxNumber(A, B, A) :- A >= B.
+maxNumber(A, B, B) :- A < B.
+
+findMax([H],H).
+findMax([H|T],R):-
+    findMax(T,RM),
+    maxNumber(H,RM,R).
+
+findPos([], _, _, []).
+findPos([H | T], Max, I, [I | R]) :-
+    H =:= Max,
+    NewI is I + 1,
+    findPos(T, Max, NewI, R).
+findPos([H | T], Max, I, R) :-
+    \+ H =:= Max,
+    NewI is I + 1,
+    findPos(T, Max, NewI, R).
+maxpos(L, R) :-
+    findMax(L, Max),
+    findPos(L, Max, 1, R).
+
+%b. For a heterogeneous list, formed from integer numbers and list of numbers, replace every sublist with the 
+%position of the maximum element from that sublist.
+%[1, [2, 3], [4, 1, 4], 3, 6, [7, 10, 1, 3, 9], 5, [1, 1, 1], 7] =>
+%[1, [2], [1, 3], 3, 6, [2], 5, [1, 2, 3], 7]
+
+
+hList([], []).
+hList([H | T], [Max | R]) :-
+    is_list(H),
+    maxpos(H, Max),
+    hList(T, R).
+hList([H | T], [H | R]) :-
+    \+ is_list(H),
+    hList(T, R).

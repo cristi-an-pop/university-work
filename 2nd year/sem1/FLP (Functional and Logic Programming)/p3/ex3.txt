@@ -1,0 +1,18 @@
+%3.
+oneSolution(0, _, []).
+oneSolution(S, N, [N | R]) :-
+    S >= N,
+    SN is S - N,
+    N1 is N + 1,
+    oneSolution(SN, N1, R).
+
+decomposition(S, N, R) :-
+    N < S,
+    oneSolution(S, N, R).
+decomposition(S, N, R) :-
+    N < S,
+    NN is N + 1,
+    decomposition(S, NN, R).
+
+allsolutions2(N, R) :-
+    findall(RPartial, decomposition(N, 1, RPartial), R).

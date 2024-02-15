@@ -1,0 +1,18 @@
+subset([], []).
+subset([H | T], [H | R]) :-
+    subset(T, R).
+subset([_ | T], R) :-
+    subset(T, R).
+
+ascending([_]).
+ascending([H1, H2 | T]) :-
+    H1 < H2,
+    ascending([H2 | T]).
+
+makeSolution([], []).
+makeSolution(L, R) :-
+    subset(L, R),
+    ascending(R).
+
+allSolutions3(L, R) :-
+    findall(RPartial, makeSolution(L, RPartial), R).

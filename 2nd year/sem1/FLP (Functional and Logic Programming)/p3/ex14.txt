@@ -1,0 +1,19 @@
+%14.
+subs([], []).
+subs([H | T], [H | R]) :-
+    subs(T, R).
+subs([_ | T], R) :-
+    subs(T, R).
+
+summ([], 0).
+summ([H | T], R1) :-
+    summ(T, R),
+    R1 is R + H.
+
+theSol(L, S, R) :-
+    subs(L, R),
+    summ(R, Sum),
+    Sum =:= S.
+
+allSolutions14(L, S, R) :-
+    findall(RPartial, theSol(L, S, RPartial), R).
