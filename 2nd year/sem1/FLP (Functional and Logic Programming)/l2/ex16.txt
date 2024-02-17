@@ -1,0 +1,30 @@
+(defun absoluteDiff (a b)
+  (cond
+    ((> a b) (- a b))
+    (t (- b a))
+  )
+)
+
+(defun myMax (a b)
+  (cond
+    ((> a b) a)
+    (t b)
+  )
+)
+
+(defun listDepth (l)
+  (cond
+    ((null l) 0)
+    (t (+ 1 (myMax (listDepth (cadr l)) (listDepth (caddr l)))))
+  )
+)
+
+(defun isBalanced (l)
+  (cond
+    ((null l) t)
+    ((> (absoluteDiff (listDepth (cadr l)) (listDepth (caddr l))) 1) nil)
+    (t (and (isBalanced (cadr l)) (isBalanced (caddr l))))
+  )
+)
+
+(print (isBalanced '(A (B (C) ()) ())))

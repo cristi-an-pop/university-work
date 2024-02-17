@@ -1,0 +1,18 @@
+(defun checkExistence(l elem)
+  (cond
+    ((null l) nil)
+    ((equal (car l) elem) t)
+    ((listp (car l)) (or (checkExistence (car l) elem) (checkExistence (cdr l) elem)))
+    (t (checkExistence (cdr l) elem))
+  )
+)
+
+
+(defun path(l elem)
+  (cond 
+    ((null l) nil)
+    ((equal (car l) elem) (list (car l)))
+    ((checkExistence (cadr l) elem) (cons (car l) (path (cadr l) elem)))
+    ((checkExistence (caddr l) elem) (cons (car l) (path (caddr l) elem)))
+  )
+)

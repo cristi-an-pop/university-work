@@ -1,0 +1,35 @@
+(defun myAppend (l p)
+  (cond
+    ((null l) p)
+    (t (cons (car l) (myAppend (cdr l) p)))
+  )
+)
+
+
+(defun myMax(a b)
+  (cond
+    ((> a b) a)
+    (t b)
+  )
+)
+
+
+(defun findMaxLevel(l counter)
+  (cond
+    ((null l) counter)
+    (t (myMax (findMaxLevel (cadr l) (+ 1 counter)) (findMaxLevel (caddr l) (+ 1 counter))))
+  )
+)
+
+(defun nodesFromLevel(l level counter)
+  (cond
+    ((null l) nil)
+    ((equal counter level) (list (car l)))
+    (t (myAppend (nodesFromLevel (cadr l) level (+ 1 counter)) (nodesFromLevel (caddr l) level (+ 1 counter))))
+  )
+)
+
+
+(defun main(l)
+  (nodesFromLevel l (findMaxLevel l -1) 0)
+)
