@@ -1,0 +1,102 @@
+; Write a function to eliminate the n-th element of a linear list.
+
+(defun elimN(l c n)
+  (cond
+    ((null l) nil)
+    ((= c n) (elimN (cdr l) (+ c 1) n))
+    (t (cons (car l) (elimN (cdr l) (+ c 1) n)))
+  )
+)
+
+(print (elimN '(1 2 3) 1 2))
+
+;Write a function to determine the successor of a number represented digit by digit as a list, without 
+;transforming the representation of the number from list to number. Example: (1 9 3 5 9 9) --> (1 9 3 6 0 0)
+
+(defun toNum (l)
+  (cond
+    ((null l) 0)
+    (t (+ (* (car l) (expt 10 (- (length l) 1))) (toNum (cdr l))))
+  )
+)
+
+(defun myAppend (l p)
+  (cond
+    ((null l) p)
+    (t (cons (car l) (myAppend (cdr l) p)))
+  )
+)
+
+;works only for linear lists
+(defun myReverse (l)
+  (cond
+    ((null l) nil)
+    (t (myAppend (myReverse (cdr l)) (list (car l))))
+  )
+)
+
+(defun toList (n)
+  (cond
+    ((= n 0) nil)
+    (t (cons (mod n 10) (toList (floor n 10))))
+  )
+)
+
+(defun toListMain(n)
+  (cond
+    (t (myReverse (toList n)))
+  )
+)
+
+
+(defun succ(l)
+  (cond
+    ((null l) nil)
+    (t (toListMain (+ 1 (toNum l))))
+  )
+)
+
+(print (succ '(9 9)))
+
+;Write a function to return the set of all the atoms of a list.
+; Exemplu: (1 (2 (1 3 (2 4) 3) 1) (1 4)) ==> (1 2 3 4)
+
+(defun linearizeList(l)
+  (cond
+    ((null l) nil)
+    ((listp (car l)) (myAppend (linearizeList (car l)) (linearizeList (cdr l))))
+    ((atom (car l)) (cons (car l) (linearizeList (cdr l))))
+    (t (linearizeList (cdr l)))
+  )
+)
+
+(defun checkExistence(l elem)
+  (cond
+    ((null l) nil)
+    ((equal (car l) elem) t)
+    (t (checkExistence (cdr l) elem))
+  )
+)
+
+(defun toSet(l r)
+  (cond
+    ((null l) r)
+    ((checkExistence r (car l)) (toSet (cdr l) r))
+    (t (toSet (cdr l) (myAppend r (list (car l)))))
+  )
+)
+
+(defun mainC (l)
+  (toSet (linearizeList l) (list))
+)
+
+(print (mainC '(a b a (b c))))
+
+; Write a function to test whether a linear list is a set.
+(defun checkSet(l r)
+  (cond
+    ((null l) t)
+    ((checkExistence r (car l)) nil)
+    (t (checkSet (cdr l) (myAppend r (list (car l)))))
+  )
+)

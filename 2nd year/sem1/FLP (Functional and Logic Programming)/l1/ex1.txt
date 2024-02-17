@@ -1,0 +1,58 @@
+;Write a function to return the n-th element of a list, or NIL if such an element does not exist.
+
+(defun f1(l n pos)
+  (cond
+    ((null l) nil)
+    ((= n pos) (car l))
+    (t (f1 (cdr l) n (+ 1 pos)))
+  )
+)
+
+(print (f1 '(1 2 3) 1 0))
+
+
+;Write a function to check whether an atom E is a member of a list which is not necessarily linear.
+
+(defun checkAtom(l elem)
+  (cond
+    ((null l) nil)
+    ((and (atom (car l)) (equal (car l) elem)) T)
+    ((listp (car l)) (or (checkAtom (car l) elem) (checkAtom (cdr l) elem))) 
+    (T (checkAtom (cdr l) elem))
+  )
+)
+
+(print (checkAtom '(1 2 3 4) 1))
+
+;Write a function to determine the list of all sublists of a given list, on any level. 
+;A sublist is either the list itself, or any element that is a list, at any level. Example: 
+; (1 2 (3 (4 5) (6 7)) 8 (9 10)) => 5 sublists :
+; ( (1 2 (3 (4 5) (6 7)) 8 (9 10)) (3 (4 5) (6 7)) (4 5) (6 7) (9 10) )
+
+(defun allSublists (l)
+  (cond
+    ((atom l) nil)
+    (T (apply 'append (list l) (mapcar 'allSublists l)))
+  )
+)
+
+(print (allSublists '(12 (2 3) (4 5 (6 7)))))
+
+;Write a function to transform a linear list into a set.
+
+(defun transformSet(l)
+  (cond
+    ((null l) nil)
+    (t (cons (car l) (transformSet (removeApparences (cdr l) (car l)))))
+  )
+)
+
+(defun removeApparences(l e)
+  (cond 
+    ((null l) nil)
+    ((= (car l) e) (removeApparences (cdr l) e))
+    (t (cons (car l) (removeApparences (cdr l) e)))
+  )
+)
+
+(print (transformSet '(1 2 3 1 1 2)))

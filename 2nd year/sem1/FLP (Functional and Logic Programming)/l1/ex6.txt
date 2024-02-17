@@ -1,0 +1,73 @@
+;Write a function to test whether a list is linear.
+
+(defun isLinear(l)
+  (cond
+    ((null l) t)
+    ((listp (car l)) nil)
+    (t (isLinear (cdr l)))
+  )
+)
+
+(print (isLinear '(1 2 (3))))
+
+;Write a function to replace the first occurence of an element E in a given list with an other element O.
+
+(defun replaceE(l e o c)
+  (cond
+    ((null l) nil)
+    ((and (= (car l) e) (= c 0)) (cons o (replaceE (cdr l) e o (+ c 1))))
+    (t (cons (car l) (replaceE (cdr l) e o c)))
+  )
+)
+
+(print (replaceE '(1 2 3 5 3) 3 10 0))
+
+
+;Write a function to replace each sublist of a list with its last element.
+; A sublist is an element from the first level, which is a list.
+; Example: (a (b c) (d (e (f)))) ==> (a c (e (f))) ==> (a c (f)) ==> (a c f)
+; (a (b c) (d ((e) f))) ==> (a c ((e) f)) ==> (a c f)
+
+(defun myAppend(l p)
+  (cond
+    ((null l) p)
+    (t (cons (car l) (myAppend (cdr l) p)))
+  )
+)
+
+
+(defun my_reverse(l)
+  (cond
+    ((null l) nil)
+    (t (myAppend (my_reverse (cdr l)) (list (car l))))
+  )
+)
+
+(defun last_element (l)
+	(if (listp l) 
+        (last_element (car (my_reverse l)))
+        l
+    )
+)
+
+(defun myreduce (l)
+  (cond
+    ((null l) nil)
+    ((listp l) (cons (last_element (car l)) (myreduce (cdr l))))
+    (t (cons (car l) (myreduce (cdr l))))
+  )
+)
+
+(print (myreduce '(a (b c) (d (e (f))))))
+
+
+;Write a function to merge two sorted lists without keeping double values.
+(defun myMerge (l p)
+  (cond
+    ((null l) p)
+    ((null p) l)
+    ((< (car l) (car p)) (cons (car l) (myMerge (cdr l) p)))
+    ((> (car l) (car p)) (cons (car p) (myMerge l (cdr p))))
+    ((= (car l) (car p)) (cons (car l) (myMerge (cdr l) (cdr p))))
+  )
+)

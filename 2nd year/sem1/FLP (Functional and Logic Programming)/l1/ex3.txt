@@ -1,0 +1,67 @@
+; Write a function that inserts in a linear list a given atom A after the 2nd, 4th, 6th, ... element.
+
+(defun insertElem(l e pos)
+  (cond
+    ((null l) nil)
+    ((equal (mod pos 2) 0) (cons (car l) (cons e (insertElem (cdr l) e (+ 1 pos)))))
+    (t (cons (car l) (insertElem (cdr l) e (+ 1 pos))))
+  )
+)
+
+(defun mainA(l e)
+  (insertElem l e 1)
+)
+
+(print (mainA '(1 2 3 4 5 6) 10))
+
+;Write a function to get from a given list the list of all atoms, on any 
+; level, but reverse order. Example:
+; (((A B) C) (D E)) ==> (E D C B A)
+
+(defun myAppend(l1 l2)
+  (cond
+    ((null l1) l2)
+    (t (cons (car l1) (myAppend (cdr l1) l2)))
+  )
+)
+
+(defun getAllAtoms (l)
+  (cond
+    ((null l) nil)
+    ((listp (car l)) (myAppend (getAllAtoms (cdr l)) (getAllAtoms (car l))))
+    (t (myAppend (getAllAtoms (cdr l)) (list (car l))))
+  )
+)  
+
+; Write a function that returns the greatest common divisor of all numbers in a nonlinear list.
+(defun myGCD (a b)
+  (cond
+    ((not (numberp a)) b)
+    ((not (numberp b)) a)
+    ((= 0 b) a)
+    (t (myGCD b (mod a b)))
+  )
+)
+
+(defun listGCD (l)
+  (cond
+    ((null (cdr l)) (car l))
+    ((listp (car l)) (myGCD (listGCD (car l)) (listGCD (cdr l))))
+    (t (myGCD (car l) (listGCD (cdr l))))
+  )
+)
+
+(print (listGCD '(100 30 30 50)))
+
+; Write a function that determines the number of occurrences of a given atom in a nonlinear list.
+
+(defun numberOfOcc (l e)
+  (cond 
+    ((null l) 0)
+    ((listp (car l)) (+ (numberOfOcc (car l) e) (numberOfOcc (cdr l) e)))
+    ((= (car l) e) (+ 1 (numberOfOcc (cdr l) e)))
+    (t (numberOfOcc (cdr l) e))
+  )
+)
+
+(print (numberOfOcc '(1 2 3 4 5 4 (4 (4))) 4))

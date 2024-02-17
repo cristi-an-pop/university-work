@@ -1,0 +1,70 @@
+;Write a function to return the product of two vectors.
+(defun dotProduct (a b)
+  (cond
+    ((null a) 0)
+    ((null b) 0)
+    (t (+ (* (car a) (car b)) (dotProduct (cdr a) (cdr b))))
+  )
+)
+
+(print (dotProduct '(1 2 3) '(4 5 6)))
+
+;Write a function to return the depth of a list. Example: the depth of a linear list is 1.
+(defun myMax(a b)
+  (cond 
+    ((null a) b)
+    ((null b) a)
+    ((> a b) a)
+    (t b)
+  )
+)
+
+(defun listDepth (l c)
+  (cond
+    ((null l) c)
+    ((listp (car l)) (myMax (listDepth (car l) (+ 1 c)) (listDepth (cdr l) c)))
+    (t (listDepth (cdr l) c))
+  )
+)
+
+(print (listDepth '(1 2 3 (2 3) (2 3 (4 5))) 1))
+
+;Write a function to sort a linear list without keeping the double values
+
+(defun insert(l a)
+  (cond
+    ((null l) (list a))
+    ((= (car l) a) l)
+    ((> (car l) a) (cons a l))
+    (t (cons (car l) (insert (cdr l) a)))
+  )
+)
+
+(defun sortare(l)
+  (cond 
+    ((null l) nil)
+    (t (insert (sortare (cdr l)) (car l)))
+  )
+)
+
+(print (sortare '(3 4 5 1 2)))
+
+; Write a function to return the intersection of two sets.
+
+(defun exists(l e)
+  (cond
+    ((null l) nil)
+    ((equal (car l) e) t)
+    (t (exists (cdr l) e))
+  )
+)
+
+(defun intersection_(a b)
+  (cond
+    ((null a) nil)
+    ((exists b (car a)) (cons (car a) (intersection_ (cdr a) b)))
+    (t (intersection (cdr a) b))
+  )
+)
+
+(print (intersection_ '(1 2 3 4 5) '(4 5 6 8 1)))

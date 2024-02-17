@@ -1,0 +1,60 @@
+;Write twice the n-th element of a linear list. Example: for (10 20 30 40 50) and n=3 will produce (10 20 30 30 40 50).
+
+
+(defun writeTwice (l c p)
+  (cond
+    ((null l) nil)
+    ((= c p) (cons (car l) (cons (car l) (writeTwice (cdr l) (+ c 1) p))))
+    (t (cons (car l) (writeTwice (cdr l) (+ c 1) p)))
+  )
+)
+
+(print (writeTwice '(10 20 30 40 50) 0 2))
+
+;Write a function to return an association list with the two lists given as parameters. 
+; Example: (A B C) (X Y Z) --> ((A.X) (B.Y) (C.Z)).
+
+(defun myAppend(l p)
+  (cond
+    ((null l) p)
+    (t (cons (car l) (myAppend (cdr l) p)))
+  )
+)
+
+(defun assocc(l p)
+  (cond
+    ((and (null l) (null p)) nil)
+    ((null l) (myAppend (list (cons nil (car p))) (assocc nil (cdr p) )))
+    ((null p) (myAppend (list (cons (car l) nil)) (assocc (cdr l) nil )))
+    (t (myAppend (list (cons (car l) (car p))) (assocc (cdr l) (cdr p) )))
+  )
+)
+
+(print (assocc '(A B C) '(X Y Z)))
+
+;Write a function to determine the number of all sublists of a given list, on any level. 
+; A sublist is either the list itself, or any element that is a list, at any level. Example: 
+; (1 2 (3 (4 5) (6 7)) 8 (9 10)) => 5 lists:
+;(list itself, (3 ...), (4 5), (6 7), (9 10)).
+
+(defun numOfSublists (l)
+  (cond
+    ((null l) 1)
+    ((listp (car l)) (+ (numOfSublists (car l)) (numOfSublists (cdr l))))
+    (t (numOfSublists (cdr l)))
+  )
+)
+
+(print (numOfSublists '(1 2 (3))))
+
+;Write a function to return the number of all numerical atoms in a list at superficial level.
+
+(defun nums(l)
+  (cond
+    ((null l) 0)
+    ((numberp (car l)) (+ 1 (nums (cdr l))))
+    (t (nums (cdr l)))
+  )
+)
+
+(print (nums '(1 A 2 3 (2 3) C)))

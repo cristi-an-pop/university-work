@@ -1,0 +1,61 @@
+;Write a function to return the sum of two vectors.
+(defun vectorSum(a b)
+  (cond 
+    ((null a) nil)
+    (t (cons (+ (car a) (car b)) (vectorSum (cdr a) (cdr b))))
+  )
+)
+
+(print (vectorSum '(1 2 3) '(2 3 4)))
+
+;Write a function to get from a given list the list of all atoms, on any 
+; level, but on the same order. Example:
+; (((A B) C) (D E)) ==> (A B C D E)
+
+(defun myAppend (l p)
+  (cond
+    ((null l) p)
+    (t (cons (car l) (myAppend (cdr l) p)))
+  )
+)
+
+(defun getAtoms (l)
+  (cond
+    ((null l) nil)
+    ((listp (car l)) (myAppend (getAtoms (car l)) (getAtoms (cdr l))))
+    (t (myAppend (list (car l)) (getAtoms (cdr l))))
+  )
+)
+
+(print (getAtoms '(((A B) C) (D E))))
+
+;Write a function that, with a list given as parameter, inverts only continuous
+; sequences of atoms. Example:
+; (a b c (d (e f) g h i)) ==> (c b a (d (f e) i h g))
+
+(defun invertCont (l aux)
+  (cond
+    ((null l) aux)
+    ((listp (car l)) (myAppend aux (myAppend (list (invertCont (car l) nil)) (invertCont (cdr l) nil))))
+    (t (invertCont (cdr l) (myAppend (list (car l)) aux)))
+  )
+)
+
+; Write a list to return the maximum value of the numerical atoms from a list, at superficial level.
+(defun myMax (a b)
+  (cond
+    ((not (numberp a)) b)
+    ((not (numberp b)) a)
+    ((> a b) a)
+    (t b)
+  )
+)
+
+(defun maxAtSuper (l)
+  (cond
+    ((null l) nil)
+    (t (myMax (car l) (maxAtSuper (cdr l))))
+  )
+)
+
+(print (maxAtSuper '(1 2 (2 3) (10) 3)))
