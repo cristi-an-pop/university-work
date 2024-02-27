@@ -1,0 +1,9 @@
+(defun is_member (l e)
+  (cond
+    ((and (atom l) (equal l e)) t)
+    ((atom l) nil)
+    (t (some #'identity (mapcar #'(lambda (x) (is_member x e)) l)))
+  )
+)
+
+(print (is_member '(1 2 3) 1)) 

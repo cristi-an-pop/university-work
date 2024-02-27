@@ -1,0 +1,9 @@
+(defun replaceElem (l e e1)
+  (cond
+    ((and (atom l) (equal l e)) e1)
+    ((atom l) l)
+    (t (mapcar #'(lambda (x) (replaceElem x e e1)) l))
+  )
+)
+
+(print (replaceElem '(A B (F G (H)) C) 'H 'O))

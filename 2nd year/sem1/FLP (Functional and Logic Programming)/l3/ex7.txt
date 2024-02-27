@@ -1,0 +1,9 @@
+(defun replaceWithL (l e l1)
+  (cond
+    ((equal l e) l1)
+    ((atom l) l)
+    (t (mapcar #'(lambda (x) (replaceWithL x e l1)) l))
+  )
+)
+
+(print (replaceWithL '(1 2 3) 2 '(10 10 10)))

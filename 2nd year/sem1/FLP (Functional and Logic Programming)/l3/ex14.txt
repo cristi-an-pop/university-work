@@ -1,0 +1,8 @@
+(defun numberOfAtoms (l)
+  (cond 
+    ((atom l) 1)
+    (t (apply #'+ (mapcar #'numberOfAtoms l)))
+  )
+)
+
+(print (numberOfAtoms '(1 2 3 (2 (3) 3))))

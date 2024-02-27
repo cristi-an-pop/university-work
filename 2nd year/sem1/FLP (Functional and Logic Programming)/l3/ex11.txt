@@ -1,0 +1,25 @@
+(defun myMax (a b)
+  (cond
+    ((and (not (numberp a)) (not (numberp b))) nil)
+    ((not (numberp a)) b)
+    ((not (numberp b)) a)
+    ((> a b) a)
+    (t b)
+  )
+)
+
+(defun findMax (l)
+  (cond
+    ((null l) nil)
+    (t (myMax (car l) (findMax (cdr l))))
+  )
+)
+
+(defun findDepth (l c)
+  (cond
+    ((atom l) c)
+    (t (apply #'findMax (list (mapcar #'(lambda (x) (findDepth x (+ c 1))) l))))
+  )
+)
+
+(print (findDepth '(1 2 (2 (3)) 3 (2)) -1))

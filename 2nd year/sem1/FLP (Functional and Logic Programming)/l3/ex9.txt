@@ -1,0 +1,17 @@
+(defun removeAux(l)
+  (cond
+    ((null l) nil)
+    ((and (atom (car l)) (equal (car l) nil)) (removeAux (cdr l)))
+    ((atom (car l)) (cons (car l) (removeAux (cdr l))))
+    (t (cons (removeAux (car l)) (removeAux (cdr l))))
+  )
+)
+
+
+(defun removeElem(l elem)
+  (cond
+    ((and (atom l) (equal l elem)) nil)
+    ((atom l) l)
+    (t (apply #'removeAux (list (mapcar #' (lambda (a) (removeElem a elem)) l))))
+  )
+)

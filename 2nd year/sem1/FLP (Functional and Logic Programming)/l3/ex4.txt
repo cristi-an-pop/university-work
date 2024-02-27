@@ -1,0 +1,9 @@
+(defun listProduct (l)
+  (cond
+    ((numberp l) l)
+    ((atom l) 0)
+    (t (apply #'* (mapcar #'listProduct l)))
+  )
+)
+
+(print (listProduct '(1 2 (3))))

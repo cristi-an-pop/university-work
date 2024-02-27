@@ -1,0 +1,10 @@
+(defun weirdSum (l)
+  (cond
+    ((and (numberp l) (zerop (mod l 2))) l)        
+    ((and (numberp l) (oddp l)) (- 0 l))           
+    ((atom l) 0)                                  
+    (t (apply #'+ (mapcar #'weirdSum l)))         
+  )
+)
+
+(print (weirdSum '(1 2 3))) 

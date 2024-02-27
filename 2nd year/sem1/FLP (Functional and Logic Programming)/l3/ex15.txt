@@ -1,0 +1,22 @@
+(defun myAppend (l p)
+  (cond
+    ((null l) p)
+    (t (cons (car l) (myAppend (cdr l) p)))
+  )
+)
+
+(defun myReverse (l)
+  (cond
+    ((null l) nil)
+    (t (myAppend (myReverse (cdr l)) (list (car l))))
+  )
+)
+
+(defun myReverse2 (l)
+  (cond
+    ((atom l) l)
+    (t (mapcar #'myReverse2 (myReverse l)))
+  )
+)
+
+(print (myReverse2 '(1 (2 3) (4 5 (6)) 10)))

@@ -1,0 +1,7 @@
+(defun sumOfNums (l)
+  (cond
+    ((null l) 0)                              
+    ((listp l) (apply #'+ (mapcar #'sumOfNums l)))  
+    (t l)))                                     
+
+(print (sumOfNums '(1 2 3 (2 3))))
