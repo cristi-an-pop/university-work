@@ -1,0 +1,7 @@
+D:\ubb\university-work\2nd year\sem2\Software Engineering\Lab1\bin\Debug\Lab1.exe.config
+D:\ubb\university-work\2nd year\sem2\Software Engineering\Lab1\bin\Debug\Lab1.exe
+D:\ubb\university-work\2nd year\sem2\Software Engineering\Lab1\bin\Debug\Lab1.pdb
+D:\ubb\university-work\2nd year\sem2\Software Engineering\Lab1\obj\Debug\Lab1.csproj.AssemblyReference.cache
+D:\ubb\university-work\2nd year\sem2\Software Engineering\Lab1\obj\Debug\Lab1.csproj.CoreCompileInputs.cache
+D:\ubb\university-work\2nd year\sem2\Software Engineering\Lab1\obj\Debug\Lab1.exe
+D:\ubb\university-work\2nd year\sem2\Software Engineering\Lab1\obj\Debug\Lab1.pdb
