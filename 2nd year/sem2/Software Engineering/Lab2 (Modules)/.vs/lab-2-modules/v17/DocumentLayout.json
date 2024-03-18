@@ -1,0 +1,218 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\crist\\OneDrive\\Desktop\\lab-2-modules\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9B5A-D01F-427D-8E32-6502DBE047F3}|lab-2-modules.csproj|c:\\users\\crist\\onedrive\\desktop\\lab-2-modules\\datacompression\\datacompression.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96FC9B5A-D01F-427D-8E32-6502DBE047F3}|lab-2-modules.csproj|solutionrelative:datacompression\\datacompression.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9B5A-D01F-427D-8E32-6502DBE047F3}|lab-2-modules.csproj|c:\\users\\crist\\onedrive\\desktop\\lab-2-modules\\datacompression\\datareader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96FC9B5A-D01F-427D-8E32-6502DBE047F3}|lab-2-modules.csproj|solutionrelative:datacompression\\datareader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9B5A-D01F-427D-8E32-6502DBE047F3}|lab-2-modules.csproj|c:\\users\\crist\\onedrive\\desktop\\lab-2-modules\\datacompression\\huffmanleaf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96FC9B5A-D01F-427D-8E32-6502DBE047F3}|lab-2-modules.csproj|solutionrelative:datacompression\\huffmanleaf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9B5A-D01F-427D-8E32-6502DBE047F3}|lab-2-modules.csproj|c:\\users\\crist\\onedrive\\desktop\\lab-2-modules\\datacompression\\huffmannode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96FC9B5A-D01F-427D-8E32-6502DBE047F3}|lab-2-modules.csproj|solutionrelative:datacompression\\huffmannode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9B5A-D01F-427D-8E32-6502DBE047F3}|lab-2-modules.csproj|c:\\users\\crist\\onedrive\\desktop\\lab-2-modules\\tests\\text.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{96FC9B5A-D01F-427D-8E32-6502DBE047F3}|lab-2-modules.csproj|solutionrelative:tests\\text.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9B5A-D01F-427D-8E32-6502DBE047F3}|lab-2-modules.csproj|c:\\users\\crist\\onedrive\\desktop\\lab-2-modules\\tests\\testdatacompression.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96FC9B5A-D01F-427D-8E32-6502DBE047F3}|lab-2-modules.csproj|solutionrelative:tests\\testdatacompression.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9B5A-D01F-427D-8E32-6502DBE047F3}|lab-2-modules.csproj|c:\\users\\crist\\onedrive\\desktop\\lab-2-modules\\tests\\testdataencryption.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96FC9B5A-D01F-427D-8E32-6502DBE047F3}|lab-2-modules.csproj|solutionrelative:tests\\testdataencryption.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9B5A-D01F-427D-8E32-6502DBE047F3}|lab-2-modules.csproj|c:\\users\\crist\\onedrive\\desktop\\lab-2-modules\\tests\\testdatasort.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96FC9B5A-D01F-427D-8E32-6502DBE047F3}|lab-2-modules.csproj|solutionrelative:tests\\testdatasort.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9B5A-D01F-427D-8E32-6502DBE047F3}|lab-2-modules.csproj|c:\\users\\crist\\onedrive\\desktop\\lab-2-modules\\tests\\testfeaturetoggle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96FC9B5A-D01F-427D-8E32-6502DBE047F3}|lab-2-modules.csproj|solutionrelative:tests\\testfeaturetoggle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9B5A-D01F-427D-8E32-6502DBE047F3}|lab-2-modules.csproj|c:\\users\\crist\\onedrive\\desktop\\lab-2-modules\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96FC9B5A-D01F-427D-8E32-6502DBE047F3}|lab-2-modules.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9B5A-D01F-427D-8E32-6502DBE047F3}|lab-2-modules.csproj|c:\\users\\crist\\onedrive\\desktop\\lab-2-modules\\datasort.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96FC9B5A-D01F-427D-8E32-6502DBE047F3}|lab-2-modules.csproj|solutionrelative:datasort.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9B5A-D01F-427D-8E32-6502DBE047F3}|lab-2-modules.csproj|c:\\users\\crist\\onedrive\\desktop\\lab-2-modules\\datavalidation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96FC9B5A-D01F-427D-8E32-6502DBE047F3}|lab-2-modules.csproj|solutionrelative:datavalidation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TestDataEncryption.cs",
+              "DocumentMoniker": "C:\\Users\\crist\\OneDrive\\Desktop\\lab-2-modules\\Tests\\TestDataEncryption.cs",
+              "RelativeDocumentMoniker": "Tests\\TestDataEncryption.cs",
+              "ToolTip": "C:\\Users\\crist\\OneDrive\\Desktop\\lab-2-modules\\Tests\\TestDataEncryption.cs",
+              "RelativeToolTip": "Tests\\TestDataEncryption.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-14T12:17:42.899Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "TestFeatureToggle.cs",
+              "DocumentMoniker": "C:\\Users\\crist\\OneDrive\\Desktop\\lab-2-modules\\Tests\\TestFeatureToggle.cs",
+              "RelativeDocumentMoniker": "Tests\\TestFeatureToggle.cs",
+              "ToolTip": "C:\\Users\\crist\\OneDrive\\Desktop\\lab-2-modules\\Tests\\TestFeatureToggle.cs",
+              "RelativeToolTip": "Tests\\TestFeatureToggle.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-14T12:16:01.207Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "text.txt",
+              "DocumentMoniker": "C:\\Users\\crist\\OneDrive\\Desktop\\lab-2-modules\\Tests\\text.txt",
+              "RelativeDocumentMoniker": "Tests\\text.txt",
+              "ToolTip": "C:\\Users\\crist\\OneDrive\\Desktop\\lab-2-modules\\Tests\\text.txt",
+              "RelativeToolTip": "Tests\\text.txt",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-03-14T12:05:34.052Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "TestDataSort.cs",
+              "DocumentMoniker": "C:\\Users\\crist\\OneDrive\\Desktop\\lab-2-modules\\Tests\\TestDataSort.cs",
+              "RelativeDocumentMoniker": "Tests\\TestDataSort.cs",
+              "ToolTip": "C:\\Users\\crist\\OneDrive\\Desktop\\lab-2-modules\\Tests\\TestDataSort.cs",
+              "RelativeToolTip": "Tests\\TestDataSort.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-14T12:03:10.555Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "HuffmanNode.cs",
+              "DocumentMoniker": "C:\\Users\\crist\\OneDrive\\Desktop\\lab-2-modules\\DataCompression\\HuffmanNode.cs",
+              "RelativeDocumentMoniker": "DataCompression\\HuffmanNode.cs",
+              "ToolTip": "C:\\Users\\crist\\OneDrive\\Desktop\\lab-2-modules\\DataCompression\\HuffmanNode.cs",
+              "RelativeToolTip": "DataCompression\\HuffmanNode.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-14T12:02:17.883Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HuffmanLeaf.cs",
+              "DocumentMoniker": "C:\\Users\\crist\\OneDrive\\Desktop\\lab-2-modules\\DataCompression\\HuffmanLeaf.cs",
+              "RelativeDocumentMoniker": "DataCompression\\HuffmanLeaf.cs",
+              "ToolTip": "C:\\Users\\crist\\OneDrive\\Desktop\\lab-2-modules\\DataCompression\\HuffmanLeaf.cs",
+              "RelativeToolTip": "DataCompression\\HuffmanLeaf.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-14T12:02:14.522Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DataReader.cs",
+              "DocumentMoniker": "C:\\Users\\crist\\OneDrive\\Desktop\\lab-2-modules\\DataCompression\\DataReader.cs",
+              "RelativeDocumentMoniker": "DataCompression\\DataReader.cs",
+              "ToolTip": "C:\\Users\\crist\\OneDrive\\Desktop\\lab-2-modules\\DataCompression\\DataReader.cs",
+              "RelativeToolTip": "DataCompression\\DataReader.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-14T11:59:27.285Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DataCompression.cs",
+              "DocumentMoniker": "C:\\Users\\crist\\OneDrive\\Desktop\\lab-2-modules\\DataCompression\\DataCompression.cs",
+              "RelativeDocumentMoniker": "DataCompression\\DataCompression.cs",
+              "ToolTip": "C:\\Users\\crist\\OneDrive\\Desktop\\lab-2-modules\\DataCompression\\DataCompression.cs",
+              "RelativeToolTip": "DataCompression\\DataCompression.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-14T11:49:11.815Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TestDataCompression.cs",
+              "DocumentMoniker": "C:\\Users\\crist\\OneDrive\\Desktop\\lab-2-modules\\Tests\\TestDataCompression.cs",
+              "RelativeDocumentMoniker": "Tests\\TestDataCompression.cs",
+              "ToolTip": "C:\\Users\\crist\\OneDrive\\Desktop\\lab-2-modules\\Tests\\TestDataCompression.cs",
+              "RelativeToolTip": "Tests\\TestDataCompression.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-14T11:48:59.962Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "DataSort.cs",
+              "DocumentMoniker": "C:\\Users\\crist\\OneDrive\\Desktop\\lab-2-modules\\DataSort.cs",
+              "RelativeDocumentMoniker": "DataSort.cs",
+              "ToolTip": "C:\\Users\\crist\\OneDrive\\Desktop\\lab-2-modules\\DataSort.cs",
+              "RelativeToolTip": "DataSort.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-14T11:48:51.026Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "DataValidation.cs",
+              "DocumentMoniker": "C:\\Users\\crist\\OneDrive\\Desktop\\lab-2-modules\\DataValidation.cs",
+              "RelativeDocumentMoniker": "DataValidation.cs",
+              "ToolTip": "C:\\Users\\crist\\OneDrive\\Desktop\\lab-2-modules\\DataValidation.cs",
+              "RelativeToolTip": "DataValidation.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-14T11:48:45.686Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\crist\\OneDrive\\Desktop\\lab-2-modules\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\crist\\OneDrive\\Desktop\\lab-2-modules\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-13T20:17:03.883Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
