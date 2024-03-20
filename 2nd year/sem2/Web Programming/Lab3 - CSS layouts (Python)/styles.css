@@ -1,3 +1,8 @@
+@font-face {
+    font-family: Flux-Regular;
+    src: url(Flux\ Regular.otf);
+  }
+
 * {
     margin: 0;
     padding: 0;
@@ -5,7 +10,7 @@
 }
 
 body {
-    font-family: SourceSansProItalic, Arial, sans-serif;
+    font: normal 100% / 1.625 SourceSansProRegular, Arial, sans-serif;
 }
 /*
     NAVIGATION
@@ -15,6 +20,7 @@ body {
     color: #bbb;
     background-color: #1e2933;
     border-bottom: 1px solid #1f3b47;
+    font-size: 0.875em;
 }
 
 .nav-menu {
@@ -88,6 +94,7 @@ body {
     box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.03), inset 0 0 20px rgba(0, 0, 0, 0.03);
     clear: both;
     background-image: linear-gradient(#1e415e 10%, #2b5b84 90%);
+    margin-bottom: 2em;
 }
 
 .container {
@@ -100,11 +107,11 @@ body {
     clear: both;
 }
 
-.container:after {
+/* .container:after {
     content: "";
     display: table;
     clear: both;
-}
+} */
 
 .headliner {
     margin: .25em 0 .5em;   
@@ -287,6 +294,7 @@ input {
     clear: both;
     margin-bottom: 1px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    height: 3em;
 }
 
 .main-nav ul {
@@ -299,11 +307,11 @@ input {
     display: block;
 }
 
-.main-nav ul:after {
+/* .main-nav ul:after {
     content: "";
     display: table;
     clear: both;
-}
+} */
 
 .main-nav ul li {
     border-left: 0;
@@ -346,13 +354,14 @@ input {
     position: relative;
 }
 
-.header-banner:after {
+/* .header-banner:after {
     content: "";
     display: table;
     clear: both;
-}
+} */
 
 .slideshow {
+    display: flex;
     position: relative;
     margin: 0 auto;
     max-width: 61.25em;
@@ -362,11 +371,6 @@ input {
     box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.6);
 }
 
-.slideshow:after {
-    content: "";
-    display: table;
-    clear: both;
-}
 
 .launch-menu {
     display: block;
@@ -405,19 +409,14 @@ input {
     list-style: none;
 }
 
-.slides-menu:after {
-    content: "";
-    display: table;
-    clear: both;
 
-}
 
 .slides-menu li {
     width: 100%;
     float: left;
     margin-right: -100%;
     position: relative;
-    display: list-item;
+    display: flex;
 }
 
 .slide-code {
@@ -577,9 +576,16 @@ pre code {
 }
 
 .card-title {
+    font-family: Flux-Regular, SourceSansProRegular, Arial, sans-serif;
+    font-weight: 0 !important;
     text-align: left;
     font-size: 1.5em;
     margin-bottom: 0.1em;
+}
+
+.card-title i {
+    color: #3776ab;
+    font-size: 1em;
 }
 
 .small-card p {

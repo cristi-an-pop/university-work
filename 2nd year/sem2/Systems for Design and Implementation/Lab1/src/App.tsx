@@ -9,8 +9,22 @@ import {
 } from "react-router-dom";
 
 function App() {
-  const [lists, setLists] = useState<any>([])
-  const [selectedListId, setSelectedListId] = useState<string | null>(null);
+  const [lists, setLists] = useState(() => {
+    const savedLists = localStorage.getItem('lists');
+    if (savedLists) {
+      return JSON.parse(savedLists);
+    } else {
+      return [];
+    }
+  });
+  const [selectedListId, setSelectedListId] = useState<string | null>(() => {
+    const savedSelectedListId = localStorage.getItem('selectedListId');
+    if (savedSelectedListId) {
+      return savedSelectedListId;
+    } else {
+      return null;
+    }
+  });
 
   return (
     <Router>
