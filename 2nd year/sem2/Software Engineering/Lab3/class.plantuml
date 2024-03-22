@@ -1,0 +1,71 @@
+@startuml Class Diagram
+
+class User {
+  + username: string
+  + email: string
+  + password: string
+  + createGroup(): Group
+}
+
+class Group {
+  + name: string
+  + visibility: string
+  + maxGroupSize: int
+  + maxPostsPerPeriod: int
+  + icon: string
+  + profilePicture: string
+  + isPostRightEnabled: boolean
+  + posts: List<Post>
+  + members: List<GroupMember>
+  + tags: List<Tag>
+  + settings: GroupSettings
+  + createPost(content: string): Post
+}
+
+class GroupSettings {
+  + entryPassword: string
+}
+
+class GroupMember {
+  + role: Role
+  + createPost(content: string): Post
+  + viewGroupPosts(): List<Post>
+}
+
+enum Role {
+  ADMIN
+  MODERATOR
+  USER
+}
+
+class Post {
+  + content: string
+  + tags: List<Tag>
+  + isPinned: boolean
+}
+
+class Poll extends Post {
+  + type: PollType
+  + ttl: datetime
+  + isPaid: boolean
+  + restrictVisibility: boolean
+}
+
+enum PollType {
+  SINGLE_CHOICE
+  MULTIPLE_CHOICE
+}
+
+class Tag {
+  + name: string
+}
+
+User "1" --> "1..*" Group
+Group "1" --> "*" GroupMember
+Group "1" --> "0..*" Post
+Group "1" --> "*" Tag
+Group "1" --> "1" GroupSettings
+GroupMember "1" --> "*" Post
+GroupMember "1" --> "1" Role
+
+@enduml

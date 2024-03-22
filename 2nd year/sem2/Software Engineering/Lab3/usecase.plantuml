@@ -1,0 +1,77 @@
+@startuml UseCase Diagram
+
+left to right direction
+
+actor User #Yellow
+actor Admin #Red
+actor "Group Member" as GroupMember #Blue
+actor Moderator #Green
+
+User -- (Create Group)
+User -- (Join Group)
+User -- (View Group)
+
+(View Group) <.. (View Group Members) : <<extends>>
+(View Group) <.. (View Group Settings) : <<extends>>
+
+Admin -- (Manage Group Settings)
+Admin -- (Manage Group Members)
+Admin -- (Manage Group Posts)
+Admin -- (Manage Group Roles)
+Admin -- (Kick Group Member)
+Admin -- (Remove Moderator Role)
+Admin -- (Assign Moderator Role)
+
+Admin -- (Create Post)
+Admin -- (Generate Group Invites)
+Admin -- (View Group Posts)
+Admin -- (View Group Roles)
+Admin -- (Filter Group Posts)
+Admin -- (Search Group Posts)
+Admin -- (View Group)
+
+Moderator -- (Manage Group Settings)
+Moderator -- (Manage Group Members)
+Moderator -- (Manage Group Posts)
+Moderator -- (Manage Group Roles)
+
+Moderator -- (Create Post)
+Moderator -- (Generate Group Invites)
+Moderator -- (View Group Posts)
+Moderator -- (View Group Roles)
+Moderator -- (Filter Group Posts)
+Moderator -- (Search Group Posts)
+Moderator -- (View Group)
+
+(Manage Group Members) <.. (Manage Group Invites) : <<extends>>
+(Manage Group Members) <.. (Ban Group Members) : <<extends>>
+(Manage Group Members) <.. (Unban Group Members) : <<extends>>
+(Manage Group Members) <.. (Timeout Group Members) : <<extends>>
+(Manage Group Members) <.. (Untimeout Group Members) : <<extends>>
+
+(Manage Group Invites) <.. (Accept Invite) : <<extends>>
+(Manage Group Invites) <.. (Decline Invite) : <<extends>>
+
+(Manage Group Roles) <.. (Create Custom Role) : <<extends>>
+(Manage Group Roles) <.. (Edit Custom Role) : <<extends>>
+(Manage Group Roles) <.. (Delete Custom Role) : <<extends>>
+(Manage Group Roles) <.. (Assign Custom Role) : <<extends>>
+
+(Manage Group Posts) <.. (Delete Post) : <<extends>>
+(Manage Group Posts) <.. (Hide Post) : <<extends>>
+(Manage Group Posts) <.. (Unhide Post) : <<extends>>
+
+GroupMember -- (Create Post)
+GroupMember -- (Generate Group Invites)
+GroupMember -- (View Group Posts)
+GroupMember -- (View Group Roles)
+GroupMember -- (Filter Group Posts)
+GroupMember -- (Search Group Posts)
+GroupMember -- (View Group)
+
+(Create Post) <.. (Create Poll) : <<extends>>
+(Create Post) <.. (Edit Created Post) : <<extends>>
+(Edit Created Post) <.. (Delete Created Post) : <<extends>>
+
+
+@enduml

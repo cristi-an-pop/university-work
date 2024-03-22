@@ -1,0 +1,51 @@
+GROUP:
+	- Any user can create a group.
+	- Users must be able to create groups individually. Only one user should have the authority to create a group ensuring accountability and hierarchy.
+	- Each group can accommodate multiple users, allowing collaboration and communication among members.
+	- Groups must support the assignment of different roles to members: admin, moderator, user, custom roles used only for decoration.
+	- Users with administrative privileges should be able to configure and manage group settings, including privacy options, and other relevant parameters (group size, group entry password, group name, group profile picture).
+	- Each group should have a general feed where members can post and share content. This feed must include filtering options based on tags (user defined tags or automatically generated ones), allowing users to customize their viewing experience.
+	- Groups include a setting to change the default right to make posts (on by default, can be turned off for everybody except the admin and then specifically assigned to members)
+	- Group settings:
+		- max group size
+		- max posts per period of time for user
+		- group icon
+		- group name
+		- group visibility (private, public)
+
+GROUP MEMBER:
+	- Member must have one of the following roles:
+		- admin:
+			- automatically assigned to the creator of the group
+			- can modify roles
+			- can create new decorative roles
+			- can remove, invite (regardless of group visibility), ban users
+			- can delete, hide posts
+			- can mute, cooldown users
+			- can give group members the right to posting (if not already available)
+			- can take away the right to post
+			- modify group settings
+			- delete group
+			- approve group invite applications
+		- moderator:
+			- all admin powers except: delete group, kick users, demote other moderators, make moderators
+		- user:
+			- can create posts (if right is enabled)
+			- can invite if group visibility is public (invite must be approved by moderator or above)
+	- Members must be able to create posts whithin the group if given the right to.
+	- Members have a personal feed of group posts that they are able to filter based on tags (user defined tags or automatically generated ones), allowing them to customize their viewing experience.
+	
+GROUP FEED:
+	- Group feeds can be filtered based on tags (user defined tags or automatically generated ones), allowing users to customize their viewing experience.
+	- Group feeds contain multiple posts.
+	
+GROUP POST:
+	- Group posts have tags that can either be user defined on creation or automatically categorized based on the post content. A post containing a video will automatically receive the Video tag.
+	- Posts can be pinned by users with administrative privileges to the top of the feed.
+	
+POLL:
+	- Polls are either single or multiple-choice.
+	- Polls have a Time-to-Live (TTL) feature, allowing administrators to set an expiry date/time for each poll.
+	- The platform must include the capability to create paid polls, enabling users to charge in user score for participation or access to poll results.
+	- There should be an option to restrict poll result visibility, allowing only voters to view the outcome.
+	- The system should support both live and non-live (static) polling formats, accommodating real-time interactions as well as pre-scheduled or archived polls.
