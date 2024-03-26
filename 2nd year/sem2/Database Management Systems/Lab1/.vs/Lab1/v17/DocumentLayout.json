@@ -1,0 +1,102 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\ubb\\university-work\\2nd year\\sem2\\Database Management Systems\\Lab1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C92943C2-5AE9-4E98-87AD-5B3424EDDFCC}|Lab1\\Lab1.csproj|d:\\ubb\\university-work\\2nd year\\sem2\\database management systems\\lab1\\lab1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C92943C2-5AE9-4E98-87AD-5B3424EDDFCC}|Lab1\\Lab1.csproj|solutionrelative:lab1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C92943C2-5AE9-4E98-87AD-5B3424EDDFCC}|Lab1\\Lab1.csproj|D:\\ubb\\university-work\\2nd year\\sem2\\Database Management Systems\\Lab1\\lab1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C92943C2-5AE9-4E98-87AD-5B3424EDDFCC}|Lab1\\Lab1.csproj|solutionrelative:lab1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C92943C2-5AE9-4E98-87AD-5B3424EDDFCC}|Lab1\\Lab1.csproj|D:\\ubb\\university-work\\2nd year\\sem2\\Database Management Systems\\Lab1\\lab1\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C92943C2-5AE9-4E98-87AD-5B3424EDDFCC}|Lab1\\Lab1.csproj|solutionrelative:lab1\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C92943C2-5AE9-4E98-87AD-5B3424EDDFCC}|Lab1\\Lab1.csproj|D:\\ubb\\university-work\\2nd year\\sem2\\Database Management Systems\\Lab1\\lab1\\form1.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}",
+      "RelativeMoniker": "D:0:0:{C92943C2-5AE9-4E98-87AD-5B3424EDDFCC}|Lab1\\Lab1.csproj|solutionrelative:lab1\\form1.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C92943C2-5AE9-4E98-87AD-5B3424EDDFCC}|Lab1\\Lab1.csproj|D:\\ubb\\university-work\\2nd year\\sem2\\Database Management Systems\\Lab1\\lab1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C92943C2-5AE9-4E98-87AD-5B3424EDDFCC}|Lab1\\Lab1.csproj|solutionrelative:lab1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.Designer.cs",
+              "DocumentMoniker": "D:\\ubb\\university-work\\2nd year\\sem2\\Database Management Systems\\Lab1\\Lab1\\Form1.Designer.cs",
+              "RelativeDocumentMoniker": "Lab1\\Form1.Designer.cs",
+              "ToolTip": "D:\\ubb\\university-work\\2nd year\\sem2\\Database Management Systems\\Lab1\\Lab1\\Form1.Designer.cs",
+              "RelativeToolTip": "Lab1\\Form1.Designer.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFMAAAA9AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-22T16:34:31.926Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Form1.resx",
+              "DocumentMoniker": "D:\\ubb\\university-work\\2nd year\\sem2\\Database Management Systems\\Lab1\\Lab1\\Form1.resx",
+              "RelativeDocumentMoniker": "Lab1\\Form1.resx",
+              "ToolTip": "D:\\ubb\\university-work\\2nd year\\sem2\\Database Management Systems\\Lab1\\Lab1\\Form1.resx",
+              "RelativeToolTip": "Lab1\\Form1.resx",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2024-03-22T16:28:55.928Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\ubb\\university-work\\2nd year\\sem2\\Database Management Systems\\Lab1\\Lab1\\Program.cs",
+              "RelativeDocumentMoniker": "Lab1\\Program.cs",
+              "ToolTip": "D:\\ubb\\university-work\\2nd year\\sem2\\Database Management Systems\\Lab1\\Lab1\\Program.cs",
+              "RelativeToolTip": "Lab1\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-22T16:27:10.455Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "D:\\ubb\\university-work\\2nd year\\sem2\\Database Management Systems\\Lab1\\Lab1\\Form1.cs",
+              "RelativeDocumentMoniker": "Lab1\\Form1.cs",
+              "ToolTip": "D:\\ubb\\university-work\\2nd year\\sem2\\Database Management Systems\\Lab1\\Lab1\\Form1.cs",
+              "RelativeToolTip": "Lab1\\Form1.cs",
+              "ViewState": "AQIAABgAAAAAAAAAAAAowCkAAAA5AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-22T16:26:53.245Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "D:\\ubb\\university-work\\2nd year\\sem2\\Database Management Systems\\Lab1\\Lab1\\Form1.cs",
+              "RelativeDocumentMoniker": "Lab1\\Form1.cs",
+              "ToolTip": "D:\\ubb\\university-work\\2nd year\\sem2\\Database Management Systems\\Lab1\\Lab1\\Form1.cs [Design]",
+              "RelativeToolTip": "Lab1\\Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-22T16:21:16.996Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
