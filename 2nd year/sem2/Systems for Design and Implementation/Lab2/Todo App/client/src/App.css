@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.lists-container {
+  width: 100%;
+}
+
+.lists-container h2 {
+  margin-bottom: 3em;
+}
+
+.list-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+.form-input {
+  padding: 0.5em;
+  height: 2.5em;
+  margin-right: 1em;
+  border-radius: 8px;
+  border: 1px solid #444;
+  margin-bottom: 1em;
+}
+
+.lists {
+  margin-top: 0.5em;
+  background-color: #444;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.lists ul {
+  list-style: none;
+  padding: 0;
+}
+
+.list-item-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+  border-radius: 8px;
+  min-width: 30em;
+  margin-bottom: 0.5em;
+
+}
+
+.list-item-container a{
+  width: 100%;
+  text-align: left;
+}
+
+.list-item-cotainer input {
+  margin-right: 0.5em;
+}
+
+.p-style {
+  padding: 0.5em;
+  font-weight: 700;
+}
+
+label span {
+  font-weight: 500;
+  margin-left: 0.5em;
+}
+
+.tasks-container h2 {
+  margin-bottom: 1em;
+}
+
+.lists-container h1 { 
+  margin-bottom: 0.7em;
+}
+
+.lists-container form input {
+  width: 100%;
+}
+
+.cool-btn {
+  margin-right: 0.5em;  
+}
