@@ -34,7 +34,7 @@ function App() {
         />
         <Route
           path="/lists/:id"
-          element={<TasksPage lists={lists} setLists={setLists} />}
+          element={<TasksPage />}
         />
       </Routes>
     </Router>

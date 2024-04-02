@@ -13,14 +13,10 @@ interface Task {
     dateTime: string;
 }
 
-interface Props {
-    lists: List[];
-    setLists: React.Dispatch<React.SetStateAction<List[]>>;
-}
-
-function TasksPage({ lists, setLists }: Props) {
+function TasksPage() {
     const [isLoading, setIsLoading] = useState(true);
     const [selectedListId, setSelectedListId] = useState<string | null>(null);
+    const [selectedList, setSelectedList] = useState<List | null>(null);
 
     const [newTaskName, setNewTaskName] = useState('');
     const [newTaskDateTime, setNewTaskDateTime] = useState('');
@@ -28,7 +24,7 @@ function TasksPage({ lists, setLists }: Props) {
     const [filterCompleted, setFilterCompleted] = useState(false);
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/selectedListId')
+        fetch('http://localhost:5000/api/lists/selectedListId')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -37,41 +33,39 @@ function TasksPage({ lists, setLists }: Props) {
         })
         .then(data => {
             setSelectedListId(data);
+    
+            // Fetch the selected list after the selectedListId is set
+            return fetch(`http://localhost:5000/api/lists/${data}`);
+        })
+        .then(response => response.json())
+        .then(data => {
+            setSelectedList(data);
         })
         .catch((error) => {
             console.error('Error:', error);
+        })
+        .finally(() => {
+            setIsLoading(false);
         });
-    
-        fetch('http://localhost:5000/api/lists')
-          .then(response => response.json())
-          .then(data => {
-            setLists(data);
-            setIsLoading(false);
-          })
-          .catch(error => {
-            console.error('Error:', error);
-            setIsLoading(false);
-          });
     }, []);
 
     if (isLoading) {
         return <div>Loading...</div>;
     }
 
-    const selectedList = lists.find((list) => list.id === selectedListId);
     if (!selectedList) return <div>Selected list not found</div>;
 
     const handleNewTaskSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (!newTaskName.trim() || !newTaskDateTime.trim()) return;
-
+    
         const newTask: Task = {
             id: Date.now().toString(),
             name: newTaskName,
             completed: false,
             dateTime: newTaskDateTime,
         };
-
+    
         fetch(`http://localhost:5000/api/lists/${selectedListId}/tasks`, {
             method: 'POST',
             headers: {
@@ -82,32 +76,37 @@ function TasksPage({ lists, setLists }: Props) {
             .then(response => response.json())
             .then(data => {
                 console.log('Success:', data);
+                const updatedList = { ...selectedList };
+                updatedList.tasks.push(newTask);
+                setSelectedList(updatedList);
+                setNewTaskName('');
+                setNewTaskDateTime('');
             })
             .catch((error) => {
                 console.error('Error on Task Add:', error);
             });
-
-        const updatedLists = lists.map((list) => {
-            if (list.id === selectedListId) {
-                list.tasks.push(newTask);
-            }
-            return list;
-        });
-        setLists(updatedLists);
-        setNewTaskName('');
-        setNewTaskDateTime('');
     };
 
     const handleTaskCheckboxChange = (taskId: string) => {
-        const updatedLists = lists.map((list) => {
-            if (list.id === selectedListId) {
-                list.tasks = list.tasks.map((task) =>
-                    task.id === taskId ? { ...task, completed: !task.completed } : task
-                );
+        const updatedList = { ...selectedList };
+        const task = updatedList.tasks.find((task) => task.id === taskId);
+        if (!task) return;
+        task.completed = !task.completed;
+    
+        fetch(`http://localhost:5000/api/lists/${selectedListId}/tasks/${taskId}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(task),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
             }
-            return list;
-        });
-        setLists(updatedLists);
+            setSelectedList(updatedList);
+        })
+        .catch(error => console.error('Error on Task Update:', error));
     };
 
     const handleDeleteTask = (taskId: string) => {
@@ -118,26 +117,35 @@ function TasksPage({ lists, setLists }: Props) {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
+            const updatedList = { ...selectedList };
+            updatedList.tasks = updatedList.tasks.filter((task) => task.id !== taskId);
+            setSelectedList(updatedList);
         })
         .catch(error => console.error('Error on Task Delete:', error));
-
-        const updatedLists = lists.map((list) => {
-            if (list.id === selectedListId) {
-                list.tasks = list.tasks.filter((task) => task.id !== taskId);
-            }
-            return list;
-        });
-        setLists(updatedLists);
     };
 
     const handleDeleteCompletedTasks = () => {
-        const updatedLists = lists.map((list) => {
-            if (list.id === selectedListId) {
-                list.tasks = list.tasks.filter((task) => !task.completed);
+        const completedTasks = selectedList.tasks.filter(task => task.completed);
+        const completedTaskIds = completedTasks.map(task => task.id);
+    
+        Promise.all(completedTaskIds.map(taskId => 
+            fetch(`http://localhost:5000/api/lists/${selectedListId}/tasks/${taskId}`, {
+                method: 'DELETE',
+            })
+        ))
+        .then(responses => {
+            // Check if all responses are ok
+            for(let response of responses) {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
             }
-            return list;
-        });
-        setLists(updatedLists);
+            // Update the state
+            const updatedList = { ...selectedList };
+            updatedList.tasks = updatedList.tasks.filter((task) => !task.completed);
+            setSelectedList(updatedList);
+        })
+        .catch(error => console.error('Error on Completed Tasks Delete:', error));
     };
 
     const remainingTasksCount = selectedList.tasks.filter((task) => !task.completed).length;

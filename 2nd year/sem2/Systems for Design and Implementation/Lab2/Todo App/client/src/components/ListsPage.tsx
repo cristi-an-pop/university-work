@@ -37,7 +37,7 @@ const ListsPage = ({ lists, setLists }: Props) => {
     })
     .then(response => response.json())
     .then(data => {
-      console.log('Success:', data);
+      window.alert('List added successfully');
       setLists([...lists, data]);
       setNewListName('');
     })
@@ -52,10 +52,12 @@ const ListsPage = ({ lists, setLists }: Props) => {
     })
     .then(response => {
       if(!response.ok) {
+        window.alert('Error deleting list')
         throw new Error('Network response was not ok');
       }
       // Remove the list from the local state
       setLists(lists.filter(list => list.id !== id));
+      window.alert('List deleted successfully');
     })
     .catch(error => console.error('Error on List Delete:', error));
   };
@@ -65,7 +67,7 @@ const ListsPage = ({ lists, setLists }: Props) => {
     if (!listName?.trim()) return;
     const updatedList = { ...lists.find(list => list.id === id), name: listName };
     fetch(`http://localhost:5000/api/lists/${id}`, {
-      method: 'PUT',
+      method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -73,8 +75,10 @@ const ListsPage = ({ lists, setLists }: Props) => {
     })
     .then(response => {
       if(!response.ok) {
+        window.alert('Error updating list');
         throw new Error('Network response was not ok');
       }
+      window.alert('List updated successfully');
       return response.json();
     })
     .then(updatedList => {
@@ -117,7 +121,7 @@ const ListsPage = ({ lists, setLists }: Props) => {
   }
 
   const handleListSelect = (id: string) => {
-    fetch('http://localhost:5000/api/selectedListId', {
+    fetch('http://localhost:5000/api/lists/selectedListId', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
