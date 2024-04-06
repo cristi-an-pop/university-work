@@ -13,7 +13,12 @@
   #slider-container {
     position: relative;
     overflow: hidden;
-    height: 100vh;
+    height: 80vh; /* Adjusted height */
+    width: 80%; /* Adjusted width */
+    margin: auto; /* Center horizontally */
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   #slider {
     white-space: nowrap;
@@ -24,6 +29,10 @@
   .slider-image {
     display: inline-block;
     cursor: pointer;
+    max-height: 100%;
+    max-width: 100%;
+    vertical-align: middle;
+    object-fit: cover; /* Ensure the image fills its container */
   }
   #lightbox {
     display: none;
@@ -49,7 +58,7 @@
   <div id="slider">
     <img class="slider-image" src="./images/image1.jpg" alt="Image 1">
     <img class="slider-image" src="./images/image2.jpg" alt="Image 2">
-    <!-- Add more images as needed -->
+    <img class="slider-image" src="./images/image3.jpg" alt="Image 3">
   </div>
 </div>
 
@@ -62,18 +71,19 @@
     var images = $('.slider-image');
     var lightbox = $('#lightbox');
     var isPaused = false;
+    
+    // Duplicate images to ensure continuous sliding
+    images.clone().appendTo(slider);
 
     function slide() {
-      if (!isPaused) {
-        slider.animate({marginLeft: '-=1%'}, 50, 'linear', function() {
-          var firstImage = images.first();
-          if (firstImage.offset().left + firstImage.outerWidth(true) < 0) {
-            firstImage.appendTo(slider);
-            slider.css('margin-left', 0);
-          }
-          slide();
-        });
-      }
+        if (!isPaused) {
+            slider.animate({marginLeft: '-=1%'}, 50, 'linear', function() {
+                if (slider.offset().left + slider.outerWidth(true) < 0) {
+                    slider.css('margin-left', 0);
+                }
+                slide();
+            });
+        }
     }
 
     // Start sliding
@@ -81,17 +91,18 @@
 
     // Pause sliding when an image is clicked
     images.on('click', function() {
-      isPaused = true;
-      var clickedImage = $(this).clone();
-      lightbox.html(clickedImage).fadeIn();
+        isPaused = true;
+        var clickedImage = $(this).clone();
+        lightbox.html(clickedImage).fadeIn();
     });
 
     // Resume sliding when the lightbox is clicked
     lightbox.on('click', function() {
-      isPaused = false;
-      lightbox.fadeOut();
+        isPaused = false;
+        lightbox.fadeOut();
+        slide();
     });
-  });
+});
 </script>
 
 </body>
