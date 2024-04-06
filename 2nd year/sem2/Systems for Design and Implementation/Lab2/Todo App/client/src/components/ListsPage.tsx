@@ -1,24 +1,30 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { List } from '../types/ListType';
+import axios from 'axios';
+import { useListsStore } from '../Store';
 
-interface Props {
-    lists: List[],
-    setLists: React.Dispatch<React.SetStateAction<any[]>>,
-}
-
-interface List {
-    id: string,
-    name: string,
-    tasks: any[]
-}
-
-const ListsPage = ({ lists, setLists }: Props) => {
+const ListsPage = () => {
   const [newListName, setNewListName] = useState('');
   const [selectedLists, setSelectedLists] = useState<string[]>([]);
+  const { lists, setLists } = useListsStore(state => ({ lists: state.lists, setLists: state.setLists }));
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    localStorage.setItem('lists', JSON.stringify(lists));
-  }, [lists]);
+    axios.get('http://localhost:5000/api/lists')
+      .then(response => {
+        setLists(response.data);
+        setIsLoading(false);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        setIsLoading(false);
+      });
+  }, []);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   const handleNewListSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -28,23 +34,21 @@ const ListsPage = ({ lists, setLists }: Props) => {
         name: newListName,
         tasks: []
     };
-    fetch('http://localhost:5000/api/lists', {
-      method: 'POST',
+  
+    axios.post('http://localhost:5000/api/lists', newList, {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(newList),
     })
-    .then(response => response.json())
-    .then(data => {
+    .then(response => {
       window.alert('List added successfully');
-      setLists([...lists, data]);
+      setLists([...lists, response.data]);
       setNewListName('');
     })
     .catch((error) => {
       console.error('Error on List Add:', error);
     });
-  };
+};
 
   const handleListDelete = (id: string) => () => {
     fetch(`http://localhost:5000/api/lists/${id}`, {
@@ -55,7 +59,6 @@ const ListsPage = ({ lists, setLists }: Props) => {
         window.alert('Error deleting list')
         throw new Error('Network response was not ok');
       }
-      // Remove the list from the local state
       setLists(lists.filter(list => list.id !== id));
       window.alert('List deleted successfully');
     })
@@ -120,25 +123,6 @@ const ListsPage = ({ lists, setLists }: Props) => {
     URL.revokeObjectURL(url);
   }
 
-  const handleListSelect = (id: string) => {
-    fetch('http://localhost:5000/api/lists/selectedListId', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ id }),
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      console.log('Selected list ID saved successfully');
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-  }
-
   return (
     <div className="lists-container">
       <h1>Todo Lists</h1>
@@ -162,7 +146,7 @@ const ListsPage = ({ lists, setLists }: Props) => {
                   type="checkbox" 
                   onChange={() => handleListCheckboxChange(list.id)}
                   />
-                <Link to={'/lists/' + list.id} onClick={() => handleListSelect(list.id)}>
+                <Link to={'/lists/' + list.id}>
                   {list.name}
                 </Link>
                 <button className="cool-btn" type="button" onClick={handleExportList(list.id)}>Export</button>

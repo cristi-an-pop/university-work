@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Horizontal Image Slider</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  #slider-container {
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+  }
+  #slider {
+    white-space: nowrap;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .slider-image {
+    display: inline-block;
+    cursor: pointer;
+  }
+  #lightbox {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.7);
+    text-align: center;
+    padding: 20px;
+  }
+  #lightbox img {
+    max-width: 80%;
+    max-height: 80%;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<div id="slider-container">
+  <div id="slider">
+    <img class="slider-image" src="./images/image1.jpg" alt="Image 1">
+    <img class="slider-image" src="./images/image2.jpg" alt="Image 2">
+    <!-- Add more images as needed -->
+  </div>
+</div>
+
+<div id="lightbox"></div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    var slider = $('#slider');
+    var images = $('.slider-image');
+    var lightbox = $('#lightbox');
+    var isPaused = false;
+
+    function slide() {
+      if (!isPaused) {
+        slider.animate({marginLeft: '-=1%'}, 50, 'linear', function() {
+          var firstImage = images.first();
+          if (firstImage.offset().left + firstImage.outerWidth(true) < 0) {
+            firstImage.appendTo(slider);
+            slider.css('margin-left', 0);
+          }
+          slide();
+        });
+      }
+    }
+
+    // Start sliding
+    slide();
+
+    // Pause sliding when an image is clicked
+    images.on('click', function() {
+      isPaused = true;
+      var clickedImage = $(this).clone();
+      lightbox.html(clickedImage).fadeIn();
+    });
+
+    // Resume sliding when the lightbox is clicked
+    lightbox.on('click', function() {
+      isPaused = false;
+      lightbox.fadeOut();
+    });
+  });
+</script>
+
+</body>
+</html>
