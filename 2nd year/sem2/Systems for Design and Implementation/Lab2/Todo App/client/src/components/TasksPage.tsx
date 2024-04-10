@@ -12,7 +12,6 @@ function TasksPage() {
     const [filterDateTime, setFilterDateTime] = useState('');
     const [filterCompleted, setFilterCompleted] = useState(false);
     const [selectedList, setSelectedList] = useState<List | null>(null);
-    const [error, setError] = useState<string | null>(null);
     const { getAxiosInstance } = useAxiosStore(state => ({ getAxiosInstance: state.getAxiosInstance }));
 
     useEffect(() => {
@@ -24,7 +23,6 @@ function TasksPage() {
             } catch (error) {
                 console.error('Error:', error);
                 setIsLoading(false);
-                setError('Failed to fetch tasks. Please try again later.'); // Set error message
             }
         };
 
@@ -50,7 +48,7 @@ function TasksPage() {
 
         getAxiosInstance()
         .post(`/lists/${id}/tasks`, newTask)
-        .then(response => {
+        .then(() => {
             window.alert('Task added successfully');
             const updatedList = { ...selectedList };
             updatedList.tasks.push(newTask);

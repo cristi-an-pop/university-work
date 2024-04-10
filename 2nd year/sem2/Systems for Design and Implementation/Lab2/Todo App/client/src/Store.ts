@@ -10,7 +10,7 @@ type ListsStore = {
 
 export const useListsStore = create<ListsStore>()(
   persist(
-    (set, get) => ({
+    (set) => ({
       lists: [],
       setLists: (lists: List[]) => set({ lists }),
     }),
