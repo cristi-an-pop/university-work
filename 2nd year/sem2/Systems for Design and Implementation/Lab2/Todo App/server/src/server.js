@@ -28,17 +28,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/', listsRouter);
 
-// Socket.IO connection handler
 io.on('connection', (socket) => {
   console.log('New client connected');
 
-  // Handle disconnect event
   socket.on('disconnect', () => {
     console.log('Client disconnected');
   });
 });
 
-// Function to create a new list and emit it to connected clients
 const createNewList = () => {
   const newList = {
     id: Date.now().toString(),
@@ -49,8 +46,7 @@ const createNewList = () => {
   io.emit('newList', newList);
 }
 
-// Cron job to create a new list every 10 seconds
-cron.schedule('*/15 * * * * *', () => {
+cron.schedule('*/30 * * * * *', () => {
   createNewList();
 });
 
