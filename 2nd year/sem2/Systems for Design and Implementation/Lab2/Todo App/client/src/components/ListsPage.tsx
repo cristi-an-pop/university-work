@@ -1,14 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { List } from '../types/ListType';
 import axios from 'axios';
-import { useListsStore } from '../Store';
+import { useListsStore, useAxiosStore } from '../Store';
+import io from 'socket.io-client';
 
 const ListsPage = () => {
   const [newListName, setNewListName] = useState('');
   const [selectedLists, setSelectedLists] = useState<string[]>([]);
   const { lists, setLists } = useListsStore(state => ({ lists: state.lists, setLists: state.setLists }));
   const [isLoading, setIsLoading] = useState(true);
+  const socketInstance = useRef<WebSocket>();
+  const { getAxiosInstance } = useAxiosStore(state => ({ getAxiosInstance: state.getAxiosInstance }));
 
   useEffect(() => {
     axios.get('http://localhost:5000/api/lists')
@@ -20,6 +23,33 @@ const ListsPage = () => {
         console.error('Error:', error);
         setIsLoading(false);
       });
+  }, []);
+
+  useEffect(() => {
+    const socket = io('http://localhost:5000');
+
+    socket.on('newList', (newList) => {
+      axios.post('http://localhost:5000/api/lists', newList, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    .then(response => {
+      window.alert('List added successfully');
+      setLists([...lists, response.data]);
+      if(socketInstance.current) {
+        socketInstance.current.send(JSON.stringify(response.data));
+      }
+      setNewListName('');
+    })
+    .catch((error) => {
+      console.error('Error on List Add:', error);
+    });
+    });
+
+    return () => {
+      socket.disconnect();
+    };
   }, []);
 
   if (isLoading) {
@@ -34,13 +64,10 @@ const ListsPage = () => {
         name: newListName,
         tasks: []
     };
-  
-    axios.post('http://localhost:5000/api/lists', newList, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-    .then(response => {
+
+    getAxiosInstance()
+    .post('/lists', newList)
+    .then((response) => {
       window.alert('List added successfully');
       setLists([...lists, response.data]);
       setNewListName('');
@@ -48,46 +75,50 @@ const ListsPage = () => {
     .catch((error) => {
       console.error('Error on List Add:', error);
     });
+  
+    // axios.post('http://localhost:5000/api/lists', newList, {
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    // })
+    // .then(response => {
+    //   window.alert('List added successfully');
+    //   setLists([...lists, response.data]);
+    //   if(socketInstance.current) {
+    //     socketInstance.current.send(JSON.stringify(response.data));
+    //   }
+    //   setNewListName('');
+    // })
+    // .catch((error) => {
+    //   console.error('Error on List Add:', error);
+    // });
 };
 
   const handleListDelete = (id: string) => () => {
-    fetch(`http://localhost:5000/api/lists/${id}`, {
-      method: 'DELETE',
-    })
-    .then(response => {
-      if(!response.ok) {
-        window.alert('Error deleting list')
-        throw new Error('Network response was not ok');
-      }
-      setLists(lists.filter(list => list.id !== id));
+    getAxiosInstance()
+    .delete(`/lists/${id}`)
+    .then(() => {
       window.alert('List deleted successfully');
+      setLists(lists.filter(list => list.id !== id));
     })
-    .catch(error => console.error('Error on List Delete:', error));
+    .catch((error) => {
+      console.error('Error on delete:', error);
+    });
   };
 
   const handleListEdit = (id: string) => () => {
     const listName = prompt('Enter new list name');
     if (!listName?.trim()) return;
     const updatedList = { ...lists.find(list => list.id === id), name: listName };
-    fetch(`http://localhost:5000/api/lists/${id}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(updatedList),
-    })
-    .then(response => {
-      if(!response.ok) {
-        window.alert('Error updating list');
-        throw new Error('Network response was not ok');
-      }
+    getAxiosInstance()
+    .patch(`/lists/${id}`, updatedList)
+    .then((response) => {
       window.alert('List updated successfully');
-      return response.json();
+      setLists(lists.map(list => list.id === id ? response.data : list));
     })
-    .then(updatedList => {
-      setLists(lists.map(list => list.id === id ? updatedList : list));
-    })
-    .catch(error => console.error('Error on update:', error));
+    .catch((error) => {
+      console.error('Error on update:', error);
+    });
   };
 
   const handleExportList = (id: string) => () => {

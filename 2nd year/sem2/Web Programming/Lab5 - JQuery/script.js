@@ -1,35 +1,34 @@
 $(document).ready(function() {
-    var slider = $('#slider');
-    var images = $('.slider-image');
-    var lightbox = $('#lightbox');
-    var isPaused = false;
+  var slider = $('#slider');
+  var images = $('.slider-image');
+  var lightbox = $('#lightbox');
+  var isPaused = false;
+  
+  images.clone().appendTo(slider);
 
-    function slide() {
+  function slide() {
       if (!isPaused) {
-        slider.animate({marginLeft: '-=5%'}, 50, 'linear', function() {
-          var firstImage = images.first();
-          if (firstImage.offset().left + firstImage.outerWidth(true) < 0) {
-            firstImage.appendTo(slider);
-            slider.css('margin-left', 0);
-          }
-          slide();
-        });
+          slider.animate({marginLeft: '-=1%'}, 50, 'linear', function() {
+              if (slider.offset().left + slider.outerWidth(true) < 0) {
+                  slider.css('margin-left', 0);
+              }
+              slide();
+          });
       }
-    }
+  }
 
-    // Start sliding
-    slide();
 
-    // Pause sliding when an image is clicked
-    images.on('click', function() {
+  slide();
+
+  slider.on('click', function() {
       isPaused = true;
       var clickedImage = $(this).clone();
       lightbox.html(clickedImage).fadeIn();
-    });
+  });
 
-    // Resume sliding when the lightbox is clicked
-    lightbox.on('click', function() {
+  lightbox.on('click', function() {
       isPaused = false;
       lightbox.fadeOut();
-    });
+      slide();
   });
+});

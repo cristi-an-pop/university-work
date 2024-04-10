@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { List, Task } from '../types/ListType';
 import axios from 'axios';
+import { useAxiosStore } from '../Store';
 
 function TasksPage() {
     const { id } = useParams<{ id: string }>();
@@ -11,18 +12,24 @@ function TasksPage() {
     const [filterDateTime, setFilterDateTime] = useState('');
     const [filterCompleted, setFilterCompleted] = useState(false);
     const [selectedList, setSelectedList] = useState<List | null>(null);
+    const [error, setError] = useState<string | null>(null);
+    const { getAxiosInstance } = useAxiosStore(state => ({ getAxiosInstance: state.getAxiosInstance }));
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/api/lists/${id}`)
-        .then(response => {
-            setSelectedList(response.data);
-            setIsLoading(false);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            setIsLoading(false);
-        });
-    }, [id])
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`http://localhost:5000/api/lists/${id}`);
+                setSelectedList(response.data);
+                setIsLoading(false);
+            } catch (error) {
+                console.error('Error:', error);
+                setIsLoading(false);
+                setError('Failed to fetch tasks. Please try again later.'); // Set error message
+            }
+        };
+
+        fetchData();
+    }, [id]);
 
     if (isLoading) {
         return <div>Loading...</div>;
@@ -40,14 +47,11 @@ function TasksPage() {
             completed: false,
             dateTime: newTaskDateTime,
         };
-    
-        axios.post(`http://localhost:5000/api/lists/${id}/tasks`, newTask, {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
+
+        getAxiosInstance()
+        .post(`/lists/${id}/tasks`, newTask)
         .then(response => {
-            console.log('Success:', response.data);
+            window.alert('Task added successfully');
             const updatedList = { ...selectedList };
             updatedList.tasks.push(newTask);
             setSelectedList(updatedList);
@@ -57,6 +61,23 @@ function TasksPage() {
         .catch((error) => {
             console.error('Error on Task Add:', error);
         });
+    
+        // axios.post(`http://localhost:5000/api/lists/${id}/tasks`, newTask, {
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        // })
+        // .then(response => {
+        //     console.log('Success:', response.data);
+        //     const updatedList = { ...selectedList };
+        //     updatedList.tasks.push(newTask);
+        //     setSelectedList(updatedList);
+        //     setNewTaskName('');
+        //     setNewTaskDateTime('');
+        // })
+        // .catch((error) => {
+        //     console.error('Error on Task Add:', error);
+        // });
     };
 
     const handleTaskCheckboxChange = (taskId: string) => {
@@ -64,9 +85,11 @@ function TasksPage() {
         const task = updatedList.tasks.find((task) => task.id === taskId);
         if (!task) return;
         task.completed = !task.completed;
-    
-        axios.patch(`http://localhost:5000/api/lists/${id}/tasks/${taskId}`, task)
+
+        getAxiosInstance()
+        .patch(`/lists/${id}/tasks/${taskId}`, task)
         .then(response => {
+            window.alert('Task updated successfully');
             setSelectedList(updatedList);
             return response;
         })
@@ -74,8 +97,10 @@ function TasksPage() {
     };
 
     const handleDeleteTask = (taskId: string) => {
-        axios.delete(`http://localhost:5000/api/lists/${id}/tasks/${taskId}`)
+        getAxiosInstance()
+        .delete(`/lists/${id}/tasks/${taskId}`)
         .then(response => {
+            window.alert('Task deleted successfully');
             const updatedList = { ...selectedList };
             updatedList.tasks = updatedList.tasks.filter((task) => task.id !== taskId);
             setSelectedList(updatedList);

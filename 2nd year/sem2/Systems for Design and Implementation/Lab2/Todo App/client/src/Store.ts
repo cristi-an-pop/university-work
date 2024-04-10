@@ -1,76 +1,70 @@
 import { create } from "zustand";
-import { List, Task } from "./types/ListType";
+import { createJSONStorage, persist } from "zustand/middleware";
+import { List } from "./types/ListType";
+import axios, { AxiosInstance } from "axios";
 
 type ListsStore = {
   lists: List[];
   setLists: (lists: List[]) => void;
-  addList: (name: string) => void;
-  editList: (id: string, name: string) => void;
-  addTask: (list: List, task: Task) => void;
-  editTask: (
-    listId: string,
-    taskId: string,
-    name: string,
-    completed: boolean
-  ) => void;
-  deleteTask: (listId: string, taskId: string) => void;
 };
 
-export const useListsStore = create<ListsStore>((set) => ({
-  lists: [],
-  setLists: (lists) => set({ lists }),
-  addList: (name) => {
-    set((state) => {
-      const newList: List = {
-        id: Date.now().toString(),
-        name,
-        tasks: [],
-      };
-      return { lists: [...state.lists, newList] };
-    });
-  },
-  editList: (id, name) => {
-    set((state) => {
-      const updatedLists = state.lists.map((list) =>
-        list.id === id ? { ...list, name } : list
-      );
-      return { lists: updatedLists };
-    });
-  },
-  addTask: (list, task) => {
-    set((state) => {
-      const updatedLists = state.lists.map((l) =>
-        l.id === list.id ? { ...l, tasks: [...l.tasks, task] } : l
-      );
-      return { lists: updatedLists };
-    });
-  },
-  editTask: (listId, taskId, name, completed) => {
-    set((state) => {
-      const updatedLists = state.lists.map((list) =>
-        list.id === listId
-          ? {
-              ...list,
-              tasks: list.tasks.map((task) =>
-                task.id === taskId ? { ...task, name, completed } : task
-              ),
-            }
-          : list
-      );
-      return { lists: updatedLists };
-    });
-  },
-  deleteTask: (listId, taskId) => {
-    set((state) => {
-      const updatedLists = state.lists.map((list) =>
-        list.id === listId
-          ? {
-              ...list,
-              tasks: list.tasks.filter((task) => task.id !== taskId),
-            }
-          : list
-      );
-      return { lists: updatedLists };
-    });
-  },
-}));
+export const useListsStore = create<ListsStore>()(
+  persist(
+    (set, get) => ({
+      lists: [],
+      setLists: (lists: List[]) => set({ lists }),
+    }),
+    {
+      name: "lists-storage",
+      storage: createJSONStorage(() => localStorage),
+    }
+  )
+);
+
+interface AxiosState {
+  axiosConnection: AxiosInstance;
+  getAxiosInstance: () => AxiosInstance;
+}
+
+export const useAxiosStore = create<AxiosState>()((set, get) => {
+  const instance = axios.create({
+    baseURL: "http://localhost:5000/api",
+  });
+  instance.interceptors.request.use(
+    (config) => {
+      return config;
+    },
+    (error) => {
+      if (error.code === "ERR_NETWORK") {
+        console.log(
+          "Network error. The server is not responding. Please try again later"
+        );
+        window.alert(
+          "Network error. The server is not responding. Please try again later"
+        );
+      }
+      return Promise.reject(error);
+    }
+  );
+  instance.interceptors.response.use(
+    (response) => {
+      return response;
+    },
+    (error) => {
+      if (error.code === "ERR_NETWORK") {
+        console.log(
+          "Network error. The server is not responding. Please try again later"
+        );
+        window.alert(
+          "Network error. The server is not responding. Please try again later"
+        );
+      }
+      return Promise.reject(error);
+    }
+  );
+  return {
+    axiosConnection: instance,
+
+    getAxiosInstance: () => get().axiosConnection,
+  };
+});

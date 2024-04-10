@@ -13,10 +13,9 @@
   #slider-container {
     position: relative;
     overflow: hidden;
-    height: 80vh; /* Adjusted height */
-    width: 80%; /* Adjusted width */
-    margin: auto; /* Center horizontally */
-    display: flex;
+    height: 50vh; 
+    width: 90%; /* Adjusted width */
+    margin: auto; 
     justify-content: center;
     align-items: center;
   }
@@ -25,14 +24,15 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    width: 300%; /* Adjusted width */
   }
   .slider-image {
     display: inline-block;
     cursor: pointer;
-    max-height: 100%;
-    max-width: 100%;
+    max-height: 50%;
+    max-width: 800px;
     vertical-align: middle;
-    object-fit: cover; /* Ensure the image fills its container */
+    flex-shrink: 0;
   }
   #lightbox {
     display: none;
@@ -56,9 +56,9 @@
 
 <div id="slider-container">
   <div id="slider">
-    <img class="slider-image" src="./images/image1.jpg" alt="Image 1">
-    <img class="slider-image" src="./images/image2.jpg" alt="Image 2">
     <img class="slider-image" src="./images/image3.jpg" alt="Image 3">
+    <img class="slider-image" src="./images/image4.jpg" alt="Image 4">
+    <img class="slider-image" src="./images/image5.jpg" alt="Image 5">
   </div>
 </div>
 
@@ -68,35 +68,31 @@
 <script>
   $(document).ready(function() {
     var slider = $('#slider');
-    var images = $('.slider-image');
     var lightbox = $('#lightbox');
     var isPaused = false;
-    
-    // Duplicate images to ensure continuous sliding
-    images.clone().appendTo(slider);
 
     function slide() {
         if (!isPaused) {
-            slider.animate({marginLeft: '-=1%'}, 50, 'linear', function() {
-                if (slider.offset().left + slider.outerWidth(true) < 0) {
-                    slider.css('margin-left', 0);
+            slider.animate({marginLeft: '-=5%'}, 500, 'linear', function() {
+                var firstImage = $('.slider-image').first();
+                if (firstImage.offset().left + firstImage.outerWidth(true) < 0) {
+                    firstImage.appendTo(slider);
+                    var firstImageWidthPercentage = (firstImage.outerWidth(true) / slider.outerWidth(true)) * 100;
+                    slider.animate({marginLeft: '+=' + firstImageWidthPercentage + '%'}, 0);
                 }
                 slide();
             });
         }
     }
 
-    // Start sliding
     slide();
 
-    // Pause sliding when an image is clicked
-    images.on('click', function() {
+    slider.on('click', '.slider-image', function() {
         isPaused = true;
         var clickedImage = $(this).clone();
         lightbox.html(clickedImage).fadeIn();
     });
 
-    // Resume sliding when the lightbox is clicked
     lightbox.on('click', function() {
         isPaused = false;
         lightbox.fadeOut();
