@@ -115,13 +115,13 @@ function TasksPage() {
             axios.delete(`http://localhost:5000/api/lists/${id}/tasks/${taskId}`)
         ))
         .then(responses => {
-            // Check if all responses are ok
+    
             for(let response of responses) {
                 if (response.status !== 200) {
                     throw new Error('Network response was not ok');
                 }
             }
-            // Update the state
+   
             const updatedList = { ...selectedList };
             updatedList.tasks = updatedList.tasks.filter((task) => !task.completed);
             setSelectedList(updatedList);
