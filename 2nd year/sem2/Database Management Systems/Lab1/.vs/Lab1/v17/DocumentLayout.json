@@ -7,12 +7,12 @@
       "RelativeMoniker": "D:0:0:{C92943C2-5AE9-4E98-87AD-5B3424EDDFCC}|Lab1\\Lab1.csproj|solutionrelative:lab1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C92943C2-5AE9-4E98-87AD-5B3424EDDFCC}|Lab1\\Lab1.csproj|D:\\ubb\\university-work\\2nd year\\sem2\\Database Management Systems\\Lab1\\lab1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{C92943C2-5AE9-4E98-87AD-5B3424EDDFCC}|Lab1\\Lab1.csproj|solutionrelative:lab1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C92943C2-5AE9-4E98-87AD-5B3424EDDFCC}|Lab1\\Lab1.csproj|D:\\ubb\\university-work\\2nd year\\sem2\\Database Management Systems\\Lab1\\lab1\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C92943C2-5AE9-4E98-87AD-5B3424EDDFCC}|Lab1\\Lab1.csproj|solutionrelative:lab1\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C92943C2-5AE9-4E98-87AD-5B3424EDDFCC}|Lab1\\Lab1.csproj|D:\\ubb\\university-work\\2nd year\\sem2\\Database Management Systems\\Lab1\\lab1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C92943C2-5AE9-4E98-87AD-5B3424EDDFCC}|Lab1\\Lab1.csproj|solutionrelative:lab1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C92943C2-5AE9-4E98-87AD-5B3424EDDFCC}|Lab1\\Lab1.csproj|D:\\ubb\\university-work\\2nd year\\sem2\\Database Management Systems\\Lab1\\lab1\\form1.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}",
@@ -29,20 +29,21 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
+          "DockedWidth": 212,
           "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Form1.Designer.cs",
               "DocumentMoniker": "D:\\ubb\\university-work\\2nd year\\sem2\\Database Management Systems\\Lab1\\Lab1\\Form1.Designer.cs",
               "RelativeDocumentMoniker": "Lab1\\Form1.Designer.cs",
               "ToolTip": "D:\\ubb\\university-work\\2nd year\\sem2\\Database Management Systems\\Lab1\\Lab1\\Form1.Designer.cs",
               "RelativeToolTip": "Lab1\\Form1.Designer.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFMAAAA9AAAA",
+              "ViewState": "AQIAAFsAAAAAAAAAAAAAAFMAAAA9AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-22T16:34:31.926Z"
+              "WhenOpened": "2024-03-22T16:34:31.926Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -73,16 +74,16 @@
               "Title": "Form1.cs",
               "DocumentMoniker": "D:\\ubb\\university-work\\2nd year\\sem2\\Database Management Systems\\Lab1\\Lab1\\Form1.cs",
               "RelativeDocumentMoniker": "Lab1\\Form1.cs",
-              "ToolTip": "D:\\ubb\\university-work\\2nd year\\sem2\\Database Management Systems\\Lab1\\Lab1\\Form1.cs",
-              "RelativeToolTip": "Lab1\\Form1.cs",
-              "ViewState": "AQIAABsAAAAAAAAAAAAowDEAAAANAAAA",
+              "ToolTip": "D:\\ubb\\university-work\\2nd year\\sem2\\Database Management Systems\\Lab1\\Lab1\\Form1.cs*",
+              "RelativeToolTip": "Lab1\\Form1.cs*",
+              "ViewState": "AQIAACYAAAAAAAAAAAAmwFgAAAA8AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-22T16:26:53.245Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "D:\\ubb\\university-work\\2nd year\\sem2\\Database Management Systems\\Lab1\\Lab1\\Form1.cs",
               "RelativeDocumentMoniker": "Lab1\\Form1.cs",
@@ -90,6 +91,16 @@
               "RelativeToolTip": "Lab1\\Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-22T16:21:16.996Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 212,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             }
           ]
         }
