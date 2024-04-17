@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { List, Task } from '../types/ListType';
 import axios from 'axios';
-import { useAxiosStore } from '../Store';
+import { useAxiosStore } from '../stores/AxiosStore';
+import NotificationDisplay from './NotificationDisplay';
+import { useNotificationStore } from '../stores/NotificationStore';
 
 function TasksPage() {
     const { id } = useParams<{ id: string }>();
@@ -13,11 +15,12 @@ function TasksPage() {
     const [filterCompleted, setFilterCompleted] = useState(false);
     const [selectedList, setSelectedList] = useState<List | null>(null);
     const { getAxiosInstance } = useAxiosStore(state => ({ getAxiosInstance: state.getAxiosInstance }));
+    const { addNotification } = useNotificationStore();
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/lists/${id}`);
+                const response = await axios.get(`lists/${id}`);
                 setSelectedList(response.data);
                 setIsLoading(false);
             } catch (error) {
@@ -49,7 +52,7 @@ function TasksPage() {
         getAxiosInstance()
         .post(`/lists/${id}/tasks`, newTask)
         .then(() => {
-            window.alert('Task added successfully');
+            addNotification('Task added successfully', 'success');
             const updatedList = { ...selectedList };
             updatedList.tasks.push(newTask);
             setSelectedList(updatedList);
@@ -59,23 +62,6 @@ function TasksPage() {
         .catch((error) => {
             console.error('Error on Task Add:', error);
         });
-    
-        // axios.post(`http://localhost:5000/api/lists/${id}/tasks`, newTask, {
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        // })
-        // .then(response => {
-        //     console.log('Success:', response.data);
-        //     const updatedList = { ...selectedList };
-        //     updatedList.tasks.push(newTask);
-        //     setSelectedList(updatedList);
-        //     setNewTaskName('');
-        //     setNewTaskDateTime('');
-        // })
-        // .catch((error) => {
-        //     console.error('Error on Task Add:', error);
-        // });
     };
 
     const handleTaskCheckboxChange = (taskId: string) => {
@@ -87,7 +73,7 @@ function TasksPage() {
         getAxiosInstance()
         .patch(`/lists/${id}/tasks/${taskId}`, task)
         .then(response => {
-            window.alert('Task updated successfully');
+            addNotification('Task updated successfully', 'success');
             setSelectedList(updatedList);
             return response;
         })
@@ -98,7 +84,7 @@ function TasksPage() {
         getAxiosInstance()
         .delete(`/lists/${id}/tasks/${taskId}`)
         .then(response => {
-            window.alert('Task deleted successfully');
+            addNotification('Task deleted successfully', 'success');
             const updatedList = { ...selectedList };
             updatedList.tasks = updatedList.tasks.filter((task) => task.id !== taskId);
             setSelectedList(updatedList);
@@ -118,12 +104,14 @@ function TasksPage() {
     
             for(let response of responses) {
                 if (response.status !== 200) {
+                    addNotification('Error deleting completed tasks', 'error');
                     throw new Error('Network response was not ok');
                 }
             }
    
             const updatedList = { ...selectedList };
             updatedList.tasks = updatedList.tasks.filter((task) => !task.completed);
+            addNotification('Completed tasks deleted successfully', 'success');
             setSelectedList(updatedList);
         })
         .catch(error => console.error('Error on Completed Tasks Delete:', error));
@@ -140,66 +128,69 @@ function TasksPage() {
     }
 
     return (
-        <div className="tasks-container">
-            <h2>{selectedList.name}</h2>
-            <form className="list-form" onSubmit={handleNewTaskSubmit}>
-                <input
-                    className="form-input"
-                    type="text"
-                    value={newTaskName}
-                    onChange={(e) => setNewTaskName(e.target.value)}
-                    placeholder="Enter task name"
-                />
-                <input
-                    className="form-input"
-                    type="datetime-local"
-                    value={newTaskDateTime}
-                    onChange={(e) => setNewTaskDateTime(e.target.value)}
-                />
-                <button type="submit">Add Task</button>
-            </form>
-            <div className="tasks-filters">
-                <input
-                    className="form-input"
-                    type="datetime-local"
-                    value={filterDateTime}
-                    onChange={(e) => setFilterDateTime(e.target.value)}
-                    placeholder="Filter by date"
-                />
-                <label>
+        <>
+            <NotificationDisplay />
+            <div className="tasks-container">
+                <h2>{selectedList.name}</h2>
+                <form className="list-form" onSubmit={handleNewTaskSubmit}>
                     <input
-                        type="checkbox"
-                        checked={filterCompleted}
-                        onChange={(e) => setFilterCompleted(e.target.checked)}
+                        className="form-input"
+                        type="text"
+                        value={newTaskName}
+                        onChange={(e) => setNewTaskName(e.target.value)}
+                        placeholder="Enter task name"
                     />
-                    <span>Show Completed Tasks</span>
-                </label>
-            </div>
-            <div className="tasks-list-container">
-                <p className="p-style">Tasks remaining: {remainingTasksCount}</p>
-                <div className="lists">
-                    <ul>
-                        {filteredTasks.map((task: Task) => (
-                            <li key={task.id}>
-                                <div className="list-item-container">
-                                    <input
-                                        type="checkbox"
-                                        checked={task.completed}
-                                        onChange={() => handleTaskCheckboxChange(task.id)}
-                                    />
-                                    <span>{task.name}</span>
-                                    <span>{task.dateTime}</span>
-                                    <button onClick={() => handleDeleteTask(task.id)}>Delete</button>
-                                </div>
-                            </li>
-                        ))}
-                    </ul>
+                    <input
+                        className="form-input"
+                        type="datetime-local"
+                        value={newTaskDateTime}
+                        onChange={(e) => setNewTaskDateTime(e.target.value)}
+                    />
+                    <button type="submit">Add Task</button>
+                </form>
+                <div className="tasks-filters">
+                    <input
+                        className="form-input"
+                        type="datetime-local"
+                        value={filterDateTime}
+                        onChange={(e) => setFilterDateTime(e.target.value)}
+                        placeholder="Filter by date"
+                    />
+                    <label>
+                        <input
+                            type="checkbox"
+                            checked={filterCompleted}
+                            onChange={(e) => setFilterCompleted(e.target.checked)}
+                        />
+                        <span>Show Completed Tasks</span>
+                    </label>
                 </div>
-                <button type="button" onClick={handleDeleteCompletedTasks}>
-                    Delete Completed Tasks
-                </button>
+                <div className="tasks-list-container">
+                    <p className="p-style">Tasks remaining: {remainingTasksCount}</p>
+                    <div className="lists">
+                        <ul>
+                            {filteredTasks.map((task: Task) => (
+                                <li key={task.id}>
+                                    <div className="list-item-container">
+                                        <input
+                                            type="checkbox"
+                                            checked={task.completed}
+                                            onChange={() => handleTaskCheckboxChange(task.id)}
+                                        />
+                                        <span>{task.name}</span>
+                                        <span>{task.dateTime}</span>
+                                        <button onClick={() => handleDeleteTask(task.id)}>Delete</button>
+                                    </div>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                    <button type="button" onClick={handleDeleteCompletedTasks}>
+                        Delete Completed Tasks
+                    </button>
+                </div>
             </div>
-        </div>
+        </>
     );
 }
 

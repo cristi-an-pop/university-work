@@ -6,8 +6,10 @@ const { initializeSocket } = require('./socket');
 const listsRouter = require('../routes/lists');
 const { scheduleCronJob } = require('./utils/cronJob');
 
+require('dotenv').config();
+
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.NODE_ENV === 'test' ? process.env.TEST_PORT : process.env.PORT || 5002;
 const server = http.createServer(app);
 
 // Middleware setup
