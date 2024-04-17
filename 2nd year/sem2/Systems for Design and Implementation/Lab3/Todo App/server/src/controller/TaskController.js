@@ -26,6 +26,7 @@ const createTask = async (req, res) => {
     try {
         console.log(req.params.listId);
         const newTask = {
+            id: null,
             ...req.body,
             list_id: req.params.listId
         };
