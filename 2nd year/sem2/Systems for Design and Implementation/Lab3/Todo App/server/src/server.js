@@ -4,6 +4,7 @@ const cors = require('cors');
 const http = require('http');
 const { initializeSocket } = require('./socket');
 const listsRouter = require('../routes/lists');
+const tasksRouter = require('../routes/tasks'); // Import tasksRouter
 const { scheduleCronJob } = require('./utils/cronJob');
 
 require('dotenv').config();
@@ -22,15 +23,14 @@ app.use(bodyParser.json());
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/', listsRouter);
+app.use('/api/lists', listsRouter);
+app.use('/api/lists/:listId/tasks', tasksRouter);
 
 // Initialize socket.io
 initializeSocket(server);
 
 // Start the server
 server.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
+  //scheduleCronJob();
 });
-
-// Schedule cron job
-scheduleCronJob();

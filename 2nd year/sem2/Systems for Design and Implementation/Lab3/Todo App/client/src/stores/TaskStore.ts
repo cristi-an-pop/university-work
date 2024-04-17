@@ -1,20 +1,20 @@
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
-import { List } from "../types/ListType";
+import { Task } from "../types/ListType";
 
-type ListsStore = {
-  lists: List[];
-  setLists: (lists: List[]) => void;
+type TaskStore = {
+  tasks: Task[];
+  setTasks: (tasks: Task[]) => void;
 };
 
-export const useListsStore = create<ListsStore>()(
+export const useTasksStore = create<TaskStore>()(
   persist(
     (set) => ({
-      lists: [],
-      setLists: (lists: List[]) => set({ lists }),
+      tasks: [],
+      setTasks: (tasks: Task[]) => set({ tasks }),
     }),
     {
-      name: "lists-storage",
+      name: "tasks-storage",
       storage: createJSONStorage(() => localStorage),
     }
   )

@@ -1,14 +1,15 @@
 interface List {
-    id: string;
+    id: number;
     name: string;
     tasks: Task[];
 }
 
 interface Task {
-    id: string;
+    id: number;
     name: string;
     completed: boolean;
     dateTime: string;
+    list_id: number;
 }
 
 export type { List, Task };

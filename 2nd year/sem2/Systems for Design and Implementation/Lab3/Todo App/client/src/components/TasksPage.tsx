@@ -5,9 +5,12 @@ import axios from 'axios';
 import { useAxiosStore } from '../stores/AxiosStore';
 import NotificationDisplay from './NotificationDisplay';
 import { useNotificationStore } from '../stores/NotificationStore';
+import { useTasksStore } from '../stores/TaskStore';
 
 function TasksPage() {
-    const { id } = useParams<{ id: string }>();
+    const { id: idString } = useParams<{ id: string }>();
+    const id = Number(idString);
+
     const [isLoading, setIsLoading] = useState(true);
     const [newTaskName, setNewTaskName] = useState('');
     const [newTaskDateTime, setNewTaskDateTime] = useState('');
@@ -16,11 +19,12 @@ function TasksPage() {
     const [selectedList, setSelectedList] = useState<List | null>(null);
     const { getAxiosInstance } = useAxiosStore(state => ({ getAxiosInstance: state.getAxiosInstance }));
     const { addNotification } = useNotificationStore();
+    const { tasks, setTasks } = useTasksStore(state => ({ tasks: state.tasks, setTasks: state.setTasks }));
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`lists/${id}`);
+                const response = await axios.get(`http://localhost:5000/api/lists/${id}`);
                 setSelectedList(response.data);
                 setIsLoading(false);
             } catch (error) {
@@ -32,6 +36,21 @@ function TasksPage() {
         fetchData();
     }, [id]);
 
+    useEffect(() => {
+        const fetchTasks = async () => {
+            try {
+                const response = await axios.get(`http://localhost:5000/api/lists/${id}/tasks`);
+                setTasks(response.data);
+            } catch (error) {
+                console.error('Failed to fetch tasks:', error);
+            }
+        };
+    
+        if (selectedList) {
+            fetchTasks();
+        }
+    }, [selectedList, setTasks]);
+
     if (isLoading) {
         return <div>Loading...</div>;
     }
@@ -42,31 +61,31 @@ function TasksPage() {
         e.preventDefault();
         if (!newTaskName.trim() || !newTaskDateTime.trim()) return;
     
-        const newTask: Task = {
-            id: Date.now().toString(),
+        const newTask = {
             name: newTaskName,
             completed: false,
             dateTime: newTaskDateTime,
         };
-
+    
         getAxiosInstance()
         .post(`/lists/${id}/tasks`, newTask)
-        .then(() => {
+        .then((response) => {
             addNotification('Task added successfully', 'success');
-            const updatedList = { ...selectedList };
-            updatedList.tasks.push(newTask);
-            setSelectedList(updatedList);
+            const updatedTasks = [ ...tasks, response.data ];
+            setTasks(updatedTasks);
             setNewTaskName('');
             setNewTaskDateTime('');
+            return response;
         })
         .catch((error) => {
             console.error('Error on Task Add:', error);
         });
     };
 
-    const handleTaskCheckboxChange = (taskId: string) => {
-        const updatedList = { ...selectedList };
-        const task = updatedList.tasks.find((task) => task.id === taskId);
+    const handleTaskCheckboxChange = (taskId: number) => {
+        const newTasks = [ ...tasks ];
+        console.log(newTasks);
+        const task = newTasks.find(task => task.id === taskId);
         if (!task) return;
         task.completed = !task.completed;
 
@@ -74,27 +93,27 @@ function TasksPage() {
         .patch(`/lists/${id}/tasks/${taskId}`, task)
         .then(response => {
             addNotification('Task updated successfully', 'success');
-            setSelectedList(updatedList);
+            setTasks(newTasks);
             return response;
         })
         .catch(error => console.error('Error on Task Update:', error));
     };
 
-    const handleDeleteTask = (taskId: string) => {
+    const handleDeleteTask = (taskId: number) => {
         getAxiosInstance()
         .delete(`/lists/${id}/tasks/${taskId}`)
         .then(response => {
             addNotification('Task deleted successfully', 'success');
-            const updatedList = { ...selectedList };
-            updatedList.tasks = updatedList.tasks.filter((task) => task.id !== taskId);
-            setSelectedList(updatedList);
+            const updatedTasks = tasks.filter(task => task.id !== taskId);
+            setTasks(updatedTasks);
             return response;
         })
         .catch(error => console.error('Error on Task Delete:', error));
     };
 
     const handleDeleteCompletedTasks = () => {
-        const completedTasks = selectedList.tasks.filter(task => task.completed);
+        const tasksCopy = [...tasks];
+        const completedTasks = tasksCopy.filter(task => task.completed);
         const completedTaskIds = completedTasks.map(task => task.id);
     
         Promise.all(completedTaskIds.map(taskId => 
@@ -109,17 +128,17 @@ function TasksPage() {
                 }
             }
    
-            const updatedList = { ...selectedList };
-            updatedList.tasks = updatedList.tasks.filter((task) => !task.completed);
+            let newTasks = [ ...tasks ];
+            newTasks = newTasks.filter(task => !task.completed);
             addNotification('Completed tasks deleted successfully', 'success');
-            setSelectedList(updatedList);
+            setTasks(newTasks);
         })
         .catch(error => console.error('Error on Completed Tasks Delete:', error));
     };
 
-    const remainingTasksCount = selectedList.tasks.filter((task) => !task.completed).length;
+    const remainingTasksCount = tasks.filter(task => !task.completed).length;
 
-    let filteredTasks = selectedList.tasks;
+    let filteredTasks = tasks || [];
     if (filterDateTime) {
         filteredTasks = filteredTasks.filter(task => task.dateTime.includes(filterDateTime));
     }

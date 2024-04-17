@@ -1,51 +1,27 @@
-const fs = require('fs');
+const db = require('../db');
 
-let lists = require('./lists.json');
-
-const saveLists = () => {
-    fs.writeFileSync('./src/model/lists.json', JSON.stringify(lists, null, 2), 'utf8');
-}
-
-const getAllLists = () => {
-    return lists;
+const getAllLists = (order) => {
+    if (order === 'DESC') {
+        return db.any('SELECT * FROM Lists ORDER BY name DESC');
+    } else {
+        return db.any('SELECT * FROM Lists ORDER BY name ASC');
+    }
 }
 
 const getListById = (id) => {
-    return lists.find(list => list.id === id);
+    return db.one('SELECT * FROM Lists WHERE id = $1', [id]);
 }
 
 const createList = (newList) => {
-    lists.push(newList);
-    saveLists();
-    return newList;
+    return db.one('INSERT INTO Lists (name) VALUES ($1) RETURNING *', [newList.name]);
 }
 
 const updateList = (id, updatedList) => {
-    lists = lists.map(list => list.id === id ? updatedList : list);
-    saveLists();
-    return updatedList;
+    return db.one('UPDATE Lists SET name = $1 WHERE id = $2 RETURNING *', [updatedList.name, id]);
 }
 
 const deleteList = (id) => {
-    lists = lists.filter(list => list.id !== id);
-    saveLists();
-}
-
-const createTask = (id, newTask) => {
-    lists = lists.map(list => list.id === id ? { ...list, tasks: [...list.tasks, newTask] } : list);
-    saveLists();
-    return newTask;
-}
-
-const deleteTask = (id, taskId) => {
-    lists = lists.map(list => list.id === id ? { ...list, tasks: list.tasks.filter(task => task.id !== taskId) } : list);
-    saveLists();
-}
-
-const updateTask = (id, taskId, updatedTask) => {
-    lists = lists.map(list => list.id === id ? { ...list, tasks: list.tasks.map(task => task.id === taskId ? updatedTask : task) } : list);
-    saveLists();
-    return updatedTask;
+    return db.none('DELETE FROM Lists WHERE id = $1', [id]);
 }
 
 module.exports = {
@@ -53,9 +29,5 @@ module.exports = {
     getListById,
     createList,
     updateList,
-    deleteList,
-    createTask,
-    deleteTask,
-    updateTask
+    deleteList
 };
-

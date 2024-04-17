@@ -5,19 +5,13 @@ const {
     getListById,
     createList,
     updateList,
-    deleteList,
-    createTask,
-    deleteTask,
-    updateTask
-  } = require('../src/controller/ListController'); 
+    deleteList
+} = require('../src/controller/ListController'); 
 
-router.get("/api/lists", getAllLists);
-router.post("/api/lists", createList);
-router.delete("/api/lists/:id", deleteList);
-router.get("/api/lists/:id", getListById);
-router.patch("/api/lists/:id", updateList);
-router.post("/api/lists/:id/tasks", createTask);
-router.delete("/api/lists/:id/tasks/:taskId", deleteTask);
-router.patch("/api/lists/:id/tasks/:taskId", updateTask);
+router.get("/", getAllLists);
+router.post("/", createList);
+router.delete("/:id", deleteList);
+router.get("/:id", getListById);
+router.patch("/:id", updateList);
 
 module.exports = router;

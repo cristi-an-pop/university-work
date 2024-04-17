@@ -1,8 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { List } from '../types/ListType';
 import axios from 'axios';
-import { useListsStore } from '../stores/TaskStore'
+import { useListsStore } from '../stores/ListStore'
 import { useAxiosStore } from '../stores/AxiosStore';
 import io from 'socket.io-client';
 import { useNotificationStore } from '../stores/NotificationStore';
@@ -10,7 +9,7 @@ import NotificationDisplay from './NotificationDisplay';
 
 const ListsPage = () => {
   const [newListName, setNewListName] = useState('');
-  const [selectedLists, setSelectedLists] = useState<string[]>([]);
+  const [selectedLists, setSelectedLists] = useState<number[]>([]);
   const { lists, setLists } = useListsStore(state => ({ lists: state.lists, setLists: state.setLists }));
   const [isLoading, setIsLoading] = useState(true);
   const socketInstance = useRef<WebSocket>();
@@ -18,15 +17,20 @@ const ListsPage = () => {
   const { addNotification } = useNotificationStore();
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/lists')
-      .then(response => {
+    const fetchLists = async () => {
+      setIsLoading(true);
+      try {
+        const response = await axios.get('http://localhost:5000/api/lists');
         setLists(response.data);
-        setIsLoading(false);
-      })
-      .catch(error => {
+      } catch (error) {
         console.error('Error:', error);
+        addNotification('Error fetching lists', 'error');
+      } finally {
         setIsLoading(false);
-      });
+      }
+    };
+
+    fetchLists();
   }, []);
 
   useEffect(() => {
@@ -63,8 +67,7 @@ const ListsPage = () => {
   const handleNewListSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!newListName.trim()) return;
-    const newList: List = {
-        id: Date.now().toString(),
+    const newList = {
         name: newListName,
         tasks: []
     };
@@ -81,7 +84,7 @@ const ListsPage = () => {
     });
 };
 
-  const handleListDelete = (id: string) => () => {
+  const handleListDelete = (id: number) => () => {
     getAxiosInstance()
     .delete(`/lists/${id}`)
     .then(() => {
@@ -93,7 +96,7 @@ const ListsPage = () => {
     });
   };
 
-  const handleListEdit = (id: string) => () => {
+  const handleListEdit = (id: number) => () => {
     const listName = prompt('Enter new list name');
     if (!listName?.trim()) return;
     const updatedList = { ...lists.find(list => list.id === id), name: listName };
@@ -108,7 +111,7 @@ const ListsPage = () => {
     });
   };
 
-  const handleExportList = (id: string) => () => {
+  const handleExportList = (id: number) => () => {
     const list = lists.find((list) => list.id === id);
     if (!list) return;
     const data = JSON.stringify(list);
@@ -121,7 +124,7 @@ const ListsPage = () => {
     URL.revokeObjectURL(url);
   }
 
-  const handleListCheckboxChange = (id: string) => {
+  const handleListCheckboxChange = (id: number) => {
     if (selectedLists.includes(id)) {
       setSelectedLists(selectedLists.filter((listId) => listId !== id));
     } else {

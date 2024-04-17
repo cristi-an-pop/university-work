@@ -1,63 +1,59 @@
 const listModel = require('../model/ListModel');
 
-const getAllLists = (req, res) => {
-    const lists = listModel.getAllLists();
-    res.status(200).json(lists);
-    console.log("All lists fetched");
+const getAllLists = async (req, res) => {
+    try {
+        const { order } = req.query;
+        const lists = await listModel.getAllLists(order);
+        res.status(200).json(lists);
+        console.log("All lists fetched");
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching lists' });
+    }
 }
 
-const getListById = (req, res) => {
-    const id = req.params.id;
-    const list = listModel.getListById(id);
-    res.status(200).json(list);
-    console.log("List fetched by id");
+const getListById = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const list = await listModel.getListById(id);
+        res.status(200).json(list);
+        console.log("List fetched by id");
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching list' });
+    }
 }
 
 const createList = async (req, res) => {
-    const newList = req.body;
-    const list = await listModel.createList(newList);
-    res.status(201).json(list);
-    console.log("List created");
+    try {
+        const newList = req.body;
+        const list = await listModel.createList(newList);
+        res.status(201).json(list);
+        console.log("List created");
+    } catch (error) {
+        res.status(500).json({ message: 'Error creating list' });
+    }
 }
 
 const updateList = async (req, res) => {
-    const id = req.params.id;
-    const updatedList = req.body;
-    const list = await listModel.updateList(id, updatedList);
-    res.status(200).json(list);
-    console.log("List updated");
+    try {
+        const id = req.params.id;
+        const updatedList = req.body;
+        const list = await listModel.updateList(id, updatedList);
+        res.status(200).json(list);
+        console.log("List updated");
+    } catch (error) {
+        res.status(500).json({ message: 'Error updating list' });
+    }
 }
 
 const deleteList = async (req, res) => {
-    const id = req.params.id;
-    await listModel.deleteList(id);
-    res.status(204).json({message: "List deleted"});
-    console.log("List deleted");
-}
-
-const createTask = async (req, res) => {
-    const id = req.params.id;
-    const newTask = req.body;
-    const task = await listModel.createTask(id, newTask);
-    res.status(201).json(task);
-    console.log("Task created");
-}
-
-const deleteTask = async (req, res) => {
-    const id = req.params.id;
-    const taskId = req.params.taskId;
-    await listModel.deleteTask(id, taskId);
-    res.status(204).json({message: "Task deleted"});
-    console.log("Task deleted");
-}
-
-const updateTask = async (req, res) => {
-    const id = req.params.id;
-    const taskId = req.params.taskId;
-    const updatedTask = req.body;
-    const task = await listModel.updateTask(id, taskId, updatedTask);
-    res.status(200).json(task);
-    console.log("Task updated");
+    try {
+        const id = req.params.id;
+        await listModel.deleteList(id);
+        res.status(200).json({ message: 'List deleted' });
+        console.log("List deleted");
+    } catch (error) {
+        res.status(500).json({ message: 'Error deleting list' });
+    }
 }
 
 module.exports = {
@@ -65,8 +61,5 @@ module.exports = {
     getListById,
     createList,
     updateList,
-    deleteList,
-    createTask,
-    deleteTask,
-    updateTask
+    deleteList
 };

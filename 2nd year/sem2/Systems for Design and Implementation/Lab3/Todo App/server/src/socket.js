@@ -5,7 +5,7 @@ const initializeSocket = (server) => {
   io = socketIo(server, {
     cors: {
       origin: "*", // Allow all origins
-      methods: ["GET", "POST", "PATCH"], // Allow GET and POST methods
+      methods: ["GET", "POST", "PATCH"],
     }
   });
 
