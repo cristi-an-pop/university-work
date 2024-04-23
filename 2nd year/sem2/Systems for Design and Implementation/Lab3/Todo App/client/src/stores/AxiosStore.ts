@@ -19,9 +19,9 @@ export const useAxiosStore = create<AxiosState>()((set, get) => {
         console.log(
           "Network error. The server is not responding. Please try again later"
         );
-        window.alert(
-          "Network error. The server is not responding. Please try again later"
-        );
+        // window.alert(
+        //   "Network error. The server is not responding. Please try again later"
+        // );
       }
       return Promise.reject(error);
     }
@@ -35,9 +35,9 @@ export const useAxiosStore = create<AxiosState>()((set, get) => {
         console.log(
           "Network error. The server is not responding. Please try again later"
         );
-        window.alert(
-          "Network error. The server is not responding. Please try again later"
-        );
+        // window.alert(
+        //   "Network error. The server is not responding. Please try again later"
+        // );
       }
       return Promise.reject(error);
     }

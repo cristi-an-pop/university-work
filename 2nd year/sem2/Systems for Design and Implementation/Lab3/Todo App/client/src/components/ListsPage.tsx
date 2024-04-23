@@ -6,15 +6,38 @@ import { useAxiosStore } from '../stores/AxiosStore';
 import io from 'socket.io-client';
 import { useNotificationStore } from '../stores/NotificationStore';
 import NotificationDisplay from './NotificationDisplay';
+import { List, DirtyList } from '../types/ListType';
+import { v4 as uuid } from 'uuid';
 
 const ListsPage = () => {
   const [newListName, setNewListName] = useState('');
-  const [selectedLists, setSelectedLists] = useState<number[]>([]);
+  const [selectedLists, setSelectedLists] = useState<string[]>([]);
   const { lists, setLists } = useListsStore(state => ({ lists: state.lists, setLists: state.setLists }));
   const [isLoading, setIsLoading] = useState(true);
   const socketInstance = useRef<WebSocket>();
   const { getAxiosInstance } = useAxiosStore(state => ({ getAxiosInstance: state.getAxiosInstance }));
   const { addNotification } = useNotificationStore();
+  const { dirtyLists, setDirtyLists } = useListsStore(state => ({ dirtyLists: state.dirtyLists, setDirtyLists: state.setDirtyLists }));
+  const [isOnline, setIsOnline] = useState(false);
+
+  useEffect(() => {
+    const socket = io('http://localhost:5000');
+
+    const handleOnline = () => {
+      setIsOnline(true);
+    }
+
+    const handleOffline = () => {
+      setIsOnline(false);
+    }
+
+    socket.on('connect', handleOnline);
+    socket.on('disconnect', handleOffline);
+
+    return () => {
+      socket.disconnect();
+    }
+  }, []);
 
   useEffect(() => {
     const fetchLists = async () => {
@@ -60,6 +83,42 @@ const ListsPage = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (isOnline) {
+      dirtyLists.forEach(dirtyList => {
+        if(dirtyList.existed == false && dirtyList.deleted == false) { 
+          getAxiosInstance()
+          .post('/lists', dirtyList)
+          .then((response) => {
+            setLists([...lists, response.data]);
+          })
+          .catch((error) => {
+            console.log('Error adding unsynced list:', error)
+          });
+        } else if(dirtyList.existed == true && dirtyList.deleted == true) {
+          getAxiosInstance()
+          .delete(`/lists/${dirtyList.id}`)
+          .then(() => {
+            setLists(lists.filter(list => list.id !== dirtyList.id));
+          })
+          .catch((error) => {
+            console.log('Error deleting unsynced list:', error)
+          });
+        } else if(dirtyList.existed == true && dirtyList.deleted == false) {  
+          getAxiosInstance()
+          .patch(`/lists/${dirtyList.id}`, dirtyList)
+          .then((response) => {
+            setLists(lists.map(list => list.id === dirtyList.id ? response.data : list));
+          })
+          .catch((error) => {
+            console.log('Error updating unsynced list:', error)
+          });
+        }
+      });
+      setDirtyLists([]);
+    }
+  }, [isOnline])
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -67,51 +126,82 @@ const ListsPage = () => {
   const handleNewListSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!newListName.trim()) return;
-    const newList = {
+    const newList: List = {
+        id: uuid(),
         name: newListName,
-        tasks: []
     };
 
     getAxiosInstance()
     .post('/lists', newList)
     .then((response) => {
-      addNotification('List added succesfully', 'success');
       setLists([...lists, response.data]);
-      setNewListName('');
+      addNotification('List added succesfully', 'success');
     })
     .catch((error) => {
-      console.error('Error on List Add:', error);
+      if(error.code === "ERR_NETWORK") {
+        setDirtyLists([...dirtyLists, { id: newList.id, name: newList.name, existed: false, deleted: false }]);
+        addNotification('List added unsynced', 'warning');
+      }
+      else {
+        addNotification('Error adding list', 'error');
+      }
     });
+    setNewListName('');
 };
 
-  const handleListDelete = (id: number) => () => {
+  const handleListDelete = (id: string) => () => {
     getAxiosInstance()
     .delete(`/lists/${id}`)
     .then(() => {
-      addNotification('List deleted successfully', 'success');
       setLists(lists.filter(list => list.id !== id));
+      addNotification('List deleted successfully', 'success');
     })
     .catch((error) => {
-      console.error('Error on delete:', error);
+      if(error.code === "ERR_NETWORK") {
+        const listToDelete = lists.find(list => list.id === id);
+        if (listToDelete) {
+          setLists(lists.filter(list => list.id !== id));
+          setDirtyLists([...dirtyLists, { id: listToDelete.id, name: listToDelete.name, existed: true, deleted: true }])
+          addNotification('List deleted unsynced', 'warning');
+        }
+        else {
+          const listToDelete = dirtyLists.find(dirtyList => dirtyList.id === id);
+          if (listToDelete) {
+            setDirtyLists(dirtyLists.map(dirtyList => dirtyList.id === id ? { ...dirtyList, existed: true, deleted: true } : dirtyList));
+            addNotification('List deleted unsynced', 'warning');
+          }
+        }
+      }
+      else {
+        addNotification('Error deleting list', 'error');
+      }
     });
   };
 
-  const handleListEdit = (id: number) => () => {
+  const handleListEdit = (id: string) => () => {
     const listName = prompt('Enter new list name');
     if (!listName?.trim()) return;
     const updatedList = { ...lists.find(list => list.id === id), name: listName };
+    
     getAxiosInstance()
     .patch(`/lists/${id}`, updatedList)
     .then((response) => {
-      addNotification('List updated successfully', 'success');
       setLists(lists.map(list => list.id === id ? response.data : list));
+      addNotification('List updated successfully', 'success');
     })
     .catch((error) => {
-      console.error('Error on update:', error);
+      if(error.code === "ERR_NETWORK") {
+        setLists(lists.filter(list => list.id !== id));
+        setDirtyLists([...dirtyLists, { id: updatedList.id!, name: updatedList.name, existed: true, deleted: false }]);
+        addNotification('List updated unsynced', 'warning');
+      }
+      else {
+        addNotification('Error updating list', 'error');
+      }
     });
   };
 
-  const handleExportList = (id: number) => () => {
+  const handleExportList = (id: string) => () => {
     const list = lists.find((list) => list.id === id);
     if (!list) return;
     const data = JSON.stringify(list);
@@ -124,7 +214,7 @@ const ListsPage = () => {
     URL.revokeObjectURL(url);
   }
 
-  const handleListCheckboxChange = (id: number) => {
+  const handleListCheckboxChange = (id: string) => {
     if (selectedLists.includes(id)) {
       setSelectedLists(selectedLists.filter((listId) => listId !== id));
     } else {
@@ -144,6 +234,8 @@ const ListsPage = () => {
     URL.revokeObjectURL(url);
   }
 
+  const displayLists: List[] | DirtyList[] = [...lists, ...dirtyLists.filter(dirtyLists => !dirtyLists.deleted)];
+
   return (
     <>
       <NotificationDisplay />
@@ -159,22 +251,22 @@ const ListsPage = () => {
           />
           <button type="submit">Add List</button>
         </form>
-        <button className="cool-btn" type="button" onClick = {handleExportSelectedLists}>Export Selected</button>
+        <button className="cool-btn" type="button" onClick={handleExportSelectedLists}>Export Selected</button>
         <div className="lists">
           <ul>
-            {lists.map((list) => (
+            {displayLists.map((list) => (
               <li key={list.id}>
                 <div className="list-item-container">
                   <input 
                     type="checkbox" 
                     onChange={() => handleListCheckboxChange(list.id)}
-                    />
+                  />
                   <Link to={'/lists/' + list.id}>
                     {list.name}
                   </Link>
                   <button className="cool-btn" type="button" onClick={handleExportList(list.id)}>Export</button>
                   <button className="cool-btn" type="button" onClick={handleListDelete(list.id)}>Delete</button>
-                  <button className="cool-btn" type="button" onClick={handleListEdit(list.id)}>Edit</button>
+                  <button className="cool-btn" type="button" disabled={dirtyLists.some(dirtyList => dirtyList.id === list.id)} onClick={handleListEdit(list.id)}>Edit</button>
                 </div>
               </li>
             ))}

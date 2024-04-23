@@ -13,8 +13,8 @@ const getTaskById = (id) => {
 }
 
 const createTask = (newTask) => {
-    return db.one('INSERT INTO Tasks (name, completed, dateTime, list_id) VALUES ($1, $2, $3, $4) RETURNING *', 
-    [newTask.name, newTask.completed, newTask.dateTime, newTask.list_id]);
+    return db.one('INSERT INTO Tasks (id, name, completed, dateTime, list_id) VALUES ($1, $2, $3, $4, $5) RETURNING *', 
+    [newTask.id, newTask.name, newTask.completed, newTask.dateTime, newTask.list_id]);
 }
 
 const updateTask = (id, updatedTask) => {

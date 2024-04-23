@@ -13,7 +13,7 @@ const getListById = (id) => {
 }
 
 const createList = (newList) => {
-    return db.one('INSERT INTO Lists (name) VALUES ($1) RETURNING *', [newList.name]);
+    return db.one('INSERT INTO Lists (id, name) VALUES ($1, $2) RETURNING *', [newList.id, newList.name]);
 }
 
 const updateList = (id, updatedList) => {
@@ -21,7 +21,13 @@ const updateList = (id, updatedList) => {
 }
 
 const deleteList = (id) => {
-    return db.none('DELETE FROM Lists WHERE id = $1', [id]);
+    return db.tx(t => {
+        // Delete all tasks associated with the list
+        const deleteTasks = t.none('DELETE FROM Tasks WHERE list_id = $1', [id]);
+        // Delete the list
+        const deleteList = t.none('DELETE FROM Lists WHERE id = $1', [id]);
+        return t.batch([deleteTasks, deleteList]);
+    });
 }
 
 module.exports = {

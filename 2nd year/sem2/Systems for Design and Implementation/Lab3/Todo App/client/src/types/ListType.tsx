@@ -1,15 +1,31 @@
 interface List {
-    id: number;
+    id: string;
     name: string;
-    tasks: Task[];
+}
+
+interface DirtyList {
+    id: string,
+    name: string,
+    existed: boolean,
+    deleted: boolean
 }
 
 interface Task {
-    id: number;
+    id: string;
     name: string;
     completed: boolean;
     dateTime: string;
-    list_id: number;
+    list_id: string;
 }
 
-export type { List, Task };
+interface DirtyTask {
+    id: string;
+    name: string;
+    completed: boolean;
+    dateTime: string;
+    list_id: string;
+    existed: boolean;
+    deleted: boolean;
+}
+
+export type { List, DirtyList, Task, DirtyTask };
