@@ -11,6 +11,18 @@ const getAllLists = async (req, res) => {
     }
 }
 
+const getAllListsTasksCount = async (req, res) => {
+    try {
+        const page = req.query.page || 1;
+        const pageSize = req.query.pageSize || 50;
+        const lists = await listModel.getAllListsTasksCount(page, pageSize);
+        res.status(200).json(lists);
+        console.log("All lists with tasks count fetched");
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching lists' });
+    }
+}
+
 const getListById = async (req, res) => {
     try {
         const id = req.params.id;
@@ -58,6 +70,7 @@ const deleteList = async (req, res) => {
 
 module.exports = {
     getAllLists,
+    getAllListsTasksCount,
     getListById,
     createList,
     updateList,

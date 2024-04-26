@@ -1,10 +1,11 @@
 const db = require('../db');
 
-const getTasksByListId = (listId, order) => {
+const getTasksByListId = (listId, page, pageSize, order) => {
+    const offset = (page - 1) * pageSize;
     if (order === 'DESC') {
-        return db.any('SELECT * FROM Tasks WHERE list_id = $1 ORDER BY name DESC', [listId]);
+        return db.any('SELECT * FROM Tasks WHERE list_id = $1 ORDER BY name DESC OFFSET $2 LIMIT $3', [listId, offset, pageSize]);
     } else {
-        return db.any('SELECT * FROM Tasks WHERE list_id = $1 ORDER BY name ASC', [listId]);
+        return db.any('SELECT * FROM Tasks WHERE list_id = $1 ORDER BY name ASC OFFSET $2 LIMIT $3', [listId, offset, pageSize]);
     }
 }
 

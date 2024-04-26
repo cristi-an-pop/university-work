@@ -6,6 +6,8 @@ const { initializeSocket } = require('./socket');
 const listsRouter = require('../routes/lists');
 const tasksRouter = require('../routes/tasks'); // Import tasksRouter
 const { scheduleCronJob } = require('./utils/cronJob');
+const generateList = require('./utils/faker/ListFaker');
+const generateTask = require('./utils/faker/TaskFaker');
 
 require('dotenv').config();
 
@@ -25,6 +27,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/api/lists', listsRouter);
 app.use('/api/lists/:listId/tasks', tasksRouter);
+
+// Generate fake data
+//generateList(1000);
+//generateTask(10);
 
 // Initialize socket.io
 initializeSocket(server);

@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {
     getAllLists,
+    getAllListsTasksCount,
     getListById,
     createList,
     updateList,
@@ -9,6 +10,7 @@ const {
 } = require('../src/controller/ListController'); 
 
 router.get("/", getAllLists);
+router.get("/ok", getAllListsTasksCount)
 router.post("/", createList);
 router.delete("/:id", deleteList);
 router.get("/:id", getListById);

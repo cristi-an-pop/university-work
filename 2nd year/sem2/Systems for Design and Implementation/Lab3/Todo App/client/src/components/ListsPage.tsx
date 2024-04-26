@@ -6,19 +6,62 @@ import { useAxiosStore } from '../stores/AxiosStore';
 import io from 'socket.io-client';
 import { useNotificationStore } from '../stores/NotificationStore';
 import NotificationDisplay from './NotificationDisplay';
-import { List, DirtyList } from '../types/ListType';
+import { List, DirtyList, ListCount } from '../types/ListType';
 import { v4 as uuid } from 'uuid';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 const ListsPage = () => {
+  const { lists, setLists } = useListsStore(state => ({ lists: state.lists, setLists: state.setLists }));
   const [newListName, setNewListName] = useState('');
   const [selectedLists, setSelectedLists] = useState<string[]>([]);
-  const { lists, setLists } = useListsStore(state => ({ lists: state.lists, setLists: state.setLists }));
+  const [listsCount, setListsCount] = useState<any>([]);
   const [isLoading, setIsLoading] = useState(true);
   const socketInstance = useRef<WebSocket>();
   const { getAxiosInstance } = useAxiosStore(state => ({ getAxiosInstance: state.getAxiosInstance }));
   const { addNotification } = useNotificationStore();
   const { dirtyLists, setDirtyLists } = useListsStore(state => ({ dirtyLists: state.dirtyLists, setDirtyLists: state.setDirtyLists }));
   const [isOnline, setIsOnline] = useState(false);
+  const [data, setData] = useState([]);
+  const [page, setPage] = useState(1);
+
+  const fetchLists = async () => {
+    setIsLoading(true);
+    try {
+      const response = await axios.get('http://localhost:5000/api/lists');
+      setLists(response.data);
+    } catch (error) {
+      console.error('Error:', error);
+      //addNotification('Error fetching lists', 'error');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const fetchData = async () => {
+    setIsLoading(true);
+    try {
+      const response = await axios.get(`http://localhost:5000/api/lists/ok?page=${page}&pageSize=100`);
+      const newData = response.data;
+      const uniqueData = newData.filter((newItem: any) => !data.some((item: any) => item.id === newItem.id));
+      setData(data.concat(uniqueData));
+      setPage(page + 1);
+      const newLists = newData.map((list: any) => {
+        return { id: list.id, name: list.name } as List;
+      });
+      const newListsCount = newData.map((list: any) => {
+        return { list_id: list.id, count: list.tasks_count } as ListCount;
+      })
+      const uniqueLists = newLists.filter((newItem: List) => !lists.some((item: List) => item.id === newItem.id));
+      const uniqueListsCount = newListsCount.filter((newItem: ListCount) => !listsCount.some((item: ListCount) => item.list_id === newItem.list_id));
+      setLists([...lists, ...uniqueLists]);
+      setListsCount([...listsCount, ...uniqueListsCount]);
+    } catch (error) {
+      console.error('Error:', error);
+      //addNotification('Error fetching lists', 'error');
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
   useEffect(() => {
     const socket = io('http://localhost:5000');
@@ -28,7 +71,7 @@ const ListsPage = () => {
     }
 
     const handleOffline = () => {
-      setIsOnline(false);
+      setIsOnline(false); 
     }
 
     socket.on('connect', handleOnline);
@@ -40,47 +83,40 @@ const ListsPage = () => {
   }, []);
 
   useEffect(() => {
-    const fetchLists = async () => {
-      setIsLoading(true);
-      try {
-        const response = await axios.get('http://localhost:5000/api/lists');
-        setLists(response.data);
-      } catch (error) {
-        console.error('Error:', error);
-        addNotification('Error fetching lists', 'error');
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchLists();
+    //fetchLists();
+    if (isOnline) {
+      fetchData();
+    } else {
+      setIsLoading(false);  
+    }
   }, []);
 
   useEffect(() => {
-    const socket = io('http://localhost:5000');
-
-    socket.on('newList', (newList) => {
-      axios.post('http://localhost:5000/api/lists', newList, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-    .then(response => {
-      addNotification('List added succesfully', 'success');
-      setLists([...lists, response.data]);
-      if(socketInstance.current) {
-        socketInstance.current.send(JSON.stringify(response.data));
-      }
-      setNewListName('');
-    })
-    .catch((error) => {
-      console.error('Error on List Add:', error);
-    });
-    });
-
-    return () => {
-      socket.disconnect();
-    };
+    if(isOnline) {
+      const socket = io('http://localhost:5000');
+      socket.on('newList', (newList) => {
+        axios.post('http://localhost:5000/api/lists', newList, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      .then(response => {
+        addNotification('List added succesfully', 'success');
+        setLists([...lists, response.data]);
+        if(socketInstance.current) {
+          socketInstance.current.send(JSON.stringify(response.data));
+        }
+        setNewListName('');
+      })
+      .catch((error) => {
+        console.error('Error on List Add:', error);
+      });
+      });
+  
+      return () => {
+        socket.disconnect();
+      };
+    }
   }, []);
 
   useEffect(() => {
@@ -254,22 +290,29 @@ const ListsPage = () => {
         <button className="cool-btn" type="button" onClick={handleExportSelectedLists}>Export Selected</button>
         <div className="lists">
           <ul>
-            {displayLists.map((list) => (
-              <li key={list.id}>
-                <div className="list-item-container">
-                  <input 
-                    type="checkbox" 
-                    onChange={() => handleListCheckboxChange(list.id)}
-                  />
-                  <Link to={'/lists/' + list.id}>
-                    {list.name}
-                  </Link>
-                  <button className="cool-btn" type="button" onClick={handleExportList(list.id)}>Export</button>
-                  <button className="cool-btn" type="button" onClick={handleListDelete(list.id)}>Delete</button>
-                  <button className="cool-btn" type="button" disabled={dirtyLists.some(dirtyList => dirtyList.id === list.id)} onClick={handleListEdit(list.id)}>Edit</button>
-                </div>
-              </li>
-            ))}
+            <InfiniteScroll
+              dataLength={data.length}
+              next={fetchData}
+              hasMore={true}
+              loader={<h4>Loading...</h4>}>
+              {displayLists.map((list) => (
+                <li key={list.id}>
+                  <div className="list-item-container">
+                    <input 
+                      type="checkbox" 
+                      onChange={() => handleListCheckboxChange(list.id)}
+                    />
+                    <Link to={'/lists/' + list.id}>
+                      {list.name}
+                    </Link>
+                    <p>Tasks: {listsCount.find((counter: { list_id: string, count: number; }) => counter.list_id === list.id)?.count}</p>
+                    <button className="cool-btn" type="button" onClick={handleExportList(list.id)}>Export</button>
+                    <button className="cool-btn" type="button" onClick={handleListDelete(list.id)}>Delete</button>
+                    <button className="cool-btn" type="button" disabled={dirtyLists.some(dirtyList => dirtyList.id === list.id)} onClick={handleListEdit(list.id)}>Edit</button>
+                  </div>
+                </li>
+              ))}
+            </InfiniteScroll>
           </ul>
         </div>
       </div>

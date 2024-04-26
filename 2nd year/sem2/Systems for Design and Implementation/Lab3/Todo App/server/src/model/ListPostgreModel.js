@@ -8,6 +8,11 @@ const getAllLists = (order) => {
     }
 }
 
+const getAllListsTasksCount = (page, pageSize) => {
+    const offset = (page - 1) * pageSize;
+    return db.any('SELECT Lists.id, Lists.name, COUNT(Tasks.id) AS tasks_count FROM Lists LEFT JOIN Tasks ON Lists.id = Tasks.list_id GROUP BY Lists.id, Lists.name ORDER BY Lists.name ASC OFFSET $1 LIMIT $2', [offset, pageSize]);
+}
+
 const getListById = (id) => {
     return db.one('SELECT * FROM Lists WHERE id = $1', [id]);
 }
@@ -32,6 +37,7 @@ const deleteList = (id) => {
 
 module.exports = {
     getAllLists,
+    getAllListsTasksCount,
     getListById,
     createList,
     updateList,

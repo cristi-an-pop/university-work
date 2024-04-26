@@ -9,6 +9,7 @@ import { useNotificationStore } from '../stores/NotificationStore';
 import { useTasksStore } from '../stores/TaskStore';
 import { v4 as uuid } from 'uuid';
 import { useListsStore } from '../stores/ListStore';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 function TasksPage() {
     const { id: idString } = useParams<{ id: string }>();
@@ -26,7 +27,23 @@ function TasksPage() {
     const { dirtyTasks, setDirtyTasks } = useTasksStore(state => ({ dirtyTasks: state.dirtyTasks, setDirtyTasks: state.setDirtyTasks }));
     const [isOnline, setIsOnline] = useState(false);
     const { lists } = useListsStore();
-    setSelectedList(lists.find(list => list.id === id) ?? null);
+    const [page, setPage] = useState(1);
+    useEffect(() => {
+        setSelectedList(lists.find(list => list.id === id) ?? null);
+    }, [lists, id]);
+
+    const fetchTasks = async () => {
+        try {
+            const response = await axios.get(`http://localhost:5000/api/lists/${id}/tasks?page=${page}&pageSize=50`);
+            setTasks(response.data);
+            setPage(page + 1);
+        } catch (error) {
+            console.error('Failed to fetch tasks:', error);
+        }
+        finally {
+            setIsLoading(false);
+        }
+    };
 
     useEffect(() => {
         const socket = io('http://localhost:5000');
@@ -48,15 +65,6 @@ function TasksPage() {
     }, []);
 
     useEffect(() => {
-        const fetchTasks = async () => {
-            try {
-                const response = await axios.get(`http://localhost:5000/api/lists/${id}/tasks`);
-                setTasks(response.data);
-            } catch (error) {
-                console.error('Failed to fetch tasks:', error);
-            }
-        };
-    
         if (selectedList) {
             fetchTasks();
         }
@@ -273,20 +281,26 @@ function TasksPage() {
                     <p className="p-style">Tasks remaining: {remainingTasksCount}</p>
                     <div className="lists">
                         <ul>
-                            {filteredTasks.map((task: Task) => (
-                                <li key={task.id}>
-                                    <div className="list-item-container">
-                                        <input
-                                            type="checkbox"
-                                            checked={task.completed}
-                                            onChange={() => handleTaskCheckboxChange(task.id)}
-                                        />
-                                        <span>{task.name}</span>
-                                        <span>{task.dateTime}</span>
-                                        <button onClick={() => handleDeleteTask(task.id)}>Delete</button>
-                                    </div>
-                                </li>
-                            ))}
+                            <InfiniteScroll
+                                dataLength={filteredTasks.length}
+                                next={fetchTasks}
+                                hasMore={false}
+                                loader={<h4>Loading...</h4>}>
+                                {filteredTasks.map((task: Task) => (
+                                    <li key={task.id}>
+                                        <div className="list-item-container">
+                                            <input
+                                                type="checkbox"
+                                                checked={task.completed}
+                                                onChange={() => handleTaskCheckboxChange(task.id)}
+                                            />
+                                            <span>{task.name}</span>
+                                            <span>{task.dateTime}</span>
+                                            <button onClick={() => handleDeleteTask(task.id)}>Delete</button>
+                                        </div>
+                                    </li>
+                                ))}
+                            </InfiniteScroll>
                         </ul>
                     </div>
                     <button type="button" onClick={handleDeleteCompletedTasks}>

@@ -2,8 +2,10 @@ const taskModel = require('../model/TaskModel');
 
 const getTasksByListId = async (req, res) => {
     try {
+        const page = req.query.page || 1;
+        const pageSize = req.query.pageSize || 50;
         const listId = req.params.listId;
-        const tasks = await taskModel.getTasksByListId(listId);
+        const tasks = await taskModel.getTasksByListId(listId, page, pageSize);
         res.status(200).json(tasks);
         console.log("Tasks fetched by list id");
     } catch (error) {

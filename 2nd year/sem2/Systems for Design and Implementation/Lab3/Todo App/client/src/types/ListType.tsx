@@ -10,6 +10,11 @@ interface DirtyList {
     deleted: boolean
 }
 
+interface ListCount {
+    list_id: string;
+    count: number;
+}
+
 interface Task {
     id: string;
     name: string;
@@ -28,4 +33,4 @@ interface DirtyTask {
     deleted: boolean;
 }
 
-export type { List, DirtyList, Task, DirtyTask };
+export type { List, DirtyList, Task, DirtyTask, ListCount };
