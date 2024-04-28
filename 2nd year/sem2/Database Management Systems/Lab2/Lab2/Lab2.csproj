@@ -59,6 +59,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MountainBikesStoreDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="MountainBikesTEST.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MountainBikesTEST.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -83,6 +88,17 @@
     </None>
     <None Include="MountainBikesStoreDataSet.xss">
       <DependentUpon>MountainBikesStoreDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="MountainBikesTEST.xsc">
+      <DependentUpon>MountainBikesTEST.xsd</DependentUpon>
+    </None>
+    <None Include="MountainBikesTEST.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MountainBikesTEST.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="MountainBikesTEST.xss">
+      <DependentUpon>MountainBikesTEST.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
