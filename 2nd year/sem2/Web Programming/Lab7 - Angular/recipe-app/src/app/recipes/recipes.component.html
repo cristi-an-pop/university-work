@@ -1,0 +1,16 @@
+<div class="container mt-5">
+    <h2 class="text-center">Recipes</h2>
+    <select class="form-control" (change)="onTypeChange($event)">
+        <option value="">All types</option>
+        <option *ngFor="let type of types" [value]="type">{{type}}</option>
+      </select>
+    <div *ngFor="let recipe of filteredRecipes">
+        <h3>{{ recipe.name }}</h3>
+        <p><b>Author:</b> {{ recipe.author }}</p>
+        <p><b>Type:</b>{{ recipe.type }}</p>
+        <p><b>Ingredients:</b>> {{ recipe.ingredients }}</p>
+        <p><b>Instructions</b> {{ recipe.instructions }}</p>
+        <button class="btn btn-primary" (click)="updateRecipe(recipe, recipe.id)">Update</button>
+        <button class="btn btn-danger" (click)="deleteRecipe(recipe.id)">Delete</button>
+    </div>
+</div>

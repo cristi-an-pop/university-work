@@ -1,0 +1,42 @@
+<div class="container mt-5">
+    <h2 class="text-center">Update Recipe</h2>
+    <form id="update-recipe-form" [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+        <input type="hidden" formControlName="id">
+        <div class="form-group">
+            <label for="author">Author:</label>
+            <input type="text" formControlName="author" class="form-control" id="author" name="author">
+            <div *ngIf="recipeForm.controls['author'].invalid && recipeForm.controls['author'].touched" class="text-danger">
+                Author is required.
+              </div>
+        </div>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" formControlName="name" class="form-control" id="name" name="name">
+            <div *ngIf="recipeForm.controls['name'].invalid && recipeForm.controls['name'].touched" class="text-danger">
+                Name is required.
+              </div>
+        </div>
+        <div class="form-group">
+            <label for="type">Type:</label>
+            <input type="text" formControlName="type" class="form-control" id="type" name="type">
+            <div *ngIf="recipeForm.controls['type'].invalid && recipeForm.controls['type'].touched" class="text-danger">
+                Type is required.
+              </div>
+        </div>
+        <div class="form-group">
+            <label for="ingredients">Ingredients:</label>
+            <textarea class="form-control" formControlName="ingredients" id="ingredients" name="ingredients" rows="4"></textarea>
+            <div *ngIf="recipeForm.controls['ingredients'].invalid && recipeForm.controls['ingredients'].touched" class="text-danger">
+                Ingredients is required.
+              </div>
+        </div>
+        <div class="form-group">
+            <label for="instructions">Instructions:</label>
+            <textarea class="form-control" formControlName="instructions" id="instructions" name="instructions" rows="4"></textarea>
+            <div *ngIf="recipeForm.controls['instructions'].invalid && recipeForm.controls['instructions'].touched" class="text-danger">
+                Instructions is required.
+              </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Update Recipe</button>
+    </form>
+</div>
