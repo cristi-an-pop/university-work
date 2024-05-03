@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { List } from '../types/ListType';
-import { Task } from '../types/TaskType';
 import axios from 'axios';
 import io from 'socket.io-client';
 import { useAxiosStore } from '../stores/AxiosStore';
@@ -10,15 +9,14 @@ import { useNotificationStore } from '../stores/NotificationStore';
 import { useTasksStore } from '../stores/TaskStore';
 import { v4 as uuid } from 'uuid';
 import { useListsStore } from '../stores/ListStore';
-import InfiniteScroll from 'react-infinite-scroll-component';
+import TaskForm from './TaskForm';
+import TasksDisplay from './TasksDisplay';
 
 function TasksPage() {
     const { id: idString } = useParams<{ id: string }>();
     const id = String(idString);
 
     const [isLoading, setIsLoading] = useState(true);
-    const [newTaskName, setNewTaskName] = useState('');
-    const [newTaskDateTime, setNewTaskDateTime] = useState('');
     const [filterDateTime, setFilterDateTime] = useState('');
     const [filterCompleted, setFilterCompleted] = useState(false);
     const [selectedList, setSelectedList] = useState<List | null>(null);
@@ -88,7 +86,7 @@ function TasksPage() {
                 } else if(dirtyTask.existed == true && dirtyTask.deleted == false) {
                     getAxiosInstance()
                     .patch(`/lists/${id}/tasks/${dirtyTask.id}`, dirtyTask)
-                    .then(response => {
+                    .then(() => {
                         const updatedTasks = tasks.map(task => task.id === dirtyTask.id ? dirtyTask : task);
                         setTasks(updatedTasks);
                         addNotification('Task updated successfully', 'success');
@@ -99,7 +97,7 @@ function TasksPage() {
                 } else if(dirtyTask.existed == true && dirtyTask.deleted == true) {
                     getAxiosInstance()
                     .delete(`/lists/${id}/tasks/${dirtyTask.id}`)
-                    .then(response => {
+                    .then(() => {
                         const updatedTasks = tasks.filter(task => task.id !== dirtyTask.id);
                         setTasks(updatedTasks);
                         addNotification('Task deleted successfully', 'success');
@@ -118,10 +116,7 @@ function TasksPage() {
 
     if (!selectedList) return <div>Selected list not found</div>;
 
-    const handleNewTaskSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        if (!newTaskName.trim() || !newTaskDateTime.trim()) return;
-        
+    const handleNewTaskSubmit = (newTaskName: string, newTaskDateTime: string) => {
         const newTask = {
             id: uuid(),
             name: newTaskName,
@@ -135,8 +130,6 @@ function TasksPage() {
             addNotification('Task added successfully', 'success');
             const updatedTasks = [ ...tasks, response.data ];
             setTasks(updatedTasks);
-            setNewTaskName('');
-            setNewTaskDateTime('');
             return response;
         })
         .catch((error) => {
@@ -245,22 +238,7 @@ function TasksPage() {
             <NotificationDisplay />
             <div className="tasks-container">
                 <h2>{selectedList.name}</h2>
-                <form className="list-form" onSubmit={handleNewTaskSubmit}>
-                    <input
-                        className="form-input"
-                        type="text"
-                        value={newTaskName}
-                        onChange={(e) => setNewTaskName(e.target.value)}
-                        placeholder="Enter task name"
-                    />
-                    <input
-                        className="form-input"
-                        type="datetime-local"
-                        value={newTaskDateTime}
-                        onChange={(e) => setNewTaskDateTime(e.target.value)}
-                    />
-                    <button type="submit">Add Task</button>
-                </form>
+                <TaskForm onSubmit={handleNewTaskSubmit} />
                 <div className="tasks-filters">
                     <input
                         className="form-input"
@@ -280,30 +258,7 @@ function TasksPage() {
                 </div>
                 <div className="tasks-list-container">
                     <p className="p-style">Tasks remaining: {remainingTasksCount}</p>
-                    <div className="lists">
-                        <ul>
-                            <InfiniteScroll
-                                dataLength={filteredTasks.length}
-                                next={fetchTasks}
-                                hasMore={false}
-                                loader={<h4>Loading...</h4>}>
-                                {filteredTasks.map((task: Task) => (
-                                    <li key={task.id}>
-                                        <div className="list-item-container">
-                                            <input
-                                                type="checkbox"
-                                                checked={task.completed}
-                                                onChange={() => handleTaskCheckboxChange(task.id)}
-                                            />
-                                            <span>{task.name}</span>
-                                            <span>{task.dateTime}</span>
-                                            <button onClick={() => handleDeleteTask(task.id)}>Delete</button>
-                                        </div>
-                                    </li>
-                                ))}
-                            </InfiniteScroll>
-                        </ul>
-                    </div>
+                    <TasksDisplay tasks={filteredTasks} onCheckboxChange={handleTaskCheckboxChange} onDelete={handleDeleteTask} fetchTasks={fetchTasks} />
                     <button type="button" onClick={handleDeleteCompletedTasks}>
                         Delete Completed Tasks
                     </button>

@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import ListForm from './ListForm';
-import ListDisplay from './ListDisplay';
+import ListsDisplay from './ListsDisplay';
 import axios from 'axios';
 import { useListsStore } from '../stores/ListStore'
 import { useAxiosStore } from '../stores/AxiosStore';
@@ -25,7 +25,9 @@ const ListsPage = () => {
     setIsLoading(true);
     try {
       const response = await axios.get(`http://localhost:5000/api/lists/ok?page=${page}&pageSize=50`);
+      console.log(response.data);
       const newData = response.data.filter((newList: List) => !lists.some((list) => list.id === newList.id));
+      console.log(newData);
       setLists([...lists, ...newData]);
       setPage(page + 1);
       for(const list of lists) {
@@ -252,7 +254,7 @@ const ListsPage = () => {
         <h1>Todo Lists</h1>
         <ListForm onSubmit={handleNewListSubmit} />
         <button className="cool-btn" type="button" onClick={handleExportSelectedLists}>Export Selected</button>
-        <ListDisplay 
+        <ListsDisplay 
           lists={displayLists}
           onCheckboxChange={handleListCheckboxChange}
           onExport={handleExportList}

@@ -1,7 +1,7 @@
 import InfiniteScroll from 'react-infinite-scroll-component';
 import ListItem from './ListItem';
 
-const ListDisplay = ({ lists, onCheckboxChange, onExport, onDelete, onEdit, fetchData }: {
+const ListsDisplay = ({ lists, onCheckboxChange, onExport, onDelete, onEdit, fetchData }: {
     lists: any[];
     onCheckboxChange: (id: string) => void;
     onExport: (list: any) => void;
@@ -20,6 +20,7 @@ const ListDisplay = ({ lists, onCheckboxChange, onExport, onDelete, onEdit, fetc
         <ul>
           {lists.map((list) => (
             <ListItem 
+                key = {list.id}
                 list = {list}
                 onCheckboxChange = {onCheckboxChange}
                 onExport = {onExport}
@@ -33,4 +34,4 @@ const ListDisplay = ({ lists, onCheckboxChange, onExport, onDelete, onEdit, fetc
   );
 };
 
-export default ListDisplay;
+export default ListsDisplay;
