@@ -1,0 +1,11 @@
+USE Lab3_DBMS
+GO
+
+--INSERT INTO Store VALUES(30, 'Sibiu', 100)
+--INSERT INTO Customer VALUES(30, 'Marian', 30, 1)
+
+BEGIN TRAN
+UPDATE Store SET address='Aiud' WHERE id = 30
+WAITFOR DELAY '00:00:05'
+UPDATE Customer SET age = 23 WHERE id = 30
+COMMIT TRAN

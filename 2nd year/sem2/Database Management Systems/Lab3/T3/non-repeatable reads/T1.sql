@@ -1,0 +1,10 @@
+USE Lab3_DBMS
+GO
+
+INSERT INTO Store VALUES(2, 'Cluj-Napoca, Buna Ziua', 500)
+BEGIN TRAN
+WAITFOR DELAY '00:00:05'
+UPDATE Store
+SET address = 'Oradea'
+WHERE ID = 2
+COMMIT TRAN
