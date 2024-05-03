@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import ListForm from './ListForm';
+import ListDisplay from './ListDisplay';
 import axios from 'axios';
 import { useListsStore } from '../stores/ListStore'
 import { useAxiosStore } from '../stores/AxiosStore';
@@ -8,11 +9,9 @@ import { useNotificationStore } from '../stores/NotificationStore';
 import NotificationDisplay from './NotificationDisplay';
 import { List, DirtyList } from '../types/ListType';
 import { v4 as uuid } from 'uuid';
-import InfiniteScroll from 'react-infinite-scroll-component';
 
 const ListsPage = () => {
   const { lists, setLists } = useListsStore(state => ({ lists: state.lists, setLists: state.setLists }));
-  const [newListName, setNewListName] = useState('');
   const [selectedLists, setSelectedLists] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const socketInstance = useRef<WebSocket>();
@@ -82,7 +81,6 @@ const ListsPage = () => {
         if(socketInstance.current) {
           socketInstance.current.send(JSON.stringify(response.data));
         }
-        setNewListName('');
       })
       .catch((error) => {
         console.error('Error on List Add:', error);
@@ -135,8 +133,7 @@ const ListsPage = () => {
     return <div>Loading...</div>;
   }
 
-  const handleNewListSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleNewListSubmit = (newListName: string) => {
     if (!newListName.trim()) return;
     const newList: List = {
         id: uuid(),
@@ -146,8 +143,8 @@ const ListsPage = () => {
 
     getAxiosInstance()
     .post('/lists', newList)
-    .then((response) => {
-      setLists([...lists, response.data]);
+    .then(() => {
+      setLists([...lists, newList]);
       addNotification('List added succesfully', 'success');
     })
     .catch((error) => {
@@ -159,7 +156,6 @@ const ListsPage = () => {
         addNotification('Error adding list', 'error');
       }
     });
-    setNewListName('');
 };
 
   const handleListDelete = (id: string) => () => {
@@ -254,44 +250,16 @@ const ListsPage = () => {
       <NotificationDisplay />
       <div className="lists-container">
         <h1>Todo Lists</h1>
-        <form className="list-form" onSubmit={handleNewListSubmit}>
-          <input
-            className="form-input"
-            type="text"
-            value={newListName}
-            onChange={(e) => setNewListName(e.target.value)}
-            placeholder="Enter list name"
-          />
-          <button type="submit">Add List</button>
-        </form>
+        <ListForm onSubmit={handleNewListSubmit} />
         <button className="cool-btn" type="button" onClick={handleExportSelectedLists}>Export Selected</button>
-        <div className="lists">
-          <ul>
-            <InfiniteScroll
-              dataLength={lists.length}
-              next={fetchData}
-              hasMore={true}
-              loader={<h4>Loading...</h4>}>
-              {displayLists.map((list) => (
-                <li key={list.id}>
-                  <div className="list-item-container">
-                    <input 
-                      type="checkbox" 
-                      onChange={() => handleListCheckboxChange(list.id)}
-                    />
-                    <Link to={'/lists/' + list.id}>
-                      {list.name}
-                    </Link>
-                    <p>Tasks: {list.taskCount || 0}</p>
-                    <button className="cool-btn" type="button" onClick={handleExportList(list.id)}>Export</button>
-                    <button className="cool-btn" type="button" onClick={handleListDelete(list.id)}>Delete</button>
-                    <button className="cool-btn" type="button" disabled={dirtyLists.some(dirtyList => dirtyList.id === list.id)} onClick={handleListEdit(list.id)}>Edit</button>
-                  </div>
-                </li>
-              ))}
-            </InfiniteScroll>
-          </ul>
-        </div>
+        <ListDisplay 
+          lists={displayLists}
+          onCheckboxChange={handleListCheckboxChange}
+          onExport={handleExportList}
+          onDelete={handleListDelete}
+          onEdit={handleListEdit}
+          fetchData={fetchData}
+        />
       </div>
     </>
   );
