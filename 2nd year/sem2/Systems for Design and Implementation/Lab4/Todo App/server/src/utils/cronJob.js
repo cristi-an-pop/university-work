@@ -2,7 +2,7 @@ const cron = require('node-cron');
 const { createNewList } = require('./listCreation');
 
 const scheduleCronJob = () => {
-  cron.schedule('*/10 * * * * *', () => {
+  cron.schedule('*/30 * * * * *', () => {
     createNewList();
   });
 };

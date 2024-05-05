@@ -17,9 +17,9 @@ const ListItem = ({ list, onCheckboxChange, onExport, onDelete, onEdit }: {
                 {list.name}
             </Link>
             <p>Tasks: {list.taskCount || 0}</p>
-            <button className="cool-btn" type="button" onClick={onExport(list.id)}>Export</button>
-            <button className="cool-btn" type="button" onClick={onDelete(list.id)}>Delete</button>
-            <button className="cool-btn" type="button" disabled={list.existed === false} onClick={onEdit(list.id)}>Edit</button>
+            <button className="cool-btn" type="button" onClick={() => onExport(list.id)}>Export</button>
+            <button className="cool-btn" type="button" onClick={() => onDelete(list.id)}>Delete</button>
+            <button className="cool-btn" type="button" disabled={list.existed === false} onClick={() => onEdit(list.id)}>Edit</button>
         </li>
     )
 }

@@ -4,7 +4,7 @@ const createNewList = () => {
   const newList = {
     id: Date.now().toString(),
     name: "Cron List",
-    tasks: []
+    taskCount: 0,
   };
 
   const io = getIo();
