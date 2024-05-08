@@ -18,7 +18,7 @@ import java.util.List;
 public class CliInterpreter {
     public static void main(String[] args) {
         TextMenu menu = new TextMenu();
-        CliInterpreter.addCommands("D:\\ubb\\university-work\\2nd year\\APM (Advanced Progamming Methodologies)\\ToyLanguageInterpreter\\src\\main\\java\\logs\\out.txt", menu);
+        CliInterpreter.addCommands("src/main/java/logs/out.txt", menu);
         menu.show();
     }
 

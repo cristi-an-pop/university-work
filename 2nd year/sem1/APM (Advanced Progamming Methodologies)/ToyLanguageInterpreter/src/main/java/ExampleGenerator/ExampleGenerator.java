@@ -29,7 +29,7 @@ public class ExampleGenerator {
                 ExampleGenerator.getExample10(),
                 ExampleGenerator.getExample11(),
                 ExampleGenerator.getExample12(),
-                ExampleGenerator.getExample13(),
+                //ExampleGenerator.getExample13(),
                 ExampleGenerator.getExample14(),
                 ExampleGenerator.getExample15(),
                 ExampleGenerator.getExample16()
@@ -125,7 +125,7 @@ public class ExampleGenerator {
 
     private static Statement getExample6() {
         Statement declaringV = new VarDeclStatement("v", new StringType());
-        Statement assigningV = new AssignmentStatement("v", new ValueExpression(new StringValue("D:\\ubb\\university-work\\2nd year\\APM (Advanced Progamming Methodologies)\\ToyLanguageInterpreter\\src\\main\\java\\IO\\test.in")));
+        Statement assigningV = new AssignmentStatement("v", new ValueExpression(new StringValue("src/main/java/IO/test.in")));
         Statement openingFile = new OpenReadFileStatement(new VarExpression("v"));
         Statement declaringC = new VarDeclStatement("c", new IntType());
         Statement readingC = new ReadFileStatement(new VarExpression("v"), "c");
@@ -259,50 +259,50 @@ public class ExampleGenerator {
         return ExampleGenerator.buildExample(declaringV, assigningV, fork, sleep, printV);
     }
 
-    private static Statement getExample13() {
-        //    Semaphore example
-        Statement declaringV1 = new VarDeclStatement("v1", new ReferenceType(new IntType()));
-        Statement declaringCnt = new VarDeclStatement("cnt", new IntType());
-        Statement allocatingV1 = new HeapAllocationStatement("v1", new ValueExpression(new IntValue(2)));
-
-        Expression readV1 = new HeapReadExpression(new VarExpression("v1"));
-        Statement acquireSemaphore = new AcquireStatement("cnt");
-        Statement releaseSemaphore = new ReleaseStatement("cnt");
-
-        Statement newSemaphore = new NewSemaphoreStatement("cnt", readV1);
-        Statement fork1 = new ForkStatement(
-                new CompoundStatement(
-                        acquireSemaphore,
-                        new CompoundStatement(
-                                new HeapWriteStatement("v1", new ArithmeticExpression(readV1, new ValueExpression(new IntValue(10)), 3)),
-                                new CompoundStatement(
-                                        new PrintStatement(readV1),
-                                        releaseSemaphore
-                                )
-                        )
-                )
-        );
-        Statement fork2 = new ForkStatement(
-                new CompoundStatement(
-                        acquireSemaphore,
-                        new CompoundStatement(
-                                new HeapWriteStatement("v1", new ArithmeticExpression(readV1, new ValueExpression(new IntValue(10)), 3)),
-                                new CompoundStatement(
-                                        new HeapWriteStatement("v1", new ArithmeticExpression(readV1, new ValueExpression(new IntValue(2)), 3)),
-                                        new CompoundStatement(
-                                                new PrintStatement(readV1),
-                                                releaseSemaphore
-                                        )
-                                )
-                        )
-                )
-        );
-        Statement printing = new PrintStatement(new ArithmeticExpression(readV1, new ValueExpression(new IntValue(1)), 2));
-
-        return ExampleGenerator.buildExample(
-                declaringV1, declaringCnt, allocatingV1, newSemaphore, fork1, fork2, acquireSemaphore, printing, releaseSemaphore
-        );
-    }
+//    private static Statement getExample13() {
+//        //    Semaphore example
+//        Statement declaringV1 = new VarDeclStatement("v1", new ReferenceType(new IntType()));
+//        Statement declaringCnt = new VarDeclStatement("cnt", new IntType());
+//        Statement allocatingV1 = new HeapAllocationStatement("v1", new ValueExpression(new IntValue(2)));
+//
+//        Expression readV1 = new HeapReadExpression(new VarExpression("v1"));
+//        Statement acquireSemaphore = new AcquireStatement("cnt");
+//        Statement releaseSemaphore = new ReleaseStatement("cnt");
+//
+//        Statement newSemaphore = new NewSemaphoreStatement("cnt", readV1);
+//        Statement fork1 = new ForkStatement(
+//                new CompoundStatement(
+//                        acquireSemaphore,
+//                        new CompoundStatement(
+//                                new HeapWriteStatement("v1", new ArithmeticExpression(readV1, new ValueExpression(new IntValue(10)), 3)),
+//                                new CompoundStatement(
+//                                        new PrintStatement(readV1),
+//                                        releaseSemaphore
+//                                )
+//                        )
+//                )
+//        );
+//        Statement fork2 = new ForkStatement(
+//                new CompoundStatement(
+//                        acquireSemaphore,
+//                        new CompoundStatement(
+//                                new HeapWriteStatement("v1", new ArithmeticExpression(readV1, new ValueExpression(new IntValue(10)), 3)),
+//                                new CompoundStatement(
+//                                        new HeapWriteStatement("v1", new ArithmeticExpression(readV1, new ValueExpression(new IntValue(2)), 3)),
+//                                        new CompoundStatement(
+//                                                new PrintStatement(readV1),
+//                                                releaseSemaphore
+//                                        )
+//                                )
+//                        )
+//                )
+//        );
+//        Statement printing = new PrintStatement(new ArithmeticExpression(readV1, new ValueExpression(new IntValue(1)), 2));
+//
+//        return ExampleGenerator.buildExample(
+//                declaringV1, declaringCnt, allocatingV1, newSemaphore, fork1, fork2, acquireSemaphore, printing, releaseSemaphore
+//        );
+//    }
 
     private static Statement getExample14() {
 //    Lock example

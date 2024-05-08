@@ -70,7 +70,7 @@ public class SelectWindowController implements Initializable {
             selectedIndex = 0;
         }
         ProgramState program = this.programs.get(selectedIndex);
-        String logFilePath = "D:\\ubb\\university-work\\2nd year\\APM (Advanced Progamming Methodologies)\\ToyLanguageInterpreter\\src\\main\\java\\logs\\out.txt";
+        String logFilePath = "src/main/java/logs/out.txt";
         IRepository repository = new Repository(program, logFilePath);
         Controller controller = new Controller(repository);
 
