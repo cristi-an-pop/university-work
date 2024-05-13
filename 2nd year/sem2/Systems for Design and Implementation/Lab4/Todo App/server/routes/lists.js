@@ -6,7 +6,8 @@ const {
     getListById,
     createList,
     updateList,
-    deleteList
+    deleteList,
+    getAllListsByUserId
 } = require('../src/controller/ListController'); 
 
 router.get("/", getAllLists);

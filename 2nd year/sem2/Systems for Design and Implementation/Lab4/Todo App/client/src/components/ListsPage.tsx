@@ -9,17 +9,21 @@ import NotificationDisplay from './NotificationDisplay';
 import { List, DirtyList } from '../types/ListType';
 import { v4 as uuid } from 'uuid';
 import { getListData, addList, deleteList, updateList } from '../services/ListService';
+import useRefreshToken from '../hooks/useRefreshToken';
+import useAxiosPrivate from '../hooks/useAxiosPrivate';
 
 const ListsPage = () => {
   const { lists, setLists } = useListsStore(state => ({ lists: state.lists, setLists: state.setLists }));
   const [selectedLists, setSelectedLists] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const socketInstance = useRef<WebSocket>();
+  const refresh = useRefreshToken();
   const { getAxiosInstance } = useAxiosStore(state => ({ getAxiosInstance: state.getAxiosInstance }));
   const { addNotification } = useNotificationStore();
   const { dirtyLists, setDirtyLists } = useListsStore(state => ({ dirtyLists: state.dirtyLists, setDirtyLists: state.setDirtyLists }));
   const [isOnline, setIsOnline] = useState(false);
   const [page, setPage] = useState(1);
+  const axiosPrivate = useAxiosPrivate();
 
   useEffect(() => {
     const socket = io('http://localhost:5000');
@@ -96,7 +100,15 @@ const ListsPage = () => {
   const fetchData = async () => {
     setIsLoading(true);
     try {
-      const data = await getListData(getAxiosInstance(), page);
+      //const data = await getListData(getAxiosInstance(), page);
+      let response: any = [];
+      try {
+        response = await axiosPrivate.get(`/lists/ok?page=${page}&pageSize=${50}`);
+        console.log(response.data);
+      } catch (err) {
+        console.log(err);
+      }
+      const data = response.data;
       const newData = data.filter((data: List) => !lists.some((list) => list.id === data.id));
       setLists([...lists, ...newData]);
       setPage(page + 1);
@@ -230,6 +242,7 @@ const ListsPage = () => {
         <h1>Todo Lists</h1>
         <ListForm onSubmit={handleNewListSubmit} />
         <button className="cool-btn" type="button" onClick={handleExportSelectedLists}>Export Selected</button>
+        <button className="cool-btn" type="button" onClick={() => refresh()}>Refresh</button>
         <ListsDisplay 
           lists={displayLists}
           onCheckboxChange={handleListCheckboxChange}

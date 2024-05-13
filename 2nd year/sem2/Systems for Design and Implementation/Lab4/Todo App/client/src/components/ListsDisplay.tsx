@@ -18,16 +18,20 @@ const ListsDisplay = ({ lists, onCheckboxChange, onExport, onDelete, onEdit, fet
         loader={<h4>Loading...</h4>}
       >
         <ul>
-          {lists.map((list) => (
-            <ListItem 
-                key = {list.id}
-                list = {list}
-                onCheckboxChange = {onCheckboxChange}
-                onExport = {onExport}
-                onDelete = {onDelete}
-                onEdit = {onEdit}
-            />
-          ))}
+          {lists?.length 
+            ? (
+              lists.map((list) => (
+                <ListItem 
+                    key = {list.id}
+                    list = {list}
+                    onCheckboxChange = {onCheckboxChange}
+                    onExport = {onExport}
+                    onDelete = {onDelete}
+                    onEdit = {onEdit}
+                />
+              ))
+            ) : <p>No lists to display</p>
+          }
         </ul>
       </InfiniteScroll>
     </div>

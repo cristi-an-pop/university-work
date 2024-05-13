@@ -11,6 +11,17 @@ const getAllLists = async (req, res) => {
     }
 }
 
+const getAllListsByUserId = async (req, res) => {
+    try {
+        const userId = req.params.userId;
+        const lists = await listModel.getAllListsByUserId(userId);
+        res.status(200).json(lists);
+        console.log("All lists fetched by user id");
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching lists' });
+    }
+}
+
 const getAllListsTasksCount = async (req, res) => {
     try {
         const page = req.query.page || 1;
@@ -74,5 +85,6 @@ module.exports = {
     getListById,
     createList,
     updateList,
-    deleteList
+    deleteList,
+    getAllListsByUserId
 };
