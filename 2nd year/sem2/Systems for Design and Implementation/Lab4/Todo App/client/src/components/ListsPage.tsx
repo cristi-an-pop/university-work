@@ -1,90 +1,53 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import ListForm from './ListForm';
 import ListsDisplay from './ListsDisplay';
 import { useListsStore } from '../stores/ListStore'
 import { useAxiosStore } from '../stores/AxiosStore';
-import io from 'socket.io-client';
 import { useNotificationStore } from '../stores/NotificationStore';
 import NotificationDisplay from './NotificationDisplay';
 import { List, DirtyList } from '../types/ListType';
 import { v4 as uuid } from 'uuid';
-import { getListData, addList, deleteList, updateList } from '../services/ListService';
 import useRefreshToken from '../hooks/useRefreshToken';
 import useAxiosPrivate from '../hooks/useAxiosPrivate';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const ListsPage = () => {
   const { lists, setLists } = useListsStore(state => ({ lists: state.lists, setLists: state.setLists }));
   const [selectedLists, setSelectedLists] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const socketInstance = useRef<WebSocket>();
   const refresh = useRefreshToken();
-  const { getAxiosInstance } = useAxiosStore(state => ({ getAxiosInstance: state.getAxiosInstance }));
   const { addNotification } = useNotificationStore();
   const { dirtyLists, setDirtyLists } = useListsStore(state => ({ dirtyLists: state.dirtyLists, setDirtyLists: state.setDirtyLists }));
-  const [isOnline, setIsOnline] = useState(false);
+  const { isOnline } = useAxiosStore();
   const [page, setPage] = useState(1);
   const axiosPrivate = useAxiosPrivate();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
-    const socket = io('http://localhost:5000');
-    const handleOnline = () => {
-      setIsOnline(true);
-    }
-    const handleOffline = () => {
-      setIsOnline(false); 
-    }
-    socket.on('connect', handleOnline);
-    socket.on('disconnect', handleOffline);
-    return () => {
-      socket.disconnect();
-    }
+    setLists([]);
+    setPage(1);
+
+    fetchData();
+    setIsLoading(false);
   }, []);
-
-  useEffect(() => {
-    if (isOnline) {
-      fetchData();
-    } else {
-      setIsLoading(false);
-    }
-  }, [isOnline]);
-
-  useEffect(() => {
-    if (isOnline) {
-      const socket = io('http://localhost:5000');
-      socket.on('newList', (newList) => {
-        getAxiosInstance()
-        .post('/lists', newList)
-        .then(response => {
-          addNotification('List added succesfully', 'success');
-          setLists([...lists, response.data]);
-          if(socketInstance.current) {
-            socketInstance.current.send(JSON.stringify(response.data));
-          }
-        })
-        .catch((error) => {
-          console.error('Error on List Add:', error);
-        });
-      });
-      return () => {
-        socket.disconnect();
-      };
-    }
-  }, [isOnline]);
 
   useEffect(() => {
     if (isOnline) {
       dirtyLists.forEach(async (dirtyList) => {
         try {
           if (dirtyList.existed == false && dirtyList.deleted == false) {
-            const newList = await addList(getAxiosInstance(), dirtyList);
+            const response = await axiosPrivate.post('/lists', dirtyList);
+            const newList = response.data;
             setDirtyLists(dirtyLists.filter(dirtyList => dirtyList.id !== newList.id));
             setLists([...lists, newList]);
           } else if (dirtyList.existed == true && dirtyList.deleted == true) {
-            await deleteList(getAxiosInstance(), dirtyList.id);
+            await axiosPrivate.delete(`/lists/${dirtyList.id}`);
             setDirtyLists(dirtyLists.filter(dirtyList => dirtyList.id !== dirtyList.id));
             setLists(lists.filter(list => list.id !== dirtyList.id));
           } else if (dirtyList.existed == true && dirtyList.deleted == false) {
-            const updatedList = await updateList(getAxiosInstance(), dirtyList);
+            const response = await axiosPrivate.patch(`/lists/${dirtyList.id}`, dirtyList);
+            const updatedList = response.data;
             setDirtyLists(dirtyLists.filter(dirtyList => dirtyList.id !== updatedList.id));
             setLists(lists.map(list => list.id === dirtyList.id ? updatedList : list));
           }
@@ -100,21 +63,16 @@ const ListsPage = () => {
   const fetchData = async () => {
     setIsLoading(true);
     try {
-      //const data = await getListData(getAxiosInstance(), page);
-      let response: any = [];
-      try {
-        response = await axiosPrivate.get(`/lists/ok?page=${page}&pageSize=${50}`);
-        console.log(response.data);
-      } catch (err) {
-        console.log(err);
-      }
+      const response = await axiosPrivate.get(`/lists?page=${page}&pageSize=50`);
       const data = response.data;
       const newData = data.filter((data: List) => !lists.some((list) => list.id === data.id));
       setLists([...lists, ...newData]);
       setPage(page + 1);
     } catch(error) {
       console.log('Error fetching lists:', error);
-      addNotification('Error fetching lists', 'error');
+      if((error as any).status === 403) {
+        navigate('/login', { state: { from: location }, replace: true });
+      }
     }
     finally {
       setIsLoading(false);
@@ -130,7 +88,8 @@ const ListsPage = () => {
     };
 
     try {
-      const list = await addList(getAxiosInstance(), newList);
+      const response = await axiosPrivate.post('/lists', newList);
+      const list = response.data;
       setLists([...lists, list]);
       addNotification('List added succesfully', 'success');
     } catch (error: any) {
@@ -146,7 +105,7 @@ const ListsPage = () => {
 
   const handleListDelete = async (id: string) => {
     try {
-      await deleteList(getAxiosInstance(), id);
+      await axiosPrivate.delete(`/lists/${id}`);
       setLists(lists.filter(list => list.id !== id));
       addNotification('List deleted successfully', 'success');
     } catch (error: any) {
@@ -181,7 +140,8 @@ const ListsPage = () => {
       taskCount: lists.find(list => list.id === id)?.taskCount ?? 0
     };
     try {
-      const editedList = await updateList(getAxiosInstance(), updatedList);
+      const response = await axiosPrivate.patch(`/lists/${id}`, updatedList);
+      const editedList = response.data;
       setLists(lists.map(list => list.id === id ? editedList : list));
       addNotification('List updated successfully', 'success');
     } catch (error: any) {

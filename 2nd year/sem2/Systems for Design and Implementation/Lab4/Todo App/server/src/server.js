@@ -30,12 +30,16 @@ app.use(bodyParser.json());
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/api/lists', listsRouter);
-app.use('/api/lists/:listId/tasks', tasksRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/refresh', refreshRouter);
+app.get('/ping', (req, res) => {
+  res.status(200).json({ message: 'pong' });
+});
 
 app.use(verifyJWT);
+
+app.use('/api/lists', listsRouter);
+app.use('/api/lists/:listId/tasks', tasksRouter);
 
 // Generate fake data
 //generateList(1000);

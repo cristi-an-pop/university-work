@@ -7,24 +7,14 @@ export const getListData = async (
   page: number,
   pageSize = 50
 ) => {
-  const axiosPrivate = useAxiosPrivate();
-  try {
-    const response = await axiosPrivate.get(
-      `/lists/ok?page=${page}&pageSize=${pageSize}`
-    );
-    console.log(response.data);
-    return response.data;
-  } catch (err) {
-    console.log(err);
-  }
-  // return axiosInstance
-  //   .get(`/lists/ok?page=${page}&pageSize=${pageSize}`)
-  //   .then((response) => {
-  //     return response.data;
-  //   })
-  //   .catch((error) => {
-  //     throw error;
-  //   });
+  return axiosInstance
+    .get(`/lists?page=${page}&pageSize=${pageSize}`)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      throw error;
+    });
 };
 
 export const addList = async (axiosInstance: AxiosInstance, list: List) => {

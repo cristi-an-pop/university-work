@@ -8,8 +8,10 @@ const getAllLists = (order) => {
     }
 }
 
-const getAllListsByUserId = (userId) => {
-    return db.any('SELECT * FROM Lists WHERE user_id = $1', [userId]);
+const getAllListsByUserId = (userId, page, pageSize) => {
+    const offset = (page - 1) * pageSize;
+    console.log(userId);
+    return db.any('SELECT * FROM Lists WHERE user_id = $1 ORDER BY name ASC OFFSET $2 LIMIT $3', [userId, offset, pageSize]);
 }
 
 const getAllListsTasksCount = (page, pageSize) => {
@@ -21,8 +23,8 @@ const getListById = (id) => {
     return db.one('SELECT * FROM Lists WHERE id = $1', [id]);
 }
 
-const createList = (newList) => {
-    return db.one('INSERT INTO Lists (id, name, user_id) VALUES ($1, $2, $3) RETURNING *', [newList.id, newList.name, newList.user_id]);
+const createList = (userId, newList) => {
+    return db.one('INSERT INTO Lists (id, name, user_id) VALUES ($1, $2, $3) RETURNING *', [newList.id, newList.name, userId]);
 }
 
 const updateList = (id, updatedList) => {

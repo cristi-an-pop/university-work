@@ -24,11 +24,12 @@ const loginUser = async (req, res) => {
         const user = await userModel.getUserByUsername(username);
 
         if (!user || !await bcrypt.compare(password, user.password)) {
-            return res.status(401).json({ message: 'Invalid credentials' });
+            return res.status(401).json({ message: 'Unable to login' });
         }
 
         const accessToken = jwt.sign(
-            { 
+            {
+                "userid": user.id,
                 "username": user.username
             }, 
             process.env.JWT_SECRET, 
@@ -37,14 +38,15 @@ const loginUser = async (req, res) => {
 
         const refreshToken = jwt.sign(
             {
+                "userid": user.id,
                 "username": user.username
             },
             process.env.JWT_REFRESH_SECRET,
-            { expiresIn: '15s' }
+            { expiresIn: '1d' }
         )
         await userModel.updateUserRefreshToken(user.username, refreshToken);
         res.cookie('jwt', refreshToken, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
-        res.status(200).json({ username, accessToken });
+        res.status(200).json({ "userid": user.id, username, accessToken });
     } catch (error) {
         res.status(500).json({ message: 'Error logging in' });
     }

@@ -1,45 +1,57 @@
-import { axiosPrivate } from "../stores/AxiosStore";
-import { useEffect } from "react";
-import useRefreshToken from "./useRefreshToken";
-import useAuth from "./useAuth";
+import { useEffect } from 'react';
+import useRefreshToken from './useRefreshToken';
+//import useAuth from './useAuth';
+import { useAxiosStore } from '../stores/AxiosStore';
+import { parseCookies, setCookie } from 'nookies';
 
-const useAxiosPrivate = () => {
+export const useAxiosPrivate = () => {
     const refresh = useRefreshToken();
-    const { auth } = useAuth() as any;
+    //const { auth } = useAuth() as any;
+    const { getAxiosInstance } = useAxiosStore(state => ({ getAxiosInstance: state.getAxiosInstance }));
+    const instance = getAxiosInstance();
 
     useEffect(() => {
-        const requestIntercept = axiosPrivate.interceptors.request.use(
-            config => {
-                if(!config.headers['Authorization']) {
-                    config.headers['Authorization'] = `Bearer ${auth?.accessToken}`;
+        const requestIntercept = instance.interceptors.request.use(
+            (config) => {
+                const cookies = parseCookies();
+                const token = cookies['accessToken'];
+                if (token) {
+                    config.headers["Authorization"] = `Bearer ${token}`;
                 }
                 return config;
-            }, (error) => Promise.reject(error)
+            },
+            (error) => Promise.reject(error)
         );
-        
-        const responseIntercept = axiosPrivate.interceptors.response.use(
-            response => response,
+        const responseIntercept = instance.interceptors.response.use(
+            (response) => {
+                return response;
+            },
             async (error) => {
-                console.log("response intercept");
-                const  prevRequest = error?.config;
-                if (error?.response?.status === 403 && !prevRequest?.sent) {
-                    prevRequest.sent = true;
-                    const newAccessToken = await refresh();
-                    prevRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
-                    return axiosPrivate(prevRequest);
+                const prevRequest = error?.config;
+                if ((error?.response?.status === 401 || error?.response?.status === 403) && !prevRequest?._retry) {
+                    prevRequest._retry = true;
+                    try {
+                        const newAccessToken = await refresh();
+                        prevRequest.headers["Authorization"] = `Bearer ${newAccessToken}`;
+                        setCookie(null, 'accessToken', newAccessToken, {
+                            maxAge: 30 * 24 * 60 * 60,
+                            path: '/',
+                        })
+                        return instance(prevRequest);
+                    } catch (refreshError) {
+                        return Promise.reject(refreshError);
+                    }
                 }
                 return Promise.reject(error);
             }
         );
-
         return () => {
-            axiosPrivate.interceptors.request.eject(requestIntercept);
-            axiosPrivate.interceptors.response.eject(responseIntercept);
+            instance.interceptors.request.eject(requestIntercept);
+            instance.interceptors.response.eject(responseIntercept);
         }
+    }, [refresh, getAxiosInstance]);
 
-    }, [auth, refresh]);
-
-    return axiosPrivate;
+    return instance;
 }
 
 export default useAxiosPrivate;

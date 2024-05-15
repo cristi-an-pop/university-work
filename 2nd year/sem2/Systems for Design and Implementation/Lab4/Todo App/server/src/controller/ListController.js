@@ -13,8 +13,11 @@ const getAllLists = async (req, res) => {
 
 const getAllListsByUserId = async (req, res) => {
     try {
-        const userId = req.params.userId;
-        const lists = await listModel.getAllListsByUserId(userId);
+        const page = req.query.page || 1;
+        const pageSize = req.query.pageSize || 50;
+        const userId = req.user;
+        console.log(userId);
+        const lists = await listModel.getAllListsByUserId(userId, page, pageSize);
         res.status(200).json(lists);
         console.log("All lists fetched by user id");
     } catch (error) {
@@ -48,7 +51,8 @@ const getListById = async (req, res) => {
 const createList = async (req, res) => {
     try {
         const newList = req.body;
-        const list = await listModel.createList(newList);
+        const userId = req.user;
+        const list = await listModel.createList(userId, newList);
         res.status(201).json(list);
         console.log("List created");
     } catch (error) {

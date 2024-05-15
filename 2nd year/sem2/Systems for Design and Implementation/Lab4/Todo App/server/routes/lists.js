@@ -10,7 +10,7 @@ const {
     getAllListsByUserId
 } = require('../src/controller/ListController'); 
 
-router.get("/", getAllLists);
+router.get("/", getAllListsByUserId);
 router.get("/ok", getAllListsTasksCount)
 router.post("/", createList);
 router.delete("/:id", deleteList);

@@ -5,16 +5,15 @@ const verifyJWT = (req, res, next) => {
     if(!authHeader) {
         return res.status(401).json({ message: 'Unauthorized' });
     }
-    console.log(authHeader);
     const token = authHeader.split(' ')[1];
     jwt.verify(
         token,
-        process.env.JWT_REFRESH_SECRET,
+        process.env.JWT_SECRET,
         (err, decoded) => {
             if (err) {
                 return res.status(403).json({ message: 'Forbidden' }); // Invalid Token
             }
-            req.user = decoded.username;
+            req.user = decoded.userid;
             next();
         }
     );

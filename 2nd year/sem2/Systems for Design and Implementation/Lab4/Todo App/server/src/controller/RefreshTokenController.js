@@ -10,6 +10,7 @@ const handleRefreshToken = async (req, res) => {
 
     const foundUser = await userModel.getUserByRefreshToken(refreshToken);
     if(!foundUser) {
+        console.log("User not found");
         return res.status(403).json({ message: 'Forbidden' });
     }
 
@@ -22,11 +23,13 @@ const handleRefreshToken = async (req, res) => {
             }
             const accessToken = jwt.sign(
                 { 
+                    "userid": foundUser.id,
                     "username": foundUser.username
                 }, 
                 process.env.JWT_SECRET, 
-                { expiresIn: '15s' }
+                { expiresIn: '10s' }
             );
+            console.log("Access token refreshed:", accessToken);
             res.json({ accessToken });
         }
     )

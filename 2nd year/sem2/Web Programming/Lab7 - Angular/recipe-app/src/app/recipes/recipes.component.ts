@@ -34,9 +34,14 @@ export class RecipesComponent implements OnInit {
   }
 
   deleteRecipe(id: number) {
-    this.recipeService.deleteRecipe(id).subscribe(() => {
-      this.getRecipes();
-    });
+    if (confirm('Are you sure you want to delete this recipe?')) {
+      this.recipeService.deleteRecipe(id).subscribe(() => {
+        this.getRecipes();
+        window.location.reload();
+      });
+    } else {
+      return;
+    }
   }
 
   updateRecipe(recipe: Recipe, id: number) {

@@ -20,9 +20,9 @@ const SignInPage = () => {
         getAxiosInstance()
         .post('/auth/signin', { username, password })
         .then(response => {
-            const { username, accessToken } = response.data;
-            console.log('Sign In Success:', username, accessToken);
-            setAuth({ username, accessToken });
+            const { userid, username, accessToken } = response.data;
+            console.log('Sign In Success:', userid, username, accessToken);
+            setAuth({ userid, username, password, accessToken });
             navigate(from, { replace: true });
         })
         .catch((error) => {

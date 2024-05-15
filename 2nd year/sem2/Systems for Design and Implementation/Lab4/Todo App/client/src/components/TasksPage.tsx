@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { List } from '../types/ListType';
-import axios from 'axios';
-import io from 'socket.io-client';
 import { useAxiosStore } from '../stores/AxiosStore';
 import NotificationDisplay from './NotificationDisplay';
 import { useNotificationStore } from '../stores/NotificationStore';
@@ -11,29 +9,65 @@ import { v4 as uuid } from 'uuid';
 import { useListsStore } from '../stores/ListStore';
 import TaskForm from './TaskForm';
 import TasksDisplay from './TasksDisplay';
+import useAxiosPrivate from '../hooks/useAxiosPrivate';
 
 function TasksPage() {
     const { id: idString } = useParams<{ id: string }>();
     const id = String(idString);
-
+    const { isOnline } = useAxiosStore();
     const [isLoading, setIsLoading] = useState(true);
     const [filterDateTime, setFilterDateTime] = useState('');
     const [filterCompleted, setFilterCompleted] = useState(false);
     const [selectedList, setSelectedList] = useState<List | null>(null);
-    const { getAxiosInstance } = useAxiosStore(state => ({ getAxiosInstance: state.getAxiosInstance }));
     const { addNotification } = useNotificationStore();
     const { tasks, setTasks } = useTasksStore(state => ({ tasks: state.tasks, setTasks: state.setTasks }));
     const { dirtyTasks, setDirtyTasks } = useTasksStore(state => ({ dirtyTasks: state.dirtyTasks, setDirtyTasks: state.setDirtyTasks }));
-    const [isOnline, setIsOnline] = useState(false);
     const { lists } = useListsStore();
     const [page, setPage] = useState(1);
+    const axiosPrivate = useAxiosPrivate();
+
     useEffect(() => {
         setSelectedList(lists.find(list => list.id === id) ?? null);
     }, [lists, id]);
 
+    useEffect(() => {
+        if (selectedList) {
+            fetchTasks();
+        }
+    }, [selectedList, setTasks]);
+
+    useEffect(() => {
+        if (isOnline) {
+            dirtyTasks.forEach(async (dirtyTask) => {
+                try {
+                    if(dirtyTask.existed == false && dirtyTask.deleted == false) {
+                        const response = await axiosPrivate.post(`/lists/${id}/tasks`, dirtyTask);
+                        const updatedTasks = [ ...tasks, response.data ];
+                        setTasks(updatedTasks);
+                        addNotification('Task added successfully', 'success');
+                    } else if(dirtyTask.existed == true && dirtyTask.deleted == false) {
+                        const response = await axiosPrivate.patch(`/lists/${id}/tasks/${dirtyTask.id}`, dirtyTask);
+                        const updatedTasks = tasks.map(task => task.id === dirtyTask.id ? response.data : task);
+                        setTasks(updatedTasks);
+                        addNotification('Task updated successfully', 'success');
+                    } else if(dirtyTask.existed == true && dirtyTask.deleted == true) {
+                        await axiosPrivate.delete(`/lists/${id}/tasks/${dirtyTask.id}`);
+                        const updatedTasks = tasks.filter(task => task.id !== dirtyTask.id);
+                        setTasks(updatedTasks);
+                        addNotification('Task deleted successfully', 'success');
+                    }
+                } catch (error) {
+                    console.error('Error syncing dirty tasks:', error);
+                    addNotification('Error syncing dirty tasks', 'error');
+                }
+            });
+            setDirtyTasks([]);
+        }
+      }, [isOnline])
+
     const fetchTasks = async () => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/lists/${id}/tasks?page=${page}&pageSize=50`);
+            const response = await axiosPrivate.get(`/lists/${id}/tasks?page=${page}`);
             setTasks(response.data);
             setPage(page + 1);
         } catch (error) {
@@ -44,119 +78,41 @@ function TasksPage() {
         }
     };
 
-    useEffect(() => {
-        const socket = io('http://localhost:5000');
-    
-        const handleOnline = () => {
-          setIsOnline(true);
-        }
-    
-        const handleOffline = () => {
-          setIsOnline(false);
-        }
-    
-        socket.on('connect', handleOnline);
-        socket.on('disconnect', handleOffline);
-    
-        return () => {
-          socket.disconnect();
-        }
-    }, []);
-
-    useEffect(() => {
-        if (selectedList) {
-            fetchTasks();
-        }
-    }, [selectedList, setTasks]);
-
-    useEffect(() => {
-        if (isOnline) {
-            dirtyTasks.forEach(dirtyTask => {
-                if(dirtyTask.existed == false && dirtyTask.deleted == false) {
-                    getAxiosInstance()
-                    .post(`/lists/${id}/tasks`, dirtyTask)
-                    .then(response => {
-                        const updatedTasks = [ ...tasks, response.data ];
-                        setTasks(updatedTasks);
-                        addNotification('Task added successfully', 'success');
-                    })
-                    .catch(() => {
-                        addNotification('Error adding task', 'error');
-                    });
-                } else if(dirtyTask.existed == true && dirtyTask.deleted == false) {
-                    getAxiosInstance()
-                    .patch(`/lists/${id}/tasks/${dirtyTask.id}`, dirtyTask)
-                    .then(() => {
-                        const updatedTasks = tasks.map(task => task.id === dirtyTask.id ? dirtyTask : task);
-                        setTasks(updatedTasks);
-                        addNotification('Task updated successfully', 'success');
-                    })
-                    .catch(() => {
-                        addNotification('Error updating task', 'error');
-                    });
-                } else if(dirtyTask.existed == true && dirtyTask.deleted == true) {
-                    getAxiosInstance()
-                    .delete(`/lists/${id}/tasks/${dirtyTask.id}`)
-                    .then(() => {
-                        const updatedTasks = tasks.filter(task => task.id !== dirtyTask.id);
-                        setTasks(updatedTasks);
-                        addNotification('Task deleted successfully', 'success');
-                    })
-                    .catch(() => {
-                        addNotification('Error deleting task', 'error');
-                    });
-                }
-            });
-        }
-      }, [isOnline])
-
-    if (isLoading) {
-        return <div>Loading...</div>;
-    }
-
-    if (!selectedList) return <div>Selected list not found</div>;
-
-    const handleNewTaskSubmit = (newTaskName: string, newTaskDateTime: string) => {
+    const handleNewTaskSubmit = async (newTaskName: string, newTaskDateTime: string) => {
         const newTask = {
             id: uuid(),
             name: newTaskName,
             completed: false,
             dateTime: newTaskDateTime,
         };
-    
-        getAxiosInstance()
-        .post(`/lists/${id}/tasks`, newTask)
-        .then((response) => {
-            addNotification('Task added successfully', 'success');
+
+        try {
+            const response = await axiosPrivate.post(`/lists/${id}/tasks`, newTask);
             const updatedTasks = [ ...tasks, response.data ];
             setTasks(updatedTasks);
-            return response;
-        })
-        .catch((error) => {
+            addNotification('Task added successfully', 'success');
+        } catch (error: any) {
             if(error.code === "ERR_NETWORK") {
                 setDirtyTasks([...dirtyTasks, { id: newTask.id, name: newTask.name, completed: newTask.completed, dateTime: newTask.dateTime, list_id: id, existed: false, deleted: false }]);
                 addNotification('Task added successfully', 'warning');
             } else {
                 addNotification('Error adding task', 'error');
             }
-        });
+        }
     };
 
-    const handleTaskCheckboxChange = (taskId: string) => {
+    const handleTaskCheckboxChange = async (taskId: string) => {
         const newTasks = [ ...tasks ];
         console.log(newTasks);
         const task = newTasks.find(task => task.id === taskId);
         if (!task) return;
         task.completed = !task.completed;
 
-        getAxiosInstance()
-        .patch(`/lists/${id}/tasks/${taskId}`, task)
-        .then(response => {
+        try {
+            const response = await axiosPrivate.patch(`/lists/${id}/tasks/${taskId}`, task);
+            setTasks([...tasks.map(task => task.id === taskId ? response.data : task)]);
             addNotification('Task updated successfully', 'success');
-            setTasks(newTasks);
-            return response;
-        })
-        .catch((error) => {
+        } catch (error: any) {
             if(error.code === "ERR_NETWORK") {
                 setTasks(tasks.filter(task => task.id !== taskId));
                 setDirtyTasks([...dirtyTasks, { id: taskId, name: task.name, completed: task.completed, dateTime: task.dateTime, list_id: id, existed: true, deleted: false }]);
@@ -164,19 +120,16 @@ function TasksPage() {
             } else {
                 addNotification('Error updating task', 'error');
             }
-        });
+        }
     };
 
     const handleDeleteTask = (taskId: string) => {
-        getAxiosInstance()
-        .delete(`/lists/${id}/tasks/${taskId}`)
-        .then(response => {
-            addNotification('Task deleted successfully', 'success');
+        try {
+            axiosPrivate.delete(`/lists/${id}/tasks/${taskId}`);
             const updatedTasks = tasks.filter(task => task.id !== taskId);
             setTasks(updatedTasks);
-            return response;
-        })
-        .catch((error) => {
+            addNotification('Task deleted successfully', 'success');
+        } catch (error: any) {
             if(error.code === "ERR_NETWORK") {
                 const taskToDelete = tasks.find(task => task.id === taskId);
                 if (taskToDelete) {
@@ -195,7 +148,7 @@ function TasksPage() {
             else {
                 addNotification('Error deleting task', 'error');
             }
-        });
+        }
     };
 
     const handleDeleteCompletedTasks = () => {
@@ -204,7 +157,7 @@ function TasksPage() {
         const completedTaskIds = completedTasks.map(task => task.id);
     
         Promise.all(completedTaskIds.map(taskId => 
-            axios.delete(`http://localhost:5000/api/lists/${id}/tasks/${taskId}`)
+            axiosPrivate.delete(`/lists/${id}/tasks/${taskId}`)
         ))
         .then(responses => {
     
@@ -232,6 +185,12 @@ function TasksPage() {
     if (filterCompleted) {
         filteredTasks = filteredTasks.filter(task => task.completed);
     }
+
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
+    if (!selectedList) return <div>Selected list not found</div>;
 
     return (
         <>
