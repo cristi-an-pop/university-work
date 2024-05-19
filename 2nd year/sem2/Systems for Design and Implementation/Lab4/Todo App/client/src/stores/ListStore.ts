@@ -9,17 +9,9 @@ type ListsStore = {
   setDirtyLists: (dirtyLists: DirtyList[]) => void;
 };
 
-export const useListsStore = create<ListsStore>()(
-  persist(
-    (set) => ({
-      lists: [],
-      dirtyLists: [],
-      setLists: (lists: List[]) => set({ lists }),
-      setDirtyLists: (dirtyLists: DirtyList[]) => set({ dirtyLists }),
-    }),
-    {
-      name: "lists-storage",
-      storage: createJSONStorage(() => localStorage),
-    }
-  )
-);
+export const useListsStore = create<ListsStore>()((set) => ({
+  lists: [],
+  dirtyLists: [],
+  setLists: (lists: List[]) => set({ lists }),
+  setDirtyLists: (dirtyLists: DirtyList[]) => set({ dirtyLists }),
+}));
