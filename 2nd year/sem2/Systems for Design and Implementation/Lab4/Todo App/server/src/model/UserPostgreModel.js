@@ -1,6 +1,14 @@
 const db = require('../db');
 
 const createUser = (newUser) => {
+    db.connect()
+    .then(obj => {
+        obj.done(); // success, release the connection...
+        console.log('Successfully connected to the database');
+    })
+    .catch(error => {
+        console.log('ERROR:', error.message || error);
+    });
     return db.one('INSERT INTO Users (username, password, email) VALUES ($1, $2, $3) RETURNING *', 
     [newUser.username, newUser.password, newUser.email]);
 }
