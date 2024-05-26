@@ -1,8 +1,7 @@
 USE Lab3_DBMS
 GO
-
---INSERT INTO Store VALUES(30, 'Sibiu', 100)
---INSERT INTO Customer VALUES(30, 'Marian', 30, 1)
+INSERT INTO Store VALUES(30, 'Sibiu', 100)
+INSERT INTO Customer VALUES(30, 'Marian', 30, 1)
 
 BEGIN TRAN
 UPDATE Store SET address='Aiud' WHERE id = 30

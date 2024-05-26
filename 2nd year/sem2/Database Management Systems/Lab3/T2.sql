@@ -100,7 +100,7 @@ SELECT * FROM Store
 SELECT * FROM Customer
 SELECT * FROM StoreTransaction
 
-DELETE FROM Store WHERE id = 12
-DELETE FROM Customer WHERE id = 12
-DELETE FROM StoreTransaction WHERE store_id = 12 AND customer_id = 12
+DELETE FROM Store
+DELETE FROM Customer 
+DELETE FROM StoreTransaction 
 	

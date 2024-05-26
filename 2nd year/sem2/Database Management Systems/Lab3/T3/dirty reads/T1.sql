@@ -7,3 +7,5 @@ SET address = 'Beius'
 WHERE id = 1
 WAITFOR DELAY '00:00:05'
 ROLLBACK TRAN
+
+--INSERT INTO STORE VALUES (1, 'Cluj', 100)

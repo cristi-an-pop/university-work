@@ -25,9 +25,24 @@ const updateUserRefreshToken = (username, refreshToken) => {
     return db.one('UPDATE Users SET refreshtoken = $1 WHERE username = $2 RETURNING *', [refreshToken, username]);
 }
 
+const getAllUsers = () => {
+    return db.many('SELECT * FROM Users');
+}
+
+const promoteUser = (id) => {
+    return db.one('UPDATE Users SET role = 2022 WHERE id = $1 RETURNING *', [id]);
+}
+
+const demoteUser = (id) => {
+    return db.one('UPDATE Users SET role = 1011 WHERE id = $1 RETURNING *', [id]);
+}
+
 module.exports = {
     createUser,
     getUserByUsername,
     getUserByRefreshToken,
-    updateUserRefreshToken
+    updateUserRefreshToken,
+    getAllUsers,
+    promoteUser,
+    demoteUser
 };

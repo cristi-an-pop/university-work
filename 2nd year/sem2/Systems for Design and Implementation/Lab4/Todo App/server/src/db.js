@@ -2,8 +2,8 @@ const pgp = require('pg-promise')();
 const db = pgp({
     host: 'localhost',
     port: 5432,
-    database: process.env.POSTGRES_DATABASE,
-    user: process.env.POSTGRES_DATABASE,
+    database: 'todoapp',
+    user: 'postgres',
     password: '1234'
 });
 

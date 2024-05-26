@@ -17,7 +17,7 @@
     <title>Route Selection</title>
 </head>
 <body>
-<h2>Current City: <%= currentCity.getName() %></h2>
+<h2>Current City: <%= currentCity.getName() %> (<%= request.getAttribute("cityIndex") %>)</h2>
 <h3>Neighbouring Cities:</h3>
 <ul>
     <% for (City city : neighbouringCities) { %>

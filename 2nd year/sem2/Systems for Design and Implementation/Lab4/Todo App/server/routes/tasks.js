@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router({ mergeParams: true});
+const verifyUserRole = require('../src/middleware/VerifyUserRole');
 const {
     getTasksByListId,
     getTaskById,
@@ -8,9 +9,9 @@ const {
     deleteTask
 } = require('../src/controller/TaskController'); 
 
-router.post("/", createTask);
-router.delete("/:taskId", deleteTask);
-router.patch("/:taskId", updateTask);
+router.use(verifyUserRole).post("/", createTask);
+router.use(verifyUserRole).delete("/:taskId", deleteTask);
+router.use(verifyUserRole).patch("/:taskId", updateTask);
 router.get("/", getTasksByListId);
 router.get("/:taskId", getTaskById);
 

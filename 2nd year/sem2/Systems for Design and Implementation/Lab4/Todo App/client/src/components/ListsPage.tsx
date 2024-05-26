@@ -7,15 +7,20 @@ import { useNotificationStore } from '../stores/NotificationStore';
 import NotificationDisplay from './NotificationDisplay';
 import { List, DirtyList } from '../types/ListType';
 import { v4 as uuid } from 'uuid';
-import useRefreshToken from '../hooks/useRefreshToken';
 import useAxiosPrivate from '../hooks/useAxiosPrivate';
 import { useNavigate, useLocation } from 'react-router-dom';
+import RequireRole from './RequireRole';
+
+const ROLES = {
+  'User': 1011,
+  'Manager': 2022,
+  'Admin': 3033
+}
 
 const ListsPage = () => {
   const { lists, setLists } = useListsStore(state => ({ lists: state.lists, setLists: state.setLists }));
   const [selectedLists, setSelectedLists] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const refresh = useRefreshToken();
   const { addNotification } = useNotificationStore();
   const { dirtyLists, setDirtyLists } = useListsStore(state => ({ dirtyLists: state.dirtyLists, setDirtyLists: state.setDirtyLists }));
   const { isOnline } = useAxiosStore();
@@ -200,9 +205,10 @@ const ListsPage = () => {
       <NotificationDisplay />
       <div className="lists-container">
         <h1>Todo Lists</h1>
-        <ListForm onSubmit={handleNewListSubmit} />
+        <RequireRole role={2022}>
+          <ListForm onSubmit={handleNewListSubmit} />
+        </RequireRole>
         <button className="cool-btn" type="button" onClick={handleExportSelectedLists}>Export Selected</button>
-        <button className="cool-btn" type="button" onClick={() => refresh()}>Refresh</button>
         <ListsDisplay 
           lists={displayLists}
           onCheckboxChange={handleListCheckboxChange}

@@ -12,6 +12,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 const ROLES = {
   'User': 1011,
+  'Manager': 2022,
+  'Admin': 3033
 }
 
 function App() {
@@ -26,12 +28,12 @@ function App() {
           <Route path="unauthorized" element={<Unauthorized />} />
 
           {/* private routes */}
-          <Route element={<RequireAuth allowedRoles={[ROLES.User]}/>}>
+          <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Manager, ROLES.Admin]}/>}>
             <Route path="/lists" element={<ListsPage />} />
           </Route>
 
-          <Route element={<RequireAuth allowedRoles={[ROLES.User]}/>}>
-            <Route path="/tasks/:listid" element={<TasksPage />} />
+          <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Manager, ROLES.Admin]}/>}>
+            <Route path="/lists/:listId" element={<TasksPage />} />
           </Route>
 
           {/* catch all route */}

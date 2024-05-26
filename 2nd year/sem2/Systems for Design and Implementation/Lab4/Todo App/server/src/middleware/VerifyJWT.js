@@ -14,9 +14,10 @@ const verifyJWT = (req, res, next) => {
                 return res.status(403).json({ message: 'Forbidden' }); // Invalid Token
             }
             req.user = decoded.userid;
+            req.roles = decoded.roles;
             next();
         }
     );
-}
+}   
 
 module.exports = verifyJWT;

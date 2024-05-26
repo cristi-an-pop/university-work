@@ -26,11 +26,12 @@ const loginUser = async (req, res) => {
         if (!user || !await bcrypt.compare(password, user.password)) {
             return res.status(401).json({ message: 'Unable to login' });
         }
-
+        console.log(user.role)
         const accessToken = jwt.sign(
             {
                 "userid": user.id,
                 "username": user.username,
+                "roles": [user.role]
             }, 
             process.env.JWT_SECRET, 
             { expiresIn: '10s' }
@@ -40,20 +41,58 @@ const loginUser = async (req, res) => {
             {
                 "userid": user.id,
                 "username": user.username,
+                "roles": [user.role]
             },
             process.env.JWT_REFRESH_SECRET,
             { expiresIn: '1d' }
-        )
+        );
+        console.log(accessToken);  // Log the token
+        console.log(jwt.decode(accessToken))
         console.log("User logged in");
         await userModel.updateUserRefreshToken(user.username, refreshToken);
         res.cookie('jwt', refreshToken, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
-        res.status(200).json({ "userid": user.id, username, accessToken, "roles": user.role });
+        res.status(200).json({ "userid": user.id, username, accessToken, "roles": [user.role] });
     } catch (error) {
         res.status(500).json({ message: 'Error logging in' });
+    }
+}
+
+const getAllUsers = async (req, res) => {
+    try {
+        const users = await userModel.getAllUsers();
+        res.status(200).json(users);
+        console.log("All users fetched");
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching users' });
+    }
+}
+
+const promoteUser = async (req, res) => {
+    try {
+        const { username } = req.body;
+        const user = await userModel.promoteUser(username);
+        res.status(200).json(user);
+        console.log("User promoted");
+    } catch (error) {
+        res.status(500).json({ message: 'Error promoting user' });
+    }
+}
+
+const demoteUser = async (req, res) => {
+    try {
+        const { username } = req.body;
+        const user = await userModel.demoteUser(username);
+        res.status(200).json(user);
+        console.log("User demoted");
+    } catch (error) {
+        res.status(500).json({ message: 'Error demoting user' });
     }
 }
 
 module.exports = {
     createUser,
     loginUser,
+    getAllUsers,
+    promoteUser,
+    demoteUser
 };

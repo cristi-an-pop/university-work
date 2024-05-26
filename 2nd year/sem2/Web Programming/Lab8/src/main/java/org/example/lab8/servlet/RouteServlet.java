@@ -44,9 +44,12 @@ public class RouteServlet extends HttpServlet {
             route = new LinkedList<>();
         }
         route.add(currentCity);
+        int cityIndex = route.indexOf(currentCity);
+        request.setAttribute("cityIndex", cityIndex + 1);
         String index = request.getParameter("index");
         if (index != null) {
             int newIndex = Integer.parseInt(index);
+            request.setAttribute("cityIndex", newIndex + 1);
             while (route.size() > newIndex + 1) {
                 route.removeLast();
             }

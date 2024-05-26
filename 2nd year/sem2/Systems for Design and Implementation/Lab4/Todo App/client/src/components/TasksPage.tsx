@@ -10,10 +10,10 @@ import { useListsStore } from '../stores/ListStore';
 import TaskForm from './TaskForm';
 import TasksDisplay from './TasksDisplay';
 import useAxiosPrivate from '../hooks/useAxiosPrivate';
+import RequireRole from './RequireRole';
 
 function TasksPage() {
-    const { id: idString } = useParams<{ id: string }>();
-    const id = String(idString);
+    const { listId } = useParams();
     const { isOnline } = useAxiosStore();
     const [isLoading, setIsLoading] = useState(true);
     const [filterDateTime, setFilterDateTime] = useState('');
@@ -27,8 +27,9 @@ function TasksPage() {
     const axiosPrivate = useAxiosPrivate();
 
     useEffect(() => {
-        setSelectedList(lists.find(list => list.id === id) ?? null);
-    }, [lists, id]);
+        console.log(listId);
+        setSelectedList(lists.find(list => list.id === listId) ?? null);
+    }, [lists, listId]);
 
     useEffect(() => {
         if (selectedList) {
@@ -41,17 +42,17 @@ function TasksPage() {
             dirtyTasks.forEach(async (dirtyTask) => {
                 try {
                     if(dirtyTask.existed == false && dirtyTask.deleted == false) {
-                        const response = await axiosPrivate.post(`/lists/${id}/tasks`, dirtyTask);
+                        const response = await axiosPrivate.post(`/lists/${listId}/tasks`, dirtyTask);
                         const updatedTasks = [ ...tasks, response.data ];
                         setTasks(updatedTasks);
                         addNotification('Task added successfully', 'success');
                     } else if(dirtyTask.existed == true && dirtyTask.deleted == false) {
-                        const response = await axiosPrivate.patch(`/lists/${id}/tasks/${dirtyTask.id}`, dirtyTask);
+                        const response = await axiosPrivate.patch(`/lists/${listId}/tasks/${dirtyTask.id}`, dirtyTask);
                         const updatedTasks = tasks.map(task => task.id === dirtyTask.id ? response.data : task);
                         setTasks(updatedTasks);
                         addNotification('Task updated successfully', 'success');
                     } else if(dirtyTask.existed == true && dirtyTask.deleted == true) {
-                        await axiosPrivate.delete(`/lists/${id}/tasks/${dirtyTask.id}`);
+                        await axiosPrivate.delete(`/lists/${listId}/tasks/${dirtyTask.id}`);
                         const updatedTasks = tasks.filter(task => task.id !== dirtyTask.id);
                         setTasks(updatedTasks);
                         addNotification('Task deleted successfully', 'success');
@@ -67,7 +68,9 @@ function TasksPage() {
 
     const fetchTasks = async () => {
         try {
-            const response = await axiosPrivate.get(`/lists/${id}/tasks?page=${page}`);
+            console.log('fetching tasks')
+            const response = await axiosPrivate.get(`/lists/${listId}/tasks?page=${page}`);
+            console.log(response.data);
             setTasks(response.data);
             setPage(page + 1);
         } catch (error) {
@@ -87,13 +90,13 @@ function TasksPage() {
         };
 
         try {
-            const response = await axiosPrivate.post(`/lists/${id}/tasks`, newTask);
+            const response = await axiosPrivate.post(`/lists/${listId}/tasks`, newTask);
             const updatedTasks = [ ...tasks, response.data ];
             setTasks(updatedTasks);
             addNotification('Task added successfully', 'success');
         } catch (error: any) {
             if(error.code === "ERR_NETWORK") {
-                setDirtyTasks([...dirtyTasks, { id: newTask.id, name: newTask.name, completed: newTask.completed, dateTime: newTask.dateTime, list_id: id, existed: false, deleted: false }]);
+                setDirtyTasks([...dirtyTasks, { id: newTask.id, name: newTask.name, completed: newTask.completed, dateTime: newTask.dateTime, list_id: String(listId), existed: false, deleted: false }]);
                 addNotification('Task added successfully', 'warning');
             } else {
                 addNotification('Error adding task', 'error');
@@ -109,13 +112,13 @@ function TasksPage() {
         task.completed = !task.completed;
 
         try {
-            const response = await axiosPrivate.patch(`/lists/${id}/tasks/${taskId}`, task);
+            const response = await axiosPrivate.patch(`/lists/${listId}/tasks/${taskId}`, task);
             setTasks([...tasks.map(task => task.id === taskId ? response.data : task)]);
             addNotification('Task updated successfully', 'success');
         } catch (error: any) {
             if(error.code === "ERR_NETWORK") {
                 setTasks(tasks.filter(task => task.id !== taskId));
-                setDirtyTasks([...dirtyTasks, { id: taskId, name: task.name, completed: task.completed, dateTime: task.dateTime, list_id: id, existed: true, deleted: false }]);
+                setDirtyTasks([...dirtyTasks, { id: taskId, name: task.name, completed: task.completed, dateTime: task.dateTime, list_id: String(listId), existed: true, deleted: false }]);
                 addNotification('Task updated successfully', 'warning');
             } else {
                 addNotification('Error updating task', 'error');
@@ -125,7 +128,7 @@ function TasksPage() {
 
     const handleDeleteTask = (taskId: string) => {
         try {
-            axiosPrivate.delete(`/lists/${id}/tasks/${taskId}`);
+            axiosPrivate.delete(`/lists/${listId}/tasks/${taskId}`);
             const updatedTasks = tasks.filter(task => task.id !== taskId);
             setTasks(updatedTasks);
             addNotification('Task deleted successfully', 'success');
@@ -134,7 +137,7 @@ function TasksPage() {
                 const taskToDelete = tasks.find(task => task.id === taskId);
                 if (taskToDelete) {
                     setTasks(tasks.filter(task => task.id !== taskId));
-                    setDirtyTasks([...dirtyTasks, { id: taskToDelete.id, name: taskToDelete.name, completed: taskToDelete.completed, dateTime: taskToDelete.dateTime, list_id: id, existed: true, deleted: true }]);
+                    setDirtyTasks([...dirtyTasks, { id: taskToDelete.id, name: taskToDelete.name, completed: taskToDelete.completed, dateTime: taskToDelete.dateTime, list_id: String(listId), existed: true, deleted: true }]);
                     addNotification('Task deleted unsynced', 'warning');
                 }
                 else {
@@ -157,7 +160,7 @@ function TasksPage() {
         const completedTaskIds = completedTasks.map(task => task.id);
     
         Promise.all(completedTaskIds.map(taskId => 
-            axiosPrivate.delete(`/lists/${id}/tasks/${taskId}`)
+            axiosPrivate.delete(`/lists/${listId}/tasks/${taskId}`)
         ))
         .then(responses => {
     
@@ -197,24 +200,26 @@ function TasksPage() {
             <NotificationDisplay />
             <div className="tasks-container">
                 <h2>{selectedList.name}</h2>
-                <TaskForm onSubmit={handleNewTaskSubmit} />
-                <div className="tasks-filters">
-                    <input
-                        className="form-input"
-                        type="datetime-local"
-                        value={filterDateTime}
-                        onChange={(e) => setFilterDateTime(e.target.value)}
-                        placeholder="Filter by date"
-                    />
-                    <label>
+                <RequireRole role={2022}>
+                    <TaskForm onSubmit={handleNewTaskSubmit} />
+                    <div className="tasks-filters">
                         <input
-                            type="checkbox"
-                            checked={filterCompleted}
-                            onChange={(e) => setFilterCompleted(e.target.checked)}
+                            className="form-input"
+                            type="datetime-local"
+                            value={filterDateTime}
+                            onChange={(e) => setFilterDateTime(e.target.value)}
+                            placeholder="Filter by date"
                         />
-                        <span>Show Completed Tasks</span>
-                    </label>
-                </div>
+                        <label>
+                            <input
+                                type="checkbox"
+                                checked={filterCompleted}
+                                onChange={(e) => setFilterCompleted(e.target.checked)}
+                            />
+                            <span>Show Completed Tasks</span>
+                        </label>
+                    </div>
+                </RequireRole>
                 <div className="tasks-list-container">
                     <p className="p-style">Tasks remaining: {remainingTasksCount}</p>
                     <TasksDisplay tasks={filteredTasks} onCheckboxChange={handleTaskCheckboxChange} onDelete={handleDeleteTask} fetchTasks={fetchTasks} />
