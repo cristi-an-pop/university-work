@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Lab9___ASP.NET.Models.Recipe>
+@inject Lab9___ASP.NET.Data.ApplicationDbContext _context
+
+@{
+    ViewData["Title"] = "Index";
+    var types = _context.Recipe.Select(r => r.Type).Distinct().ToList();
+    types.Insert(0, "All Types");
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<form asp-action="Index" method="get">
+    <select id="filterType" name="filterType" onchange="filterRecipes()">
+        @foreach (var type in types)
+        {
+            <option value="@type">@type</option>
+        }
+    </select>
+</form>
+
+<div id="recipesTable">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Author)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Type)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ingredients)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Instructions)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ingredients)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Instructions)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+</div>
+
+<script src="~/js/recipe.js"></script>

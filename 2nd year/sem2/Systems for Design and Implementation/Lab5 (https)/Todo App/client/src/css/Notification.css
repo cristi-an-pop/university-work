@@ -1,0 +1,22 @@
+.notification {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    color: white;
+}
+
+.notification.success {
+    background-color: #4CAF50; /* green */
+}
+
+.notification.error {
+    background-color: #f44336; /* red */
+}
+
+.notification.info {
+    background-color: #2196F3; /* blue */
+}
+
+.notification.warning {
+    background-color: #ff9800; /* orange */
+}
