@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Lab9 - ASP.NET")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f7dda2de427cd800f006888224e85df0ec13a5ce")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bde67c3b379be80838adaeae91d0479f3a8f9cf6")]
 [assembly: System.Reflection.AssemblyProductAttribute("Lab9 - ASP.NET")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Lab9 - ASP.NET")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

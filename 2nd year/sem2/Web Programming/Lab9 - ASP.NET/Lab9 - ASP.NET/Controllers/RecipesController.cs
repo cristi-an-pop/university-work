@@ -33,6 +33,11 @@ namespace Lab9___ASP.NET.Controllers
                 }
             }
 
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView("_GetFilteredRecipes", await recipes.ToListAsync());
+            }
+
             return View(await recipes.ToListAsync());
         }
 

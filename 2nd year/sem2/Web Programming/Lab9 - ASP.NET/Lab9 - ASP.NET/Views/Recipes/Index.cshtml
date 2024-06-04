@@ -57,7 +57,12 @@
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Ingredients)
+                    <ul>
+                        @foreach (var ingredient in item.Ingredients.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None))
+                        {
+                            <li>@ingredient</li>
+                        }
+                    </ul>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Instructions)

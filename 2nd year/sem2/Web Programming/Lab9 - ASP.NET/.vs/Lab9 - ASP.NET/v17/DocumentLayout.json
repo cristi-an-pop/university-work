@@ -3,32 +3,48 @@
   "WorkspaceRootPath": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{0EAB9E3E-9BB9-4DD1-BDBC-A584EB2930DD}|Lab9 - ASP.NET\\Lab9 - ASP.NET.csproj|d:\\ubb\\university-work\\2nd year\\sem2\\web programming\\lab9 - asp.net\\lab9 - asp.net\\views\\recipes\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0EAB9E3E-9BB9-4DD1-BDBC-A584EB2930DD}|Lab9 - ASP.NET\\Lab9 - ASP.NET.csproj|solutionrelative:lab9 - asp.net\\views\\recipes\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EAB9E3E-9BB9-4DD1-BDBC-A584EB2930DD}|Lab9 - ASP.NET\\Lab9 - ASP.NET.csproj|d:\\ubb\\university-work\\2nd year\\sem2\\web programming\\lab9 - asp.net\\lab9 - asp.net\\views\\recipes\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0EAB9E3E-9BB9-4DD1-BDBC-A584EB2930DD}|Lab9 - ASP.NET\\Lab9 - ASP.NET.csproj|solutionrelative:lab9 - asp.net\\views\\recipes\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EAB9E3E-9BB9-4DD1-BDBC-A584EB2930DD}|Lab9 - ASP.NET\\Lab9 - ASP.NET.csproj|D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\lab9 - asp.net\\views\\recipes\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0EAB9E3E-9BB9-4DD1-BDBC-A584EB2930DD}|Lab9 - ASP.NET\\Lab9 - ASP.NET.csproj|solutionrelative:lab9 - asp.net\\views\\recipes\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EAB9E3E-9BB9-4DD1-BDBC-A584EB2930DD}|Lab9 - ASP.NET\\Lab9 - ASP.NET.csproj|D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\lab9 - asp.net\\views\\recipes\\_getfilteredrecipes.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0EAB9E3E-9BB9-4DD1-BDBC-A584EB2930DD}|Lab9 - ASP.NET\\Lab9 - ASP.NET.csproj|solutionrelative:lab9 - asp.net\\views\\recipes\\_getfilteredrecipes.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EAB9E3E-9BB9-4DD1-BDBC-A584EB2930DD}|Lab9 - ASP.NET\\Lab9 - ASP.NET.csproj|d:\\ubb\\university-work\\2nd year\\sem2\\web programming\\lab9 - asp.net\\lab9 - asp.net\\views\\recipes\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0EAB9E3E-9BB9-4DD1-BDBC-A584EB2930DD}|Lab9 - ASP.NET\\Lab9 - ASP.NET.csproj|solutionrelative:lab9 - asp.net\\views\\recipes\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EAB9E3E-9BB9-4DD1-BDBC-A584EB2930DD}|Lab9 - ASP.NET\\Lab9 - ASP.NET.csproj|D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\lab9 - asp.net\\controllers\\recipescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0EAB9E3E-9BB9-4DD1-BDBC-A584EB2930DD}|Lab9 - ASP.NET\\Lab9 - ASP.NET.csproj|solutionrelative:lab9 - asp.net\\controllers\\recipescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{0EAB9E3E-9BB9-4DD1-BDBC-A584EB2930DD}|Lab9 - ASP.NET\\Lab9 - ASP.NET.csproj|d:\\ubb\\university-work\\2nd year\\sem2\\web programming\\lab9 - asp.net\\lab9 - asp.net\\wwwroot\\js\\recipe.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{0EAB9E3E-9BB9-4DD1-BDBC-A584EB2930DD}|Lab9 - ASP.NET\\Lab9 - ASP.NET.csproj|solutionrelative:lab9 - asp.net\\wwwroot\\js\\recipe.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0EAB9E3E-9BB9-4DD1-BDBC-A584EB2930DD}|Lab9 - ASP.NET\\Lab9 - ASP.NET.csproj|d:\\ubb\\university-work\\2nd year\\sem2\\web programming\\lab9 - asp.net\\lab9 - asp.net\\controllers\\recipescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0EAB9E3E-9BB9-4DD1-BDBC-A584EB2930DD}|Lab9 - ASP.NET\\Lab9 - ASP.NET.csproj|solutionrelative:lab9 - asp.net\\controllers\\recipescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0EAB9E3E-9BB9-4DD1-BDBC-A584EB2930DD}|Lab9 - ASP.NET\\Lab9 - ASP.NET.csproj|d:\\ubb\\university-work\\2nd year\\sem2\\web programming\\lab9 - asp.net\\lab9 - asp.net\\views\\recipes\\_getfilteredrecipes.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{0EAB9E3E-9BB9-4DD1-BDBC-A584EB2930DD}|Lab9 - ASP.NET\\Lab9 - ASP.NET.csproj|solutionrelative:lab9 - asp.net\\views\\recipes\\_getfilteredrecipes.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0EAB9E3E-9BB9-4DD1-BDBC-A584EB2930DD}|Lab9 - ASP.NET\\Lab9 - ASP.NET.csproj|d:\\ubb\\university-work\\2nd year\\sem2\\web programming\\lab9 - asp.net\\lab9 - asp.net\\views\\recipes\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{0EAB9E3E-9BB9-4DD1-BDBC-A584EB2930DD}|Lab9 - ASP.NET\\Lab9 - ASP.NET.csproj|solutionrelative:lab9 - asp.net\\views\\recipes\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\Data\\Migrations\\20240528151835_Recipes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Lab9 - ASP.NET\\Data\\Migrations\\20240528151835_Recipes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0EAB9E3E-9BB9-4DD1-BDBC-A584EB2930DD}|Lab9 - ASP.NET\\Lab9 - ASP.NET.csproj|D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\lab9 - asp.net\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0EAB9E3E-9BB9-4DD1-BDBC-A584EB2930DD}|Lab9 - ASP.NET\\Lab9 - ASP.NET.csproj|solutionrelative:lab9 - asp.net\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0EAB9E3E-9BB9-4DD1-BDBC-A584EB2930DD}|Lab9 - ASP.NET\\Lab9 - ASP.NET.csproj|D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\lab9 - asp.net\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0EAB9E3E-9BB9-4DD1-BDBC-A584EB2930DD}|Lab9 - ASP.NET\\Lab9 - ASP.NET.csproj|solutionrelative:lab9 - asp.net\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0EAB9E3E-9BB9-4DD1-BDBC-A584EB2930DD}|Lab9 - ASP.NET\\Lab9 - ASP.NET.csproj|D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\lab9 - asp.net\\models\\recipe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0EAB9E3E-9BB9-4DD1-BDBC-A584EB2930DD}|Lab9 - ASP.NET\\Lab9 - ASP.NET.csproj|solutionrelative:lab9 - asp.net\\models\\recipe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EAB9E3E-9BB9-4DD1-BDBC-A584EB2930DD}|Lab9 - ASP.NET\\Lab9 - ASP.NET.csproj|D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\lab9 - asp.net\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{0EAB9E3E-9BB9-4DD1-BDBC-A584EB2930DD}|Lab9 - ASP.NET\\Lab9 - ASP.NET.csproj|solutionrelative:lab9 - asp.net\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EAB9E3E-9BB9-4DD1-BDBC-A584EB2930DD}|Lab9 - ASP.NET\\Lab9 - ASP.NET.csproj|D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\lab9 - asp.net\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0EAB9E3E-9BB9-4DD1-BDBC-A584EB2930DD}|Lab9 - ASP.NET\\Lab9 - ASP.NET.csproj|solutionrelative:lab9 - asp.net\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0EAB9E3E-9BB9-4DD1-BDBC-A584EB2930DD}|Lab9 - ASP.NET\\Lab9 - ASP.NET.csproj|D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\lab9 - asp.net\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -67,8 +83,8 @@
       "RelativeMoniker": "D:0:0:{0EAB9E3E-9BB9-4DD1-BDBC-A584EB2930DD}|Lab9 - ASP.NET\\Lab9 - ASP.NET.csproj|solutionrelative:lab9 - asp.net\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0EAB9E3E-9BB9-4DD1-BDBC-A584EB2930DD}|Lab9 - ASP.NET\\Lab9 - ASP.NET.csproj|D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\lab9 - asp.net\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0EAB9E3E-9BB9-4DD1-BDBC-A584EB2930DD}|Lab9 - ASP.NET\\Lab9 - ASP.NET.csproj|solutionrelative:lab9 - asp.net\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0EAB9E3E-9BB9-4DD1-BDBC-A584EB2930DD}|Lab9 - ASP.NET\\Lab9 - ASP.NET.csproj|D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\Data\\Migrations\\20240528151835_Recipes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0EAB9E3E-9BB9-4DD1-BDBC-A584EB2930DD}|Lab9 - ASP.NET\\Lab9 - ASP.NET.csproj|solutionrelative:Lab9 - ASP.NET\\Data\\Migrations\\20240528151835_Recipes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -78,7 +94,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 121,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -90,72 +106,110 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\Views\\Recipes\\Details.cshtml",
+              "RelativeDocumentMoniker": "Lab9 - ASP.NET\\Views\\Recipes\\Details.cshtml",
+              "ToolTip": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\Views\\Recipes\\Details.cshtml",
+              "RelativeToolTip": "Lab9 - ASP.NET\\Views\\Recipes\\Details.cshtml",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-04T15:23:24.109Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\Views\\Recipes\\Create.cshtml",
+              "RelativeDocumentMoniker": "Lab9 - ASP.NET\\Views\\Recipes\\Create.cshtml",
+              "ToolTip": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\Views\\Recipes\\Create.cshtml",
+              "RelativeToolTip": "Lab9 - ASP.NET\\Views\\Recipes\\Create.cshtml",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAABkAAABEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-04T15:23:11.111Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\Views\\Recipes\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Lab9 - ASP.NET\\Views\\Recipes\\Edit.cshtml",
+              "ToolTip": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\Views\\Recipes\\Edit.cshtml",
+              "RelativeToolTip": "Lab9 - ASP.NET\\Views\\Recipes\\Edit.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-04T15:18:59.964Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "site.js",
+              "DocumentMoniker": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\wwwroot\\js\\site.js",
+              "RelativeDocumentMoniker": "Lab9 - ASP.NET\\wwwroot\\js\\site.js",
+              "ToolTip": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\wwwroot\\js\\site.js",
+              "RelativeToolTip": "Lab9 - ASP.NET\\wwwroot\\js\\site.js",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-06-03T19:09:02.449Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "_GetFilteredRecipes.cshtml",
               "DocumentMoniker": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\Views\\Recipes\\_GetFilteredRecipes.cshtml",
               "RelativeDocumentMoniker": "Lab9 - ASP.NET\\Views\\Recipes\\_GetFilteredRecipes.cshtml",
               "ToolTip": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\Views\\Recipes\\_GetFilteredRecipes.cshtml",
               "RelativeToolTip": "Lab9 - ASP.NET\\Views\\Recipes\\_GetFilteredRecipes.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAADMAAAAIAAAA",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAACsAAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-05-28T16:07:35.569Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 6,
               "Title": "recipe.js",
               "DocumentMoniker": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\wwwroot\\js\\recipe.js",
               "RelativeDocumentMoniker": "Lab9 - ASP.NET\\wwwroot\\js\\recipe.js",
               "ToolTip": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\wwwroot\\js\\recipe.js",
               "RelativeToolTip": "Lab9 - ASP.NET\\wwwroot\\js\\recipe.js",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAEAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2024-05-28T15:44:36.689Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\Views\\Recipes\\Index.cshtml",
               "RelativeDocumentMoniker": "Lab9 - ASP.NET\\Views\\Recipes\\Index.cshtml",
               "ToolTip": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\Views\\Recipes\\Index.cshtml",
               "RelativeToolTip": "Lab9 - ASP.NET\\Views\\Recipes\\Index.cshtml",
-              "ViewState": "AQIAACsAAAAAAAAAAAAowEgAAAAMAAAA",
+              "ViewState": "AQIAACsAAAAAAAAAAAAowDoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-05-28T15:22:04.48Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "20240528151835_Recipes.cs",
-              "DocumentMoniker": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\Data\\Migrations\\20240528151835_Recipes.cs",
-              "RelativeDocumentMoniker": "Lab9 - ASP.NET\\Data\\Migrations\\20240528151835_Recipes.cs",
-              "ToolTip": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\Data\\Migrations\\20240528151835_Recipes.cs",
-              "RelativeToolTip": "Lab9 - ASP.NET\\Data\\Migrations\\20240528151835_Recipes.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-28T15:18:35.974Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "RecipesController.cs",
               "DocumentMoniker": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\Controllers\\RecipesController.cs",
               "RelativeDocumentMoniker": "Lab9 - ASP.NET\\Controllers\\RecipesController.cs",
               "ToolTip": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\Controllers\\RecipesController.cs",
               "RelativeToolTip": "Lab9 - ASP.NET\\Controllers\\RecipesController.cs",
-              "ViewState": "AQIAABUAAAAAAAAAAAAgwDAAAAAAAAAA",
+              "ViewState": "AQIAABAAAAAAAAAAAAA1wCgAAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-28T15:13:04.535Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 10,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\Program.cs",
               "RelativeDocumentMoniker": "Lab9 - ASP.NET\\Program.cs",
@@ -163,12 +217,11 @@
               "RelativeToolTip": "Lab9 - ASP.NET\\Program.cs",
               "ViewState": "AQIAAAcAAAAAAAAAAAAIwBsAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-26T16:18:07.763Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-26T16:18:07.763Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 11,
               "Title": "ErrorViewModel.cs",
               "DocumentMoniker": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\Models\\ErrorViewModel.cs",
               "RelativeDocumentMoniker": "Lab9 - ASP.NET\\Models\\ErrorViewModel.cs",
@@ -180,7 +233,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 12,
               "Title": "_ViewStart.cshtml",
               "DocumentMoniker": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\Areas\\Identity\\Pages\\_ViewStart.cshtml",
               "RelativeDocumentMoniker": "Lab9 - ASP.NET\\Areas\\Identity\\Pages\\_ViewStart.cshtml",
@@ -192,7 +245,43 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 8,
+              "Title": "Recipe.cs",
+              "DocumentMoniker": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\Models\\Recipe.cs",
+              "RelativeDocumentMoniker": "Lab9 - ASP.NET\\Models\\Recipe.cs",
+              "ToolTip": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\Models\\Recipe.cs",
+              "RelativeToolTip": "Lab9 - ASP.NET\\Models\\Recipe.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-26T15:48:45.767Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Lab9 - ASP.NET\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Lab9 - ASP.NET\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-26T16:03:58.194Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "20240528151835_Recipes.cs",
+              "DocumentMoniker": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\Data\\Migrations\\20240528151835_Recipes.cs",
+              "RelativeDocumentMoniker": "Lab9 - ASP.NET\\Data\\Migrations\\20240528151835_Recipes.cs",
+              "ToolTip": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\Data\\Migrations\\20240528151835_Recipes.cs",
+              "RelativeToolTip": "Lab9 - ASP.NET\\Data\\Migrations\\20240528151835_Recipes.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-28T15:18:35.974Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "Lab9 - ASP.NET\\Data\\ApplicationDbContext.cs",
@@ -204,7 +293,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 15,
               "Title": "00000000000000_CreateIdentitySchema.cs",
               "DocumentMoniker": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\Data\\Migrations\\00000000000000_CreateIdentitySchema.cs",
               "RelativeDocumentMoniker": "Lab9 - ASP.NET\\Data\\Migrations\\00000000000000_CreateIdentitySchema.cs",
@@ -216,20 +305,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Recipe.cs",
-              "DocumentMoniker": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\Models\\Recipe.cs",
-              "RelativeDocumentMoniker": "Lab9 - ASP.NET\\Models\\Recipe.cs",
-              "ToolTip": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\Models\\Recipe.cs",
-              "RelativeToolTip": "Lab9 - ASP.NET\\Models\\Recipe.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-26T15:48:45.767Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 17,
               "Title": "_ValidationScriptsPartial.cshtml",
               "DocumentMoniker": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
               "RelativeDocumentMoniker": "Lab9 - ASP.NET\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
@@ -241,7 +317,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 18,
               "Title": "Error.cshtml",
               "DocumentMoniker": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\Views\\Shared\\Error.cshtml",
               "RelativeDocumentMoniker": "Lab9 - ASP.NET\\Views\\Shared\\Error.cshtml",
@@ -253,7 +329,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 19,
               "Title": "_LoginPartial.cshtml",
               "DocumentMoniker": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\Views\\Shared\\_LoginPartial.cshtml",
               "RelativeDocumentMoniker": "Lab9 - ASP.NET\\Views\\Shared\\_LoginPartial.cshtml",
@@ -265,7 +341,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 14,
               "Title": "20240526160928_Recipe.cs",
               "DocumentMoniker": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\Data\\Migrations\\20240526160928_Recipe.cs",
               "RelativeDocumentMoniker": "Lab9 - ASP.NET\\Data\\Migrations\\20240526160928_Recipe.cs",
@@ -278,18 +354,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 16,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "Lab9 - ASP.NET\\Controllers\\HomeController.cs",
-              "ToolTip": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "Lab9 - ASP.NET\\Controllers\\HomeController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-26T16:03:58.194Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "D:\\ubb\\university-work\\2nd year\\sem2\\Web Programming\\Lab9 - ASP.NET\\Lab9 - ASP.NET\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Lab9 - ASP.NET\\Views\\Shared\\_Layout.cshtml",
