@@ -46,7 +46,7 @@ const createNewList = () => {
   io.emit('newList', newList);
 }
 
-cron.schedule('*/30 * * * * *', () => {
+cron.schedule('*/60 * * * * *', () => {
   createNewList();
 });
 

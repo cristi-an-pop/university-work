@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import axios, { AxiosInstance } from "axios";
 
-const BASE_URL = "http://localhost:5000/api";
+const BASE_URL = "https://localhost:5000/api";
 
 interface AxiosState {
   axiosConnection: AxiosInstance;

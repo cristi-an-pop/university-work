@@ -50,7 +50,7 @@ const loginUser = async (req, res) => {
         console.log(jwt.decode(accessToken))
         console.log("User logged in");
         await userModel.updateUserRefreshToken(user.username, refreshToken);
-        res.cookie('jwt', refreshToken, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
+        res.cookie('jwt', refreshToken, { httpOnly: true, secure: true, maxAge: 24 * 60 * 60 * 1000 });
         res.status(200).json({ "userid": user.id, username, accessToken, "roles": [user.role] });
     } catch (error) {
         res.status(500).json({ message: 'Error logging in' });

@@ -15,15 +15,18 @@ const { scheduleCronJob } = require('./utils/cronJob');
 const generateList = require('./utils/faker/ListFaker');
 const generateTask = require('./utils/faker/TaskFaker');
 
+const key = fs.readFileSync(`${__dirname}/localhost.decrypted.key`);
+const cert = fs.readFileSync(`${__dirname}/localhost.crt`);
+
 require('dotenv').config();
 
 const app = express();
 const PORT = process.env.NODE_ENV === 'test' ? process.env.TEST_PORT : process.env.PORT || 5002;
-const server = http.createServer(app);
+const server = https.createServer({ key, cert }, app);
 
 // Middleware setup
 const corsOptions = {
-  origin: "http://localhost:5173", // Allow requests from any origin
+  origin: "https://localhost:5173", // Allow requests from any origin
   credentials: true,
   optionSuccessStatus: 200
 };
