@@ -93,7 +93,7 @@
   <tr>
     <td colspan=3 align=center><i>3rd Semester</i></td>
   </tr>
-       <tr>
+  <tr>
     <td> 1. </td>
     <td> <a href=""><b>Advanced Progamming Methodologies</b></a> </td>
     <td> Java, JavaFX </td>
@@ -117,5 +117,38 @@
     <td> 5. </td>
     <td> <b>Probabilities and Statistics</b> </td>
     <td> Classical probabilistic models, Random variable and vectors, Numerical characteristics of random variables, Estimation theory, Type errors </td>
+  </tr>
+  <tr>
+    <td colspan=3 align=center><i>4th Semester</i></td>
+  </tr>
+    <tr>
+    <td> 1. </td>
+    <td> <a href="https://github.com/cristi-an-pop/university-work/tree/main/3rd%20year/sem1/FLCD%20(Formal%20Languages%20and%20Compiler%20Design)"><b>Formal Languages and Compiler Design</b></a> </td>
+    <td> Regular Grammars, Finite Automata, Regular Expressions, CFG, PDA, Parsers </td>
+  </tr>
+  <tr>
+    <td> 2. </td>
+    <td> <a href="https://github.com/cristi-an-pop/university-work/tree/main/3rd%20year/sem1/PDP%20(Parallel%20And%20Distributed%20Programming)"><b>Parallel And Distributed Programming</b></a> </td>
+    <td> Processes, Threads, MPI </td>
+  </tr>
+  <tr>
+    <td> 3. </td>
+    <td> <a href="https://github.com/cristi-an-pop/university-work/tree/main/3rd%20year/sem1/MA%20(Mobile%20Applications)"><b>Mobile Applications</b></a>  </td>
+    <td> Kotlin, React Native </td>
+  </tr>
+  <tr>
+    <td> 4. </td>
+    <td> <b>Cloud Applications Architecture</b> </td>
+    <td> AWS, IaaS, PaaS, Scalability, Security, High Availability, Networking, Databases</td>
+  </tr>
+  <tr>
+    <td> 5. </td>
+    <td> <b>Innovative Product Design</b> </td>
+    <td> Built and deployed a medical application</td>
+  </tr>
+  <tr>
+    <td> 6. </td>
+    <td> <a href="https://github.com/cristi-an-pop/university-work/tree/main/3rd%20year/sem1/RPA%20(Robotic%20Process%20Automation)"><b>Robotic Process Automation</b></a> </td>
+    <td> UiPath, REFramework, Orchestrator </td>
   </tr>
 </table>
