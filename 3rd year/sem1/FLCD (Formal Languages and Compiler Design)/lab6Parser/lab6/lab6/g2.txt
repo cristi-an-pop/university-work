@@ -1,0 +1,26 @@
+Nonterminals: program, decllist, decl, type, arraydecl, stmtlist, stmt, iostmt, expression, term, factor, ifstmt, condition, REL_OP, whilestmt, forstmt, funcstmt, paramlist, IDENTIFIER, letter, digit, id_tail
+Terminals: let, int, float, bool, true, false, if, else, then, while, do, for, end, input, output, func, return, array, of, +, -, *, /, :=, <, >, <=, =, >=, !=, !, (, ), {, }, [, ], ;, :, ,, intconst, floatconst, boolconst, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z, z, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V , W, X, Z, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+Start Symbol: program
+Productions:
+    program -> let decllist ; stmtlist end
+    decllist -> decl | decl ; decllist
+    decl -> IDENTIFIER : type
+    type -> int | float | bool | arraydecl
+    arraydecl -> array [ intconst ] of type
+    stmtlist -> stmt | stmt ; stmtlist
+    stmt -> assignstmt | iostmt | ifstmt | whilestmt | forstmt | funcstmt
+    iostmt -> input ( IDENTIFIER ) | output ( expression )
+    expression -> expression + term | expression - term | term
+    term -> term * factor | term / factor | factor
+    factor -> ( expression ) | IDENTIFIER | intconst | floatconst | boolconst
+    ifstmt -> if condition then stmtlist [ else stmtlist ] end
+    condition -> expression REL_OP expression
+    REL_OP -> < | <= | = | >= | >
+    whilestmt -> while condition do stmtlist end
+    forstmt -> for IDENTIFIER := expression to expression do stmtlist end
+    funcstmt -> func IDENTIFIER ( paramlist ) do stmtlist return expression end
+    paramlist -> IDENTIFIER : type { , IDENTIFIER : type }
+    IDENTIFIER -> letter | id_tail
+    id_tail -> letter id_tail | digit id_tail | ε
+    letter -> a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z
+    digit -> 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9

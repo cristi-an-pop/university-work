@@ -1,0 +1,20 @@
+let 
+    a: int;
+    b: int;
+    c: int;
+    max: int;
+    a := 10;
+    b := 15;
+    c := 8;
+    max := a;
+    
+if b > max then
+    max := b;
+end
+
+if c > max then
+    max := c;
+end
+
+output(max);
+end

@@ -1,0 +1,10 @@
+Reserved words:
+int, float, bool, true, false, let, if, else, while, do, for, end, input, output, func, return, array, of
+
+Operators:
++  -  *  /  :=  <  <=  =  >= !=
+
+Separators:
+( ) { } [ ] ; : , space
+
+

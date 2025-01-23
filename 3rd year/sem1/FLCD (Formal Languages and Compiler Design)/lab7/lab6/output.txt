@@ -1,0 +1,636 @@
+Action: Expand
+Input Stack: ;
+Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+Index: 0
+Production: let decllist ;
+Father: None
+Sibling: None
+--------------------------------------------------
+  Action: Advance
+  Input Stack: ;
+  Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+  Index: 1
+  Production: None
+  Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515DF0>
+  Sibling: None
+--------------------------------------------------
+    Action: Expand
+    Input Stack: ;
+    Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+    Index: 1
+    Production: decl
+    Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515D00>
+    Sibling: None
+--------------------------------------------------
+      Action: Expand
+      Input Stack: : type ;
+      Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+      Index: 1
+      Production: IDENTIFIER : type
+      Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515D60>
+      Sibling: None
+--------------------------------------------------
+        Action: Expand
+        Input Stack: : type ;
+        Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+        Index: 1
+        Production: letter
+        Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515CA0>
+        Sibling: None
+--------------------------------------------------
+          Action: Expand
+          Input Stack: ;
+          Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+          Index: 1
+          Production: a
+          Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515D30>
+          Sibling: None
+--------------------------------------------------
+            Action: Advance
+            Input Stack: ;
+            Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+            Index: 2
+            Production: None
+            Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515F10>
+            Sibling: None
+--------------------------------------------------
+              Action: Advance
+              Input Stack: ;
+              Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+              Index: 3
+              Production: None
+              Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515F40>
+              Sibling: None
+--------------------------------------------------
+                Action: Expand
+                Input Stack: int ;
+                Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+                Index: 3
+                Production: int
+                Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515E50>
+                Sibling: None
+--------------------------------------------------
+                  Action: Momentary Insuccess
+                  Input Stack: int ;
+                  Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+                  Index: 3
+                  Production: None
+                  Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515CD0>
+                  Sibling: None
+--------------------------------------------------
+                    Action: Momentary Insuccess
+                    Input Stack: float
+                    Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+                    Index: 3
+                    Production: None
+                    Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515EB0>
+                    Sibling: None
+--------------------------------------------------
+                      Action: Advance
+                      Input Stack: 
+                      Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+                      Index: 4
+                      Production: None
+                      Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515EE0>
+                      Sibling: None
+--------------------------------------------------
+
+Action: Advance
+Input Stack: ;
+Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+Index: 1
+Production: None
+Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515DF0>
+Sibling: None
+--------------------------------------------------
+  Action: Expand
+  Input Stack: ;
+  Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+  Index: 1
+  Production: decl
+  Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515D00>
+  Sibling: None
+--------------------------------------------------
+    Action: Expand
+    Input Stack: : type ;
+    Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+    Index: 1
+    Production: IDENTIFIER : type
+    Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515D60>
+    Sibling: None
+--------------------------------------------------
+      Action: Expand
+      Input Stack: : type ;
+      Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+      Index: 1
+      Production: letter
+      Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515CA0>
+      Sibling: None
+--------------------------------------------------
+        Action: Expand
+        Input Stack: ;
+        Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+        Index: 1
+        Production: a
+        Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515D30>
+        Sibling: None
+--------------------------------------------------
+          Action: Advance
+          Input Stack: ;
+          Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+          Index: 2
+          Production: None
+          Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515F10>
+          Sibling: None
+--------------------------------------------------
+            Action: Advance
+            Input Stack: ;
+            Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+            Index: 3
+            Production: None
+            Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515F40>
+            Sibling: None
+--------------------------------------------------
+              Action: Expand
+              Input Stack: int ;
+              Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+              Index: 3
+              Production: int
+              Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515E50>
+              Sibling: None
+--------------------------------------------------
+                Action: Momentary Insuccess
+                Input Stack: int ;
+                Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+                Index: 3
+                Production: None
+                Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515CD0>
+                Sibling: None
+--------------------------------------------------
+                  Action: Momentary Insuccess
+                  Input Stack: float
+                  Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+                  Index: 3
+                  Production: None
+                  Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515EB0>
+                  Sibling: None
+--------------------------------------------------
+                    Action: Advance
+                    Input Stack: 
+                    Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+                    Index: 4
+                    Production: None
+                    Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515EE0>
+                    Sibling: None
+--------------------------------------------------
+
+Action: Expand
+Input Stack: ;
+Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+Index: 1
+Production: decl
+Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515D00>
+Sibling: None
+--------------------------------------------------
+  Action: Expand
+  Input Stack: : type ;
+  Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+  Index: 1
+  Production: IDENTIFIER : type
+  Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515D60>
+  Sibling: None
+--------------------------------------------------
+    Action: Expand
+    Input Stack: : type ;
+    Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+    Index: 1
+    Production: letter
+    Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515CA0>
+    Sibling: None
+--------------------------------------------------
+      Action: Expand
+      Input Stack: ;
+      Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+      Index: 1
+      Production: a
+      Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515D30>
+      Sibling: None
+--------------------------------------------------
+        Action: Advance
+        Input Stack: ;
+        Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+        Index: 2
+        Production: None
+        Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515F10>
+        Sibling: None
+--------------------------------------------------
+          Action: Advance
+          Input Stack: ;
+          Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+          Index: 3
+          Production: None
+          Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515F40>
+          Sibling: None
+--------------------------------------------------
+            Action: Expand
+            Input Stack: int ;
+            Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+            Index: 3
+            Production: int
+            Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515E50>
+            Sibling: None
+--------------------------------------------------
+              Action: Momentary Insuccess
+              Input Stack: int ;
+              Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+              Index: 3
+              Production: None
+              Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515CD0>
+              Sibling: None
+--------------------------------------------------
+                Action: Momentary Insuccess
+                Input Stack: float
+                Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+                Index: 3
+                Production: None
+                Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515EB0>
+                Sibling: None
+--------------------------------------------------
+                  Action: Advance
+                  Input Stack: 
+                  Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+                  Index: 4
+                  Production: None
+                  Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515EE0>
+                  Sibling: None
+--------------------------------------------------
+
+Action: Expand
+Input Stack: : type ;
+Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+Index: 1
+Production: IDENTIFIER : type
+Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515D60>
+Sibling: None
+--------------------------------------------------
+  Action: Expand
+  Input Stack: : type ;
+  Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+  Index: 1
+  Production: letter
+  Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515CA0>
+  Sibling: None
+--------------------------------------------------
+    Action: Expand
+    Input Stack: ;
+    Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+    Index: 1
+    Production: a
+    Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515D30>
+    Sibling: None
+--------------------------------------------------
+      Action: Advance
+      Input Stack: ;
+      Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+      Index: 2
+      Production: None
+      Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515F10>
+      Sibling: None
+--------------------------------------------------
+        Action: Advance
+        Input Stack: ;
+        Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+        Index: 3
+        Production: None
+        Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515F40>
+        Sibling: None
+--------------------------------------------------
+          Action: Expand
+          Input Stack: int ;
+          Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+          Index: 3
+          Production: int
+          Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515E50>
+          Sibling: None
+--------------------------------------------------
+            Action: Momentary Insuccess
+            Input Stack: int ;
+            Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+            Index: 3
+            Production: None
+            Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515CD0>
+            Sibling: None
+--------------------------------------------------
+              Action: Momentary Insuccess
+              Input Stack: float
+              Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+              Index: 3
+              Production: None
+              Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515EB0>
+              Sibling: None
+--------------------------------------------------
+                Action: Advance
+                Input Stack: 
+                Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+                Index: 4
+                Production: None
+                Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515EE0>
+                Sibling: None
+--------------------------------------------------
+
+Action: Expand
+Input Stack: : type ;
+Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+Index: 1
+Production: letter
+Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515CA0>
+Sibling: None
+--------------------------------------------------
+  Action: Expand
+  Input Stack: ;
+  Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+  Index: 1
+  Production: a
+  Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515D30>
+  Sibling: None
+--------------------------------------------------
+    Action: Advance
+    Input Stack: ;
+    Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+    Index: 2
+    Production: None
+    Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515F10>
+    Sibling: None
+--------------------------------------------------
+      Action: Advance
+      Input Stack: ;
+      Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+      Index: 3
+      Production: None
+      Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515F40>
+      Sibling: None
+--------------------------------------------------
+        Action: Expand
+        Input Stack: int ;
+        Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+        Index: 3
+        Production: int
+        Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515E50>
+        Sibling: None
+--------------------------------------------------
+          Action: Momentary Insuccess
+          Input Stack: int ;
+          Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+          Index: 3
+          Production: None
+          Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515CD0>
+          Sibling: None
+--------------------------------------------------
+            Action: Momentary Insuccess
+            Input Stack: float
+            Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+            Index: 3
+            Production: None
+            Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515EB0>
+            Sibling: None
+--------------------------------------------------
+              Action: Advance
+              Input Stack: 
+              Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+              Index: 4
+              Production: None
+              Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515EE0>
+              Sibling: None
+--------------------------------------------------
+
+Action: Expand
+Input Stack: ;
+Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+Index: 1
+Production: a
+Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515D30>
+Sibling: None
+--------------------------------------------------
+  Action: Advance
+  Input Stack: ;
+  Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+  Index: 2
+  Production: None
+  Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515F10>
+  Sibling: None
+--------------------------------------------------
+    Action: Advance
+    Input Stack: ;
+    Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+    Index: 3
+    Production: None
+    Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515F40>
+    Sibling: None
+--------------------------------------------------
+      Action: Expand
+      Input Stack: int ;
+      Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+      Index: 3
+      Production: int
+      Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515E50>
+      Sibling: None
+--------------------------------------------------
+        Action: Momentary Insuccess
+        Input Stack: int ;
+        Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+        Index: 3
+        Production: None
+        Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515CD0>
+        Sibling: None
+--------------------------------------------------
+          Action: Momentary Insuccess
+          Input Stack: float
+          Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+          Index: 3
+          Production: None
+          Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515EB0>
+          Sibling: None
+--------------------------------------------------
+            Action: Advance
+            Input Stack: 
+            Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+            Index: 4
+            Production: None
+            Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515EE0>
+            Sibling: None
+--------------------------------------------------
+
+Action: Advance
+Input Stack: ;
+Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+Index: 2
+Production: None
+Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515F10>
+Sibling: None
+--------------------------------------------------
+  Action: Advance
+  Input Stack: ;
+  Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+  Index: 3
+  Production: None
+  Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515F40>
+  Sibling: None
+--------------------------------------------------
+    Action: Expand
+    Input Stack: int ;
+    Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+    Index: 3
+    Production: int
+    Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515E50>
+    Sibling: None
+--------------------------------------------------
+      Action: Momentary Insuccess
+      Input Stack: int ;
+      Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+      Index: 3
+      Production: None
+      Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515CD0>
+      Sibling: None
+--------------------------------------------------
+        Action: Momentary Insuccess
+        Input Stack: float
+        Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+        Index: 3
+        Production: None
+        Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515EB0>
+        Sibling: None
+--------------------------------------------------
+          Action: Advance
+          Input Stack: 
+          Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+          Index: 4
+          Production: None
+          Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515EE0>
+          Sibling: None
+--------------------------------------------------
+
+Action: Advance
+Input Stack: ;
+Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+Index: 3
+Production: None
+Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515F40>
+Sibling: None
+--------------------------------------------------
+  Action: Expand
+  Input Stack: int ;
+  Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+  Index: 3
+  Production: int
+  Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515E50>
+  Sibling: None
+--------------------------------------------------
+    Action: Momentary Insuccess
+    Input Stack: int ;
+    Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+    Index: 3
+    Production: None
+    Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515CD0>
+    Sibling: None
+--------------------------------------------------
+      Action: Momentary Insuccess
+      Input Stack: float
+      Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+      Index: 3
+      Production: None
+      Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515EB0>
+      Sibling: None
+--------------------------------------------------
+        Action: Advance
+        Input Stack: 
+        Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+        Index: 4
+        Production: None
+        Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515EE0>
+        Sibling: None
+--------------------------------------------------
+
+Action: Expand
+Input Stack: int ;
+Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+Index: 3
+Production: int
+Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515E50>
+Sibling: None
+--------------------------------------------------
+  Action: Momentary Insuccess
+  Input Stack: int ;
+  Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+  Index: 3
+  Production: None
+  Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515CD0>
+  Sibling: None
+--------------------------------------------------
+    Action: Momentary Insuccess
+    Input Stack: float
+    Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+    Index: 3
+    Production: None
+    Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515EB0>
+    Sibling: None
+--------------------------------------------------
+      Action: Advance
+      Input Stack: 
+      Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+      Index: 4
+      Production: None
+      Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515EE0>
+      Sibling: None
+--------------------------------------------------
+
+Action: Momentary Insuccess
+Input Stack: int ;
+Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+Index: 3
+Production: None
+Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515CD0>
+Sibling: None
+--------------------------------------------------
+  Action: Momentary Insuccess
+  Input Stack: float
+  Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+  Index: 3
+  Production: None
+  Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515EB0>
+  Sibling: None
+--------------------------------------------------
+    Action: Advance
+    Input Stack: 
+    Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+    Index: 4
+    Production: None
+    Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515EE0>
+    Sibling: None
+--------------------------------------------------
+
+Action: Momentary Insuccess
+Input Stack: float
+Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+Index: 3
+Production: None
+Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515EB0>
+Sibling: None
+--------------------------------------------------
+  Action: Advance
+  Input Stack: 
+  Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+  Index: 4
+  Production: None
+  Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515EE0>
+  Sibling: None
+--------------------------------------------------
+
+Action: Advance
+Input Stack: 
+Work Stack: ('program', 1) let ('decllist', 1) ('decl', 1) ('IDENTIFIER', 1) ('letter', 1) a : ('type', 3) bool
+Index: 4
+Production: None
+Father: <lab6Parser.lab6.ParserOutput.ParseTreeNode object at 0x000001FB35515EE0>
+Sibling: None
+--------------------------------------------------
+

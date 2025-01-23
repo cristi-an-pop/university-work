@@ -1,0 +1,29 @@
+# Program 3: Find GCD of two numbers
+let 
+    a: int := 12;
+    b: int := 18;
+
+func gcd(a: int, b: int) do
+    let result: int := a;
+
+    if b < a then
+        result := b;
+    end
+
+    while result != 0 do
+        if a / result * result = a and b / result * result = b then
+            return result;
+        end
+        result := result - 1;
+    end
+
+    return result;
+end
+
+output(gcd(a, b));
+end
+
+
+
+
+

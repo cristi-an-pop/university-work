@@ -1,0 +1,279 @@
+Action: Expand
+Input Stack: G
+Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+Index: 1
+Production: T G
+--------------------------------------------------
+  Action: Expand
+  Input Stack: P G
+  Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+  Index: 1
+  Production: F P
+--------------------------------------------------
+    Action: Expand
+    Input Stack: ( E ) P G
+    Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+    Index: 1
+    Production: ( E )
+--------------------------------------------------
+      Action: Momentary Insuccess
+      Input Stack: ( E ) P G
+      Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+      Index: 1
+      Production: None
+--------------------------------------------------
+        Action: Advance
+        Input Stack: G
+        Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+        Index: 2
+        Production: None
+--------------------------------------------------
+          Action: Expand
+          Input Stack: * F P G
+          Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+          Index: 2
+          Production: * F P
+--------------------------------------------------
+            Action: Momentary Insuccess
+            Input Stack: * F P G
+            Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+            Index: 2
+            Production: None
+--------------------------------------------------
+              Action: Expand
+              Input Stack: + T G
+              Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+              Index: 2
+              Production: + T G
+--------------------------------------------------
+                Action: Momentary Insuccess
+                Input Stack: + T G
+                Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+                Index: 2
+                Production: None
+--------------------------------------------------
+
+Action: Expand
+Input Stack: P G
+Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+Index: 1
+Production: F P
+--------------------------------------------------
+  Action: Expand
+  Input Stack: ( E ) P G
+  Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+  Index: 1
+  Production: ( E )
+--------------------------------------------------
+    Action: Momentary Insuccess
+    Input Stack: ( E ) P G
+    Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+    Index: 1
+    Production: None
+--------------------------------------------------
+      Action: Advance
+      Input Stack: G
+      Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+      Index: 2
+      Production: None
+--------------------------------------------------
+        Action: Expand
+        Input Stack: * F P G
+        Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+        Index: 2
+        Production: * F P
+--------------------------------------------------
+          Action: Momentary Insuccess
+          Input Stack: * F P G
+          Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+          Index: 2
+          Production: None
+--------------------------------------------------
+            Action: Expand
+            Input Stack: + T G
+            Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+            Index: 2
+            Production: + T G
+--------------------------------------------------
+              Action: Momentary Insuccess
+              Input Stack: + T G
+              Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+              Index: 2
+              Production: None
+--------------------------------------------------
+
+Action: Expand
+Input Stack: ( E ) P G
+Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+Index: 1
+Production: ( E )
+--------------------------------------------------
+  Action: Momentary Insuccess
+  Input Stack: ( E ) P G
+  Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+  Index: 1
+  Production: None
+--------------------------------------------------
+    Action: Advance
+    Input Stack: G
+    Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+    Index: 2
+    Production: None
+--------------------------------------------------
+      Action: Expand
+      Input Stack: * F P G
+      Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+      Index: 2
+      Production: * F P
+--------------------------------------------------
+        Action: Momentary Insuccess
+        Input Stack: * F P G
+        Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+        Index: 2
+        Production: None
+--------------------------------------------------
+          Action: Expand
+          Input Stack: + T G
+          Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+          Index: 2
+          Production: + T G
+--------------------------------------------------
+            Action: Momentary Insuccess
+            Input Stack: + T G
+            Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+            Index: 2
+            Production: None
+--------------------------------------------------
+
+Action: Momentary Insuccess
+Input Stack: ( E ) P G
+Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+Index: 1
+Production: None
+--------------------------------------------------
+  Action: Advance
+  Input Stack: G
+  Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+  Index: 2
+  Production: None
+--------------------------------------------------
+    Action: Expand
+    Input Stack: * F P G
+    Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+    Index: 2
+    Production: * F P
+--------------------------------------------------
+      Action: Momentary Insuccess
+      Input Stack: * F P G
+      Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+      Index: 2
+      Production: None
+--------------------------------------------------
+        Action: Expand
+        Input Stack: + T G
+        Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+        Index: 2
+        Production: + T G
+--------------------------------------------------
+          Action: Momentary Insuccess
+          Input Stack: + T G
+          Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+          Index: 2
+          Production: None
+--------------------------------------------------
+
+Action: Advance
+Input Stack: G
+Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+Index: 2
+Production: None
+--------------------------------------------------
+  Action: Expand
+  Input Stack: * F P G
+  Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+  Index: 2
+  Production: * F P
+--------------------------------------------------
+    Action: Momentary Insuccess
+    Input Stack: * F P G
+    Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+    Index: 2
+    Production: None
+--------------------------------------------------
+      Action: Expand
+      Input Stack: + T G
+      Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+      Index: 2
+      Production: + T G
+--------------------------------------------------
+        Action: Momentary Insuccess
+        Input Stack: + T G
+        Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+        Index: 2
+        Production: None
+--------------------------------------------------
+
+Action: Expand
+Input Stack: * F P G
+Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+Index: 2
+Production: * F P
+--------------------------------------------------
+  Action: Momentary Insuccess
+  Input Stack: * F P G
+  Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+  Index: 2
+  Production: None
+--------------------------------------------------
+    Action: Expand
+    Input Stack: + T G
+    Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+    Index: 2
+    Production: + T G
+--------------------------------------------------
+      Action: Momentary Insuccess
+      Input Stack: + T G
+      Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+      Index: 2
+      Production: None
+--------------------------------------------------
+
+Action: Momentary Insuccess
+Input Stack: * F P G
+Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+Index: 2
+Production: None
+--------------------------------------------------
+  Action: Expand
+  Input Stack: + T G
+  Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+  Index: 2
+  Production: + T G
+--------------------------------------------------
+    Action: Momentary Insuccess
+    Input Stack: + T G
+    Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+    Index: 2
+    Production: None
+--------------------------------------------------
+
+Action: Expand
+Input Stack: + T G
+Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+Index: 2
+Production: + T G
+--------------------------------------------------
+  Action: Momentary Insuccess
+  Input Stack: + T G
+  Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+  Index: 2
+  Production: None
+--------------------------------------------------
+
+Action: Momentary Insuccess
+Input Stack: + T G
+Work Stack: ('E', 1) ('T', 1) ('F', 2) n ('P', 2) ('G', 2)
+Index: 2
+Production: None
+--------------------------------------------------
+

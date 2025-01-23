@@ -1,0 +1,29 @@
+let
+    n: int;
+    numbers: int;
+    max: int;
+    min: int;
+    numbers: array[5] of int;
+    i: int;
+    
+    n := 5;
+    numbers := {10, 20, 30, 40, 50};
+    max := numbers[1];
+    min := numbers[1];
+    i := 1;
+
+while i < n do
+    if numbers[i] > max then
+        max := numbers[i];
+    end
+
+    if numbers[i] < min then
+        min := numbers[i];
+    end
+
+    i := i + 1;
+end
+
+output(max);
+output(min);
+end

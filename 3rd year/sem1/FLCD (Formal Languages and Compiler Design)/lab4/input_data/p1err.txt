@@ -1,0 +1,16 @@
+let 
+    a: int := 10;
+    b: int := 15;
+    c: int := 8;
+    1max: int := a;
+
+if b >> max then
+    max := b;
+end
+
+if c > max then
+    max := c;
+end
+
+output(max);
+end

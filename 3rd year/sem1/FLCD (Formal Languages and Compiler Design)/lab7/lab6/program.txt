@@ -1,0 +1,11 @@
+defunct bool gcd(var(float) a1, var(bool) b2){
+    var ( [ ] int ) a = 10 ;
+    var ( float ) avg ;
+
+	while(n =!= m)do
+        if(n > m) then do
+            n = n - m;
+        else do
+            m = m - n;
+    return n;
+}

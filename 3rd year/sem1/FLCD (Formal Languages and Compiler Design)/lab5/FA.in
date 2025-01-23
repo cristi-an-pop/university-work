@@ -1,0 +1,11 @@
+States: {q0, q1, q2}
+Alphabet: {a, b}
+Transitions:
+q0, a -> q1
+q0, a -> q2
+q1, a -> q1
+q1, b -> q2
+q2, a -> q1
+q2, b -> q2
+Initial State: q0
+Final States: {q1}

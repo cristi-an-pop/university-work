@@ -1,0 +1,39 @@
+## Alphabet:
+    Uppercase Letters: A-Z
+    Lowercase Letters: a-z
+    Digits: 0-9
+    Special Symbols: +, -, *, /, :=, <, <=, =, >=, (, ), ;, {, }, , , :
+    Other characters: <space>, underscore _.
+
+    Reserved words:
+    int, float, bool, true, false, let, if, else, while, do, for, end, input, output, func, return, array, of
+
+    # Operators:
+    +  -  *  /  :=  <  <=  =  >=
+
+    # Separators:
+    ( ) { } [ ] ; : , space
+
+    # Identifiers:
+    Definition: Identifiers must start with a letter and may contain letters, digits, and underscores, with a maximum length of 256 characters.
+    Rule: identifier ::= letter | letter{letter}{digit}{"_"}
+    letter ::= "A" | "B" | . ..| "Z"
+    digit ::= "0" | "1" |...| "9"
+
+    # Constants:
+    Integer Constants: Whole numbers. Can be positive or negative.
+    Rule: intconst ::= ("+" | "-")? digit+
+
+    Float Constants: Numbers with a decimal point.
+    Rule: floatconst ::= ("+" | "-")? digit+ "." digit+
+    
+    Boolean Constants: Either true or false.
+    Rule: boolconst ::= "true" | "false"
+
+    Character Constants: Either letters or digits
+    Rule: character ::= 'letter' | 'digit'
+
+    String Constants: Strings of characters
+    Rule: charconst ::= "string"
+	  string ::= char{string}
+          char ::= letter | digit

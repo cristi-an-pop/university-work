@@ -1,0 +1,32 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Main.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "passingScore&Sequence_15",
+        "finished&Sequence_15",
+        "studentName&Sequence_15",
+        "studentScore&Sequence_15",
+        "passedStudents&Sequence_15",
+        "studentGrades&Sequence_15",
+        "nextDecision&Sequence_15",
+        "decisionAsNumber&Sequence_15",
+        "highestScore&Sequence_15",
+        "studentsTable&Sequence_15",
+        "message&Sequence_15"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    }
+  ]
+}

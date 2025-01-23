@@ -1,0 +1,75 @@
+%{ 	 
+#include <stdio.h>
+#include <string.h>
+#include "lang.tab.h"
+int lines = 1;
+%} 
+
+%option noyywrap
+%option caseless
+
+DIGIT 		[0-9]
+WORD		\"[a-zA-Z0-9]*\"
+NUMBER		[+-]?[1-9][0-9]*|0$
+CHARACTER 	\'[a-zA-Z0-9]\'
+CONST		{WORD}|{NUMBER}|{CHARACTER}
+ID		    [a-zA-Z][a-zA-Z0-9_]{0,7}
+
+%%
+
+let         {printf("Keyword: %s\n", yytext); return LET;}
+int         {printf("Keyword: %s\n", yytext); return INT;}
+float       {printf("Keyword: %s\n", yytext); return FLOAT;}
+bool        {printf("Keyword: %s\n", yytext); return BOOL;}
+array       {printf("Keyword: %s\n", yytext); return ARRAY;}
+of          {printf("Keyword: %s\n", yytext); return OF;}
+if          {printf("Keyword: %s\n", yytext); return IF;}
+then        {printf("Keyword: %s\n", yytext); return THEN;}
+else        {printf("Keyword: %s\n", yytext); return ELSE;}
+while       {printf("Keyword: %s\n", yytext); return WHILE;}
+do          {printf("Keyword: %s\n", yytext); return DO;}
+for         {printf("Keyword: %s\n", yytext); return FOR;}
+end         {printf("Keyword: %s\n", yytext); return END;}
+input       {printf("Keyword: %s\n", yytext); return INPUT;}
+output      {printf("Keyword: %s\n", yytext); return OUTPUT;}
+return      {printf("Keyword: %s\n", yytext); return RETURN;}
+func        {printf("Keyword: %s\n", yytext); return FUNC;}
+and         {printf("Keyword: %s\n", yytext); return AND;}
+or          {printf("Keyword: %s\n", yytext); return OR;}
+
+{ID}        {printf("Identifier: %s\n", yytext); return ID;}
+{CONST}     {printf("Constant: %s\n", yytext); return CONST;}
+
+":"         {printf("Symbol: %s\n", yytext); return COLON;}
+":="        {printf("Symbol: %s\n", yytext); return ASSIGN;}
+";"         {printf("Symbol: %s\n", yytext); return SEMI_COLON;}
+","         {printf("Symbol: %s\n", yytext); return COMMA;}
+"{"         {printf("Symbol: %s\n", yytext); return OPEN_CURLY;}
+"}"         {printf("Symbol: %s\n", yytext); return CLOSE_CURLY;}
+"["         {printf("Symbol: %s\n", yytext); return OPEN_BRACKET;}
+"]"         {printf("Symbol: %s\n", yytext); return CLOSE_BRACKET;}
+"("         {printf("Symbol: %s\n", yytext); return OPEN_PAREN;}
+")"         {printf("Symbol: %s\n", yytext); return CLOSE_PAREN;}
+
+"+"         {printf("Operator: %s\n", yytext); return PLUS;}
+"-"         {printf("Operator: %s\n", yytext); return MINUS;}
+"*"         {printf("Operator: %s\n", yytext); return MUL;}
+"/"         {printf("Operator: %s\n", yytext); return DIV;}
+"<"         {printf("Operator: %s\n", yytext); return LT;}
+">"         {printf("Operator: %s\n", yytext); return GT;}
+"<="        {printf("Operator: %s\n", yytext); return LE;}
+">="        {printf("Operator: %s\n", yytext); return GE;} 
+"=="        {printf("Operator: %s\n", yytext); return EQ;}
+"!="        {printf("Operator: %s\n", yytext); return NE;}
+
+[ \t]+      {/* Ignore whitespace */}
+[\n]+       {lines++;}
+
+[a-zA-Z][a-zA-Z0-9]{8,}	{printf("Illegal size of the identifier at line %d\n", lines); return -1;}
+
+[0-9~@#$%^][a-zA-Z0-9]{0,7}	{printf("Illegal identifier at line %d\n", lines); return -1;}
+
+\'[a-zA-Z0-9]{2,}\' {printf("Character of length >=2 at line %d\n", lines); return -1;}
+
+.           {printf("Illegal character at line %d\n", lines); return -1;}
+%%

@@ -1,0 +1,75 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Main.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "resultString&Sequence_2",
+        "resultList&Sequence_2"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "FC2-check_number_prime.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [
+        "numar",
+        "prime"
+      ],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "FC3-check_all_primes.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "intList&Flowchart_1",
+        "primeList&Flowchart_1",
+        "i&Flowchart_1",
+        "primeChecked&Flowchart_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "primeListOut"
+      ],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "FC1-read_txt.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "stringReadFromTxt&Flowchart_1",
+        "stringArrayFromTxt&Flowchart_1",
+        "intArrayFromTxt&Flowchart_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "intListFromTxt"
+      ],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "FC4-write_to_csv.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "primeDataTable&Flowchart_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "primeListToCsv"
+      ],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    }
+  ]
+}

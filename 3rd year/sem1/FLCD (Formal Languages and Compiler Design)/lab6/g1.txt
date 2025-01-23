@@ -1,0 +1,9 @@
+Nonterminals: E, E1, T, T1, F
+Terminals: +, *, (, ), id
+Start Symbol: E
+Productions:
+    E -> T E1
+    E1 -> + T E1 | ε
+    T -> F T1
+    T1 -> * F T1 | ε
+    F -> ( E ) | id

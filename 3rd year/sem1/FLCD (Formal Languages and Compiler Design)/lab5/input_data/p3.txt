@@ -1,0 +1,50 @@
+# Program 5: Compute the sum of n numbers
+let
+    n: int := 5;
+    numbers: array[5] of int := array[5] of int {10, 20, 30, 40, 50};
+
+func computeSum(n: int, numbers: array[5] of int) do
+    let sum: int := 0;
+    let i: int := 0;
+
+    while i < n do
+        sum := sum + numbers[i];
+        i := i + 1;
+    end
+
+    return sum;
+end
+
+let sum: int := computeSum(n, numbers);
+output(sum);
+end
+
+// ##############################################
+
+// Program 6: Compute the max/min of n numbers
+
+let
+    n: int := 5;
+    numbers: array[5] of int := array[5] of int {10, 20, 30, 40, 50};
+    max: int := numbers[0];
+    min: int := numbers[0];
+    i: int := 1;
+
+while i < n do
+    if numbers[i] > max then
+        max := numbers[i];
+    end
+
+    if numbers[i] < min then
+        min := numbers[i];
+    end
+
+    i := i + 1;
+end
+
+output("Max: ");
+output(max);
+output("Min: ");
+output(min);
+end
+

@@ -1,0 +1,28 @@
+program ::= "let" decllist ";" stmtlist "end"
+
+decllist ::= decl | decl ";" decllist
+decl ::= IDENTIFIER ":" type
+type ::= "int" | "float" | "bool" | arraydecl
+arraydecl ::= "array" "[" intconst "]" "of" type
+
+stmtlist ::= stmt | stmt ";" stmtlist
+stmt ::= assignstmt | iostmt | ifstmt | whilestmt | forstmt | funcstmt
+
+iostmt ::= "input" "(" IDENTIFIER ")" | "output" "(" expression ")"
+
+expression ::= expression "+" term | expression "-" term | term
+term ::= term "*" factor | term "/" factor | factor
+factor ::= "(" expression ")" | IDENTIFIER | intconst | floatconst | boolconst
+
+ifstmt ::= "if" condition "then" stmtlist ["else" stmtlist] "end"
+condition ::= expression REL_OP expression
+REL_OP ::= "<" | "<=" | "=" | ">=" | ">"
+
+whilestmt ::= "while" condition "do" stmtlist "end"
+forstmt ::= "for" IDENTIFIER ":=" expression "to" expression "do" stmtlist "end"
+
+funcstmt ::= "func" IDENTIFIER "(" paramlist ")" "do" stmtlist "return" expression "end"
+paramlist ::= IDENTIFIER ":" type {"," IDENTIFIER ":" type}
+
+
+

@@ -1,0 +1,20 @@
+Nonterminals:program, decllist, decl, type, arraydecl, paramlist, declaration, param, stmtlist, stmt, assignstmt, iostmt, forstmt, expression, term, factor, ifstmt, condition, REL_OP, ADD_OP, whilestmt, letter, digit, id_tail
+Terminals:IDENTIFIER, defunct, int, bool, float, var, while, if, else, then, go, from, to, step, constant, do, return, =, >, =!=, -, +, /, *, mod, {, }, (, ), ,, [, ], ;, :, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+Productions:
+  program -> defunct type IDENTIFIER ( paramlist ) { stmtlist return expression ; }
+    type -> int | bool | float | [ ] type
+    paramlist -> param | param , paramlist
+    param -> var ( type ) IDENTIFIER
+    stmtlist -> stmt | stmt stmtlist
+    stmt -> assignstmt | ifstmt | whilestmt | forstmt | declaration
+    declaration -> param = term ; | param ;
+    assignstmt -> IDENTIFIER = expression ;
+    ifstmt -> if ( condition ) then do stmtlist else do stmtlist
+    whilestmt -> while ( condition ) do stmtlist
+    forstmt -> go ( from param = term ; to : term ; step : term ) do stmtlist
+    condition -> expression REL_OP expression
+    REL_OP -> =!= | > | = | < | <= | >=
+    expression -> term | expression ADD_OP term
+    ADD_OP -> - | + | * | / | mod
+    term -> IDENTIFIER | intconst | ( expression )
+Start Symbol: program

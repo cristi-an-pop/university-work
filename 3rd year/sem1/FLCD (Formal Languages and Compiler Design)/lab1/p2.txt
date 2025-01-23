@@ -1,0 +1,57 @@
+# Program 3: Find GCD of two numbers
+let 
+    a: int := 12;
+    b: int := 18;
+
+func gcd(a: int, b: int) do
+    let result: int := a;
+
+    if b < a then
+        result := b;
+    end
+
+    while result != 0 do
+        if a / result * result = a and b / result * result = b then
+            return result;
+        end
+        result := result - 1;
+    end
+
+    return result;
+end
+
+output(gcd(a, b));
+end
+
+
+// ##############################################
+
+# Program 4: Compute the solutions for a 2nd order equation
+let
+    a: int := 1;
+    b: int := -5;
+    c: int := 6;
+
+func solveQuadratic(a: int, b: int, c: int) do
+    let discriminant: float := b * b - 4 * a * c;
+
+    if discriminant > 0 then
+        let sqrtVar: float := sqrt(discriminant);
+        let root1: float := (-b + sqrtVar) / (2 * a);
+        let root2: float := (-b - sqrtVar) / (2 * a);
+        output(root1);
+        output(root2);
+    else if discriminant = 0 then
+        let root: float := -b / (2 * a);
+        output(root);
+    else
+        output("No real roots");
+    end
+end
+
+solveQuadratic(a, b, c);
+end
+
+
+
+

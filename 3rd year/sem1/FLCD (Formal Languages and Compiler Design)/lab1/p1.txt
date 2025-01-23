@@ -1,0 +1,42 @@
+# Program 1: Find the maximum of 3 numbers
+let 
+    a: int := 10;
+    b: int := 15;
+    c: int := 8;
+    max: int := a;
+    
+if b > max then
+    max := b;
+end
+
+if c > max then
+    max := c;
+end
+
+output(max);
+end
+
+// ##############################################
+
+# Program 2: Check if a number is prime
+let 
+    num: int := 29;
+    is_prime: bool := true;
+    i: int := 2;
+
+while i * i <= num do
+    if num / i * i = num then
+        is_prime := false;
+    end
+    i := i + 1;
+end
+
+if is_prime = true and num > 1 then
+    output("Prime");
+else
+    output("Not Prime");
+end
+
+end
+
+

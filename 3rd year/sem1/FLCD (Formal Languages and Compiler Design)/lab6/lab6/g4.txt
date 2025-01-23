@@ -1,0 +1,10 @@
+Nonterminals: IDENTIFIER, type, program, decl, decllist
+Terminals: let, int, float, bool, a, b, c, :, ;, true, false
+Productions:
+    program -> let decllist ;
+    decllist -> decl | decl ; decllist
+    decl -> IDENTIFIER : type
+    type -> int | float | bool
+    IDENTIFIER -> a | b | c
+
+Start Symbol: program

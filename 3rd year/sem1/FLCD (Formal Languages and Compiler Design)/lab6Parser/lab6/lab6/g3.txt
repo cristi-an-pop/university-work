@@ -1,0 +1,9 @@
+Nonterminals: E, G, T, P, F
+Terminals: +, ), (, n, *
+Productions:
+    E -> TG
+    G -> +TG | ε
+    T -> FP
+    P -> *FP | ε
+    F -> (E) | n
+Start Symbol: E
