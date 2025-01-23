@@ -1,0 +1,35 @@
+{
+  "name": "memory-lane",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "@react-native-community/datetimepicker": "^8.2.0",
+    "@react-navigation/native": "^7.0.3",
+    "@react-navigation/stack": "^7.0.3",
+    "axios": "^1.7.9",
+    "expo": "~52.0.7",
+    "expo-sqlite": "^15.0.3",
+    "expo-status-bar": "~2.0.0",
+    "react": "18.3.1",
+    "react-native": "0.76.2",
+    "react-native-get-random-values": "^1.11.0",
+    "uuid": "^11.0.3",
+    "uuidv4": "^6.2.13",
+    "ws": "^8.18.0",
+    "zustand": "^5.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@types/react": "~18.3.12",
+    "@types/react-native-vector-icons": "^6.4.18",
+    "react-native-vector-icons": "^10.2.0",
+    "typescript": "^5.3.3"
+  },
+  "private": true
+}
