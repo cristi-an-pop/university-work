@@ -4,6 +4,7 @@ import { NavigationProp } from '@react-navigation/native';
 import { commonStyles } from '../../styles/style';
 import { useItemStore } from '../stores/Store';
 import ModelItem from '../components/ModelItem';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const ListScreen = ({ navigation }: { navigation: NavigationProp<any> }) => {
   const { items, fetchItems, deleteItem, loading, isOffline, setOffline, retryConnection } = useItemStore();
@@ -62,11 +63,11 @@ const ListScreen = ({ navigation }: { navigation: NavigationProp<any> }) => {
                 <TouchableOpacity style={commonStyles.dialogButton} onPress={handleRetry}>
                     <Text style={commonStyles.dialogButtonText}>Retry</Text>
                 </TouchableOpacity>
+                <TouchableOpacity style={commonStyles.retryButton} onPress={handleRetry}>
+                  <Icon name="refresh" size={24} color="white" />
+                </TouchableOpacity>
             </View>
         )}
-      <TouchableOpacity style={commonStyles.button} onPress={fetchItems}>
-        <Text style={commonStyles.buttonText}>Refresh</Text>
-      </TouchableOpacity>
       <TouchableOpacity disabled={isOffline} style={commonStyles.button} onPress={() => navigation.navigate('Create')}>
         <Text style={commonStyles.buttonText}>Add Item</Text>
       </TouchableOpacity>

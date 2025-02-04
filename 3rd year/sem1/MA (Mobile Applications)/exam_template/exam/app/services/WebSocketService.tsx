@@ -1,21 +1,13 @@
 import Repository from "../repository/Repository";
 import { ToastAndroid, Platform, Alert } from 'react-native';
 
-type QueuedOperation = {
-  type: 'CREATE' | 'UPDATE' | 'DELETE';
-  data: any;
-  timestamp: number;
-};
-
 class WebSocketService {
   private static instance: WebSocketService;
   private ws: WebSocket | null = null;
   private isConnected: boolean = false;
-  private queue: QueuedOperation[] = [];
   private messageHandler: ((message: any) => void) | null = null;
-  private processedOperations: Set<string> = new Set(); // Track processed operations
-  private connectionHandler: (() => void) | null = null; // Handler for connection status
-  private offlineHandler: (() => void) | null = null; // Handler for offline status
+  private connectionHandler: (() => void) | null = null;
+  private offlineHandler: (() => void) | null = null;
 
   private constructor() {
     this.connect();
@@ -49,20 +41,28 @@ class WebSocketService {
       if (this.connectionHandler) {
         this.connectionHandler();
       }
-      this.processQueue();
     };
 
     this.ws.onmessage = (event) => {
       const message = JSON.parse(event.data);
       console.log('WebSocket Message:', message);
-      if (this.messageHandler && !this.processedOperations.has(message.operationId)) {
+      if (this.messageHandler) {
         this.messageHandler(message);
-        this.processedOperations.add(message.operationId); // Mark the operation as processed
       }
       if (Platform.OS === 'android') {
         ToastAndroid.show(`New item added: ${message.data.title}`, ToastAndroid.LONG);
       } else {
-        Alert.alert('New item added', message.data.title);
+        switch (message.type) {
+          case 'CREATE':
+            Alert.alert('New Item Added', `Title: ${message.data.title}, Description: ${message.data.description}, Date: ${message.data.date}`);
+            break;
+          case 'UPDATE':
+            Alert.alert('Item Updated', `Item updated: ${message.data.title}`);
+            break;
+          case 'DELETE':
+            Alert.alert('Item Deleted', `Item deleted: ${message.data}`);
+            break;
+        }
       }
     }
 
@@ -85,38 +85,6 @@ class WebSocketService {
 
   isServerConnected() {
     return this.isConnected;
-  }
-
-  addToQueue(operation: QueuedOperation) {
-    this.queue.push(operation);
-    if (this.isConnected) {
-      this.processQueue();
-    }
-  }
-
-  private async processQueue() {
-    while (this.isConnected && this.queue.length > 0) {
-      const operation = this.queue.shift();
-      if (operation) {
-        try {
-          switch (operation.type) {
-            case 'CREATE':
-              await Repository.createItem(operation.data);
-              break;
-            case 'UPDATE':
-              await Repository.updateItem(operation.data);
-              break;
-            case 'DELETE':
-              await Repository.deleteItem(operation.data);
-              break;
-          }
-        } catch (error) {
-          console.error('Error processing queued operation:', error);
-          this.queue.unshift(operation);
-          break;
-        }
-      }
-    }
   }
 }
 

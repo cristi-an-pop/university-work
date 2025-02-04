@@ -144,4 +144,12 @@ export const commonStyles = StyleSheet.create({
     dialogButtonText: {
         color: colors.lighttext,
     },
+    retryButton: {
+        backgroundColor: colors.primary,
+        padding: 10,
+        borderRadius: 5,
+        position: 'absolute',
+        right: 10,
+        top: 10,
+    },
 });

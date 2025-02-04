@@ -4,7 +4,6 @@ const Item = require('../models/item.model');
 // Create a new item
 exports.create = async (req, res, next) => {
     const item = req.body;
-    const operationId = uuidv4();
     try {
         console.log('Creating new item:', item);
         if (!item.title || !item.description || !item.date) {
@@ -14,8 +13,8 @@ exports.create = async (req, res, next) => {
 
         const data = await Item.create(item);
         console.log('Item created successfully:', data);
-        wsService.notifyClients('CREATE', { ...data.toJSON(), operationId });
-        res.json({ ...data.toJSON(), operationId });
+        wsService.notifyClients('CREATE', data.toJSON());
+        res.send(data);
     } catch (error) {
         console.error('Error creating Item:', error);
         next(error);
@@ -57,12 +56,11 @@ exports.findOne = async (req, res, next) => {
 // Delete a item by id
 exports.delete = async (req, res, next) => {
   const id = req.params.id;
-  const operationId = uuidv4();
   try {
     console.log('Deleting Item by id:', id);
     const num = await Item.destroy({ where: { id: id } });
     if (num == 1) {
-      global.wsService.notifyClients('delete', id, operationId);
+      global.wsService.notifyClients('DELETE', id);
       res.send({ message: "Item was deleted successfully!" });
     } else {
       res.send({ message: `Cannot delete Item!` });
@@ -77,13 +75,12 @@ exports.delete = async (req, res, next) => {
 exports.update = async (req, res, next) => {
   const id = req.params.id;
   const updatedItem = req.body;
-  const operationId = uuidv4();
   try {
     console.log('Updating Item by id:', id);
     const num = await Item.update(updatedItem, { where: { id: id } });
     console.log('Item updated successfully:', updatedItem);
     if (num == 1) {
-      global.wsService.notifyClients('update', updatedItem, operationId);
+      global.wsService.notifyClients('UPDATE', updatedItem);
       res.send({ message: "Item was updated successfully." });
     } else {
       res.send({ message: `Cannot update Item.` });

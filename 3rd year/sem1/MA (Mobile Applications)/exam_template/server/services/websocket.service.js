@@ -25,11 +25,10 @@ class WebSocketService {
         });
     }
 
-    notifyClients(operation, data, operationId) {
+    notifyClients(operation, data) {
         const message = {
             type: operation,
             data: data,
-            operationId: operationId,
             timestamp: Date.now()
         };
         this.broadcast(message);

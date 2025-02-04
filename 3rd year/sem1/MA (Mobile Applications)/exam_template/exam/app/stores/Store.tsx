@@ -1,7 +1,9 @@
 import { create } from 'zustand';
 import { Item } from '../models/Item';
 import Repository from '../repository/Repository';
-import wsService from './WebSocketStore';
+import WebSocketService from '../services/WebSocketService';
+
+const wsService = WebSocketService.getInstance();
 
 type ItemStore = {
     items: Item[];
@@ -32,8 +34,7 @@ export const useItemStore = create<ItemStore>((set) => ({
         }
         set({ loading: true });
         try {
-            const newItem = await Repository.createItem(item);
-            set((state) => ({ items: [...state.items, newItem] }));
+            await Repository.createItem(item);
         } catch (error) {
             console.error('Error adding item:', error);
         } finally {
@@ -47,10 +48,7 @@ export const useItemStore = create<ItemStore>((set) => ({
         }
         set({ loading: true });
         try {
-            const updatedItem = await Repository.updateItem(item);
-            if (updatedItem) {
-                set((state) => ({ items: state.items.map((i) => (i.id === item.id ? updatedItem : i)) }));
-            }
+            await Repository.updateItem(item);
         } catch (error) {
             console.error('Error updating item:', error);
         } finally {
@@ -65,7 +63,6 @@ export const useItemStore = create<ItemStore>((set) => ({
         set({ loading: true });
         try {
             await Repository.deleteItem(id);
-            set((state) => ({ items: state.items.filter((item) => item.id !== id) }));
         } catch (error) {
             console.error('Error deleting item:', error);
         } finally {
@@ -102,8 +99,8 @@ export const useItemStore = create<ItemStore>((set) => ({
                 Repository.updateItemLocal(operation.data);
                 break;
             case 'DELETE':
-                set((state) => ({ items: state.items.filter((item) => item.id !== operation.data) }));
-                Repository.deleteItemLocal(operation.data);
+                set((state) => ({ items: state.items.filter((item) => item.id !== Number(operation.data)) }));
+                Repository.deleteItemLocal(Number(operation.data));
                 break;
         }
     },
