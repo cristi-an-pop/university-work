@@ -9,6 +9,7 @@ import service.Service;
 import validation.NotaValidator;
 import validation.StudentValidator;
 import validation.TemaValidator;
+import validation.ValidationException;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -16,6 +17,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TestAddAssignment {
     private StudentXMLRepository studentXMLRepository;
@@ -77,11 +79,30 @@ public class TestAddAssignment {
     @Test
     void testAddAssignment() {
         assertEquals(1, this.service.saveTema("95", "tema1", 10, 5));
-        assertEquals(1, this.service.saveTema("97", "tema2", 10, 5));
     }
 
     @Test
     void testAddAssignmentOnInvalidDeadline() {
-        assertEquals(1, this.service.saveTema("92", "tema1", 0, 5));
+        assertThrows(ValidationException.class, () -> this.service.saveTema("92", "tema1", 0, 5));
+    }
+
+    @Test
+    void testAddAssignmentOnInvalidStartline() {
+        assertThrows(ValidationException.class, () -> this.service.saveTema("93", "tema1", 10, 0));
+    }
+
+    @Test
+    void testAddAssignmentWithStartlineGreaterThanDeadline() {
+        assertThrows(ValidationException.class, () -> this.service.saveTema("94", "tema1", 5, 10));
+    }
+
+    @Test
+    void testAddAssignmentWithEmptyDescription() {
+        assertThrows(ValidationException.class, () -> this.service.saveTema("96", "", 10, 5));
+    }
+
+    @Test
+    void testAddAssignmentWithEmptyID() {
+        assertThrows(ValidationException.class, () -> this.service.saveTema("", "tema1", 10, 5));
     }
 }
