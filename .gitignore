@@ -1,4 +1,55 @@
-node_modules
-.idea
+# OS junk
+.DS_Store
+Thumbs.db
 
-2nd year/sem2/Software Engineering/Lab4/
+# IDEs and editors
+.idea/
+.vscode/
+*.iml
+*.class
+
+# Build outputs
+target/
+out/
+build/
+bin/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+.pnpm-debug.log
+
+# Java
+*.jar
+*.war
+*.ear
+*.class
+*.log
+*.ctxt
+hs_err_pid*
+replay_pid*
+
+# Coverage & testing
+coverage/
+.nyc_output/
+test-results/
+reports/
+
+# Environment files
+.env
+.env.*.local
+
+# OS-specific
+*.swp
+*.swo
+*.bak
+*.tmp
+*.orig
+
+# Custom folders
+2nd year/sem2/Software Engineering/Lab4/node_modules/
